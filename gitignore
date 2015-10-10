@@ -1,0 +1,44 @@
+# Created by https://www.gitignore.io/api/sublimetext,linux,lyx,libreoffice
+
+### SublimeText ###
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
+# sftp configuration file
+sftp-config.json
+
+
+### Linux ###
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+
+### LyX ###
+# Ignore LyX backup and autosave files
+# http://www.lyx.org/
+*.lyx~
+*.lyx#
+<<<<<<< HEAD
+*.pdf
+=======
+>>>>>>> f87061d605aef2479b9d3b98239945b6730530e0
+
+
+### LibreOffice ###
+# LibreOffice locks
+.~lock.*#
+
