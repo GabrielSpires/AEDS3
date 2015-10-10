@@ -94,7 +94,7 @@ Gabriel Henrique Souto Pires {gabrielpires@dcc.ufmg.br}
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -154,13 +154,13 @@ mbox{ }
 \backslash
 mbox{ }$}; 
 \backslash
+draw [black] (9.3,-24.5) circle (3); 
+\backslash
+draw (9.3,-24.5) node {$1$}; 
+\backslash
 draw [black] (9.3,-39.2) circle (3); 
 \backslash
-draw (9.3,-39.2) node {$1$}; 
-\backslash
-draw [black] (25.3,-39.2) circle (3); 
-\backslash
-draw (25.3,-39.2) node {$2$}; 
+draw (9.3,-39.2) node {$2$}; 
 \backslash
 draw [black] (33.9,-10.3) circle (3); 
 \backslash
@@ -170,9 +170,9 @@ draw [black] (33.9,-24.5) circle (3);
 \backslash
 draw (33.9,-24.5) node {$4$}; 
 \backslash
-draw [black] (40.4,-39.2) circle (3); 
+draw [black] (33.9,-39.2) circle (3); 
 \backslash
-draw (40.4,-39.2) node {$5$}; 
+draw (33.9,-39.2) node {$5$}; 
 \backslash
 draw [black] (57.4,-10.3) circle (3); 
 \backslash
@@ -316,11 +316,11 @@ mbox{ }
 \backslash
 mbox{ }$}; 
 \backslash
-draw [black] (9.3,-13.3) -- (9.3,-36.2); 
+draw [black] (9.3,-13.3) -- (9.3,-21.5); 
 \backslash
-fill [black] (9.3,-36.2) -- (9.8,-35.4) -- (8.8,-35.4); 
+fill [black] (9.3,-21.5) -- (9.8,-20.7) -- (8.8,-20.7); 
 \backslash
-draw (8.8,-24.75) node [left] {$.30$}; 
+draw (8.8,-17.4) node [left] {$.30$}; 
 \backslash
 draw [black] (12.3,-10.3) -- (30.9,-10.3); 
 \backslash
@@ -328,23 +328,23 @@ fill [black] (30.9,-10.3) -- (30.1,-9.8) -- (30.1,-10.8);
 \backslash
 draw (21.6,-10.8) node [below] {$.20$}; 
 \backslash
-draw [black] (12.3,-39.2) -- (22.3,-39.2); 
+draw [black] (9.3,-27.5) -- (9.3,-36.2); 
 \backslash
-fill [black] (22.3,-39.2) -- (21.5,-38.7) -- (21.5,-39.7); 
+fill [black] (9.3,-36.2) -- (9.8,-35.4) -- (8.8,-35.4); 
 \backslash
-draw (17.3,-39.7) node [below] {$.30$}; 
+draw (8.8,-31.85) node [left] {$.30$}; 
 \backslash
-draw [black] (11.88,-37.66) -- (31.32,-26.04); 
+draw [black] (12.3,-24.5) -- (30.9,-24.5); 
 \backslash
-fill [black] (31.32,-26.04) -- (30.38,-26.02) -- (30.89,-26.88); 
+fill [black] (30.9,-24.5) -- (30.1,-24) -- (30.1,-25); 
 \backslash
-draw (23.35,-32.35) node [below] {$.40$}; 
+draw (21.6,-25) node [below] {$.40$}; 
 \backslash
-draw [black] (28.3,-39.2) -- (37.4,-39.2); 
+draw [black] (12.3,-39.2) -- (30.9,-39.2); 
 \backslash
-fill [black] (37.4,-39.2) -- (36.6,-38.7) -- (36.6,-39.7); 
+fill [black] (30.9,-39.2) -- (30.1,-38.7) -- (30.1,-39.7); 
 \backslash
-draw (32.85,-39.7) node [below] {$.10$}; 
+draw (21.6,-39.7) node [below] {$.10$}; 
 \backslash
 draw [black] (33.9,-13.3) -- (33.9,-21.5); 
 \backslash
@@ -364,17 +364,17 @@ fill [black] (54.4,-24.5) -- (53.6,-24) -- (53.6,-25);
 \backslash
 draw (45.65,-25) node [below] {$.10$}; 
 \backslash
-draw [black] (35.11,-27.24) -- (39.19,-36.46); 
+draw [black] (33.9,-27.5) -- (33.9,-36.2); 
 \backslash
-fill [black] (39.19,-36.46) -- (39.32,-35.52) -- (38.41,-35.93); 
+fill [black] (33.9,-36.2) -- (34.4,-35.4) -- (33.4,-35.4); 
 \backslash
-draw (36.42,-32.84) node [left] {$.15$}; 
+draw (33.4,-31.85) node [left] {$.15$}; 
 \backslash
-draw [black] (43.4,-39.2) -- (54.4,-39.2); 
+draw [black] (36.9,-39.2) -- (54.4,-39.2); 
 \backslash
 fill [black] (54.4,-39.2) -- (53.6,-38.7) -- (53.6,-39.7); 
 \backslash
-draw (48.9,-39.7) node [below] {$.10$}; 
+draw (45.65,-39.7) node [below] {$.10$}; 
 \backslash
 draw [black] (57.4,-13.3) -- (57.4,-21.5); 
 \backslash
@@ -388,21 +388,21 @@ fill [black] (57.4,-36.2) -- (57.9,-35.4) -- (56.9,-35.4);
 \backslash
 draw (56.9,-31.85) node [left] {$.10$}; 
 \backslash
-draw [black] (9.3,-36.2) -- (9.3,-13.3); 
+draw [black] (9.3,-21.5) -- (9.3,-13.3); 
 \backslash
 fill [black] (9.3,-13.3) -- (8.8,-14.1) -- (9.8,-14.1); 
 \backslash
-draw [black] (31.32,-26.04) -- (11.88,-37.66); 
+draw [black] (30.9,-24.5) -- (12.3,-24.5); 
 \backslash
-fill [black] (11.88,-37.66) -- (12.82,-37.68) -- (12.31,-36.82); 
+fill [black] (12.3,-24.5) -- (13.1,-25) -- (13.1,-24); 
 \backslash
-draw [black] (22.3,-39.2) -- (12.3,-39.2); 
+draw [black] (9.3,-36.2) -- (9.3,-27.5); 
+\backslash
+fill [black] (9.3,-27.5) -- (8.8,-28.3) -- (9.8,-28.3); 
+\backslash
+draw [black] (30.9,-39.2) -- (12.3,-39.2); 
 \backslash
 fill [black] (12.3,-39.2) -- (13.1,-39.7) -- (13.1,-38.7); 
-\backslash
-draw [black] (37.4,-39.2) -- (28.3,-39.2); 
-\backslash
-fill [black] (28.3,-39.2) -- (29.1,-39.7) -- (29.1,-38.7); 
 \backslash
 draw [black] (30.9,-10.3) -- (12.3,-10.3); 
 \backslash
@@ -416,25 +416,29 @@ draw [black] (54.4,-24.5) -- (36.9,-24.5);
 \backslash
 fill [black] (36.9,-24.5) -- (37.7,-25) -- (37.7,-24); 
 \backslash
-draw [black] (54.4,-39.2) -- (43.4,-39.2); 
+draw [black] (54.4,-39.2) -- (36.9,-39.2); 
 \backslash
-fill [black] (43.4,-39.2) -- (44.2,-39.7) -- (44.2,-38.7); 
+fill [black] (36.9,-39.2) -- (37.7,-39.7) -- (37.7,-38.7); 
 \backslash
 draw [black] (57.4,-36.2) -- (57.4,-27.5); 
 \backslash
 fill [black] (57.4,-27.5) -- (56.9,-28.3) -- (57.9,-28.3); 
 \backslash
-draw [black] (39.19,-36.46) -- (35.11,-27.24); 
+draw [black] (33.9,-36.2) -- (33.9,-27.5); 
 \backslash
-fill [black] (35.11,-27.24) -- (34.98,-28.18) -- (35.89,-27.77); 
+fill [black] (33.9,-27.5) -- (33.4,-28.3) -- (34.4,-28.3); 
 \backslash
 draw [black] (57.4,-21.5) -- (57.4,-13.3); 
 \backslash
 fill [black] (57.4,-13.3) -- (56.9,-14.1) -- (57.9,-14.1); 
 \backslash
+draw [black] (33.9,-21.5) -- (33.9,-13.3); 
+\backslash
+fill [black] (33.9,-13.3) -- (33.4,-14.1) -- (34.4,-14.1); 
+\backslash
 end{tikzpicture} 
 \backslash
-end{center}
+end{center} 
 \end_layout
 
 \end_inset

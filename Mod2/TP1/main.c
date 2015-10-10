@@ -2,6 +2,7 @@
 
 #include "lista.h"
 #include "fila.h"
+#include "heap.h"
 
 // void dijkstra(lista* verts, int origem, int numQuarts){
 // 	int i = 0;
@@ -76,5 +77,20 @@ int main(){
 		free(verts);
 		free(bomb);//Libera as listas
 	}
+	// printf("\n");
+	// Fila minhaFila;
+	// criaFila(&minhaFila);
+	// enfileirar(10, &minhaFila);
+	// imprimeFila(&minhaFila);
+	// desenfileirar(&minhaFila);
+	// imprimeFila(&minhaFila);
+	// liberaFila(&minhaFila);
+
+	char teste[7] = "7654321";
+
+	printf("%s\n", teste);
+	heapsort(&teste[0], 7);
+	printf("%s\n", teste);
+
 	return 0;
 }

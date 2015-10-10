@@ -55,6 +55,13 @@ void copy(Fila* p, Fila* q){
   }
 }
 
+void imprimeFila(Fila* q){
+  NodeFila* i = NULL;
+  for (i = q->end->next; i != q->end; i = i->next){
+    printf("%d\n", i->key);
+  }
+}
+
 void liberaFila(Fila* q){
   // Primeiramente, remove todos os elementos da fila.
   while (!filaVazia(q)) {

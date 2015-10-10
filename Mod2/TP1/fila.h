@@ -46,6 +46,8 @@ void desenfileirar(Fila*);
 // onde n = tamFila(p) e m = tamFila(q).
 void copy(Fila*, Fila*);
 
+void imprimeFila(Fila*);
+
 // Libera a memória alocada para todos os elementos da fila em O(n),
 // onde n é o número de elementos na fila.
 void liberaFila(Fila*);
