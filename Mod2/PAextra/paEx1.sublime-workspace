@@ -1,0 +1,570 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"num",
+				"numQuarts"
+			],
+			[
+				"inc",
+				"inc	#include stdio.h"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"ta",
+				"tamAux-1"
+			],
+			[
+				"in",
+				"int"
+			],
+			[
+				"vet",
+				"vetorAdj"
+			],
+			[
+				"lis",
+				"listaAdj"
+			],
+			[
+				"me",
+				"merge_sort"
+			],
+			[
+				"wo",
+				"wordSorted"
+			],
+			[
+				"aha",
+				"achaY"
+			],
+			[
+				"cus",
+				"custoTotal"
+			],
+			[
+				"visi",
+				"visitado"
+			],
+			[
+				"ad",
+				"adjacentes"
+			],
+			[
+				"qtd",
+				"qtdMovimentos"
+			],
+			[
+				"matri",
+				"matrixAdj"
+			],
+			[
+				"mat",
+				"matrixAdj"
+			],
+			[
+				"Mat",
+				"Material-Theme-Darker"
+			],
+			[
+				"pr",
+				"printf	printf …"
+			],
+			[
+				"pri",
+				"Primeiro"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "lista.h",
+			"settings":
+			{
+				"buffer_size": 722,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lista.c",
+			"settings":
+			{
+				"buffer_size": 1613,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "#include <stdio.h>\n\nint main(int argc, char const *argv[]){\n	int n = 0; //Numero de palavras abreviadas\n	char linha[10000];\n	\n	do{\n		fgets(linha, 10000, stdin);\n		printf(\"%s\", linha);\n	}while(linha[0] != '.');\n\n	return 0;\n}",
+			"file": "main.c",
+			"file_size": 222,
+			"file_write_time": 130884684267031573,
+			"settings":
+			{
+				"buffer_size": 223,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "Snippet: ",
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: do{ }while();"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: remov",
+				"Package Control: Remove Channel"
+			],
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: inst	",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Init"
+			],
+			[
+				"Package Control: isntal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: installpac",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 431.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra"
+	],
+	"file_history":
+	[
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra/paEx1.sublime-project",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra/lista.h",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra/lista.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod1/PA_Extra1/lista.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/TP1/lista.h",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/TP1/lista.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/TP1/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra/makefile",
+		"/home/kastor/Área de Trabalho/aeds3/Mod1/p1_problema1.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod1/PA2/pa2.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod1/PA_Extra1/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod1/TP0/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PAextra/input.txt",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/TP1/input.txt",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/TP1/makefile",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/TP1/100_990_0.01_0.03_b.i.o",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PA2/main.c",
+		"/home/kastor/.cache/.fr-27lmHV/struct.sublime-snippet",
+		"/home/kastor/.cache/.fr-HMnHSq/while-loop.sublime-snippet",
+		"/home/kastor/.cache/.fr-nqJJtC/if-..-(if).sublime-snippet",
+		"/home/kastor/.cache/.fr-svxsmZ/do...while-loop-(do).sublime-snippet",
+		"/home/kastor/.cache/.fr-DMQlLG/030-for-int-loop-(fori).sublime-snippet",
+		"/home/kastor/.cache/.fr-ghmDdO/030-for-int-loop-(fori).sublime-snippet",
+		"/home/kastor/.cache/.fr-6c3Y12/while-loop.sublime-snippet",
+		"/home/kastor/.cache/.fr-okYIiw/030-while-loop-(while).sublime-snippet",
+		"/home/kastor/.cache/.fr-QbIW9v/do...while-loop-(do).sublime-snippet",
+		"/home/kastor/.cache/.fr-okYIiw/030-for-int-loop-(fori).sublime-snippet",
+		"/home/kastor/.cache/.fr-XGXVHd/#ifndef-#define-#endif.sublime-snippet",
+		"/home/kastor/.cache/.fr-yVwtX7/struct.sublime-snippet",
+		"/home/kastor/.cache/.fr-O2CnL7/read-file-(readF).sublime-snippet",
+		"/home/kastor/.cache/.fr-r0PwrL/#include-(inc angle).sublime-snippet",
+		"/home/kastor/.cache/.fr-8akk7U/Enumeration.sublime-snippet",
+		"/home/kastor/.cache/.fr-WIahDk/scanf-..-(scanf).sublime-snippet",
+		"/home/kastor/.cache/.fr-l7q7hT/#include-(inc).sublime-snippet",
+		"/home/kastor/.cache/.fr-jcmflX/#include-(inc angle).sublime-snippet",
+		"/home/kastor/.cache/.fr-WIahDk/printf-..-(printf).sublime-snippet",
+		"/home/kastor/.cache/.fr-fUJCR0/template-typename-..-(template).sublime-snippet",
+		"/home/kastor/.cache/.fr-XNouvV/010-main()-(main).sublime-snippet",
+		"/home/kastor/.cache/.fr-UyRqyQ/struct.sublime-snippet",
+		"/home/kastor/.cache/.fr-vWCHat/Typedef.sublime-snippet",
+		"/home/kastor/.cache/.fr-ox5oWV/010-main()-(main).sublime-snippet",
+		"/home/kastor/.cache/.fr-x1tqnl/Comments (C++).tmPreferences",
+		"/home/kastor/.cache/.fr-J4bmRb/030-for-int-loop-(fori).sublime-snippet",
+		"/home/kastor/.cache/.fr-pTKkJd/do...while-loop-(do).sublime-snippet",
+		"/home/kastor/.cache/.fr-h6dnhe/if-..-(if).sublime-snippet",
+		"/home/kastor/.cache/.fr-FYw9gQ/if-..-(if).sublime-snippet",
+		"/home/kastor/.cache/.fr-2JleXh/if-..-(if).sublime-snippet",
+		"/home/kastor/.cache/.fr-i5FjI1/if-..-(if).sublime-snippet",
+		"/home/kastor/.cache/.fr-vX5hKB/C.tmLanguage",
+		"/opt/sublime_text/Packages/C++.sublime-package",
+		"/home/kastor/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/kastor/.config/sublime-text-3/Packages/bz2/dependency-metadata.json",
+		"/home/kastor/.config/sublime-text-3/Packages/bz2/st3_linux_x64/_bz2.cpython-33m.so",
+		"/home/kastor/.config/sublime-text-3/Packages/User/C.sublime-settings",
+		"/home/kastor/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PA1/input.txt",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PA1/main.c",
+		"/home/kastor/.config/sublime-text-3/Packages/User/C++.sublime-settings",
+		"/home/kastor/Área de Trabalho/aeds3/Mod2/PA2/input.txt",
+		"/home/kastor/Área de Trabalho/aeds3/PA_Extra1/lista.h",
+		"/home/kastor/Área de Trabalho/aeds3/PA_Extra1/lista.c",
+		"/home/kastor/Área de Trabalho/aeds3/PA_Extra1/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/PA_Extra1/input.txt",
+		"/home/kastor/Área de Trabalho/aeds3/PA_Extra1/makefile",
+		"/home/kastor/Área de Trabalho/aeds3/PA2/pa2.c",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/makefile",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/lista.h",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/lista.c",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/GeradorKastoR/gerador_kast_tam_palavra.cpp",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/GeradorKastoR/arquivo.sh",
+		"/home/kastor/Área de Trabalho/aeds3/GeradorEntrada/pistolaGenerator.cpp",
+		"/home/kastor/Área de Trabalho/aeds3/GeradorEntrada/dados.txt",
+		"/home/kastor/Área de Trabalho/aeds3/GeradorEntrada/10_10000.txt",
+		"/home/kastor/Área de Trabalho/aeds3/GeradorEntrada/2_3.txt",
+		"/home/kastor/Documents/TP tentativa fail/TP.c",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/input.txt",
+		"/home/kastor/Área de Trabalho/aeds3/TP0/banco100000.txt",
+		"/home/kastor/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/kastor/Área de Trabalho/Disco D/UFMG/AEDS2/Exercicios/Ex4_tad_set/set_with_linked_list/main.c",
+		"/home/kastor/Área de Trabalho/aeds3/PA2/makefile",
+		"/home/kastor/Área de Trabalho/aeds3/PA2/p1_problema2.c",
+		"/home/kastor/Área de Trabalho/Disco D/UFMG/AEDS3/PA2/pa2.c",
+		"/home/kastor/Área de Trabalho/aeds3/p1_problema1.c",
+		"/home/kastor/Área de Trabalho/aeds3/tp.old.c",
+		"/home/kastor/Área de Trabalho/main.c",
+		"/home/kastor/.config/sublime-text-3/Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+		"/home/kastor/.config/sublime-text-3/Installed Packages/Material Color Scheme.sublime-package",
+		"/home/kastor/.config/sublime-text-3/Packages/Material Theme - White Panels/Material-Theme.sublime-theme",
+		"/home/kastor/.config/sublime-text-3/Packages/Material Theme - White Panels/Material-Theme-Darker.sublime-theme",
+		"/home/kastor/Área de Trabalho/aeds3/grafo.c",
+		"/home/kastor/Área de Trabalho/aeds3/grafo.h",
+		"/home/kastor/Documentos/sortAlfabetico.c",
+		"/home/user/Documentos/CPAeds2/pilha/pilha.c",
+		"/home/user/Documentos/CPAeds2/pilha/pilha.h",
+		"/home/user/Documentos/CPAeds2/pilha/main.c",
+		"/home/user/Documentos/CPAeds2/fila/main.c",
+		"/home/user/Documentos/CPAeds2/fila/fila.c",
+		"/home/user/Documentos/CPAeds2/fila/fila.h",
+		"/home/kas/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/davi/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"print",
+			"for",
+			"main",
+			"for",
+			"C",
+			"Chave x;",
+			"set",
+			"find",
+			"free_set",
+			"clear",
+			"erase",
+			"insert",
+			"iterator",
+			"next",
+			"end",
+			"begin",
+			"size",
+			"empty",
+			"make_set",
+			"node",
+			"SType",
+			"visitados",
+			"comm",
+			"444444",
+			">\n",
+			"Language"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"scan",
+			"lista",
+			"procura",
+			"liberaLista",
+			"limpar",
+			"apaga",
+			"inserir",
+			"iterador",
+			"prox",
+			"final",
+			"inicio",
+			"tamanho",
+			"listaVazia",
+			"criaLista",
+			"Node",
+			"novoItem",
+			"Node",
+			"Chave"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "lista.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								115,
+								115
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lista.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								223,
+								223
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 69.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 174.0
+	},
+	"pinned_build_system": "",
+	"project": "paEx1.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 159.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

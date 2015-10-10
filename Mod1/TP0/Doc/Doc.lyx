@@ -1,0 +1,857 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing other 1.1
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 4cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Trabalho Prático 0: Anagramas
+\end_layout
+
+\begin_layout Author
+Gabriel Henrique Souto Pires (gabrielpires@dcc.ufmg.br)
+\end_layout
+
+\begin_layout Section
+Introdução
+\end_layout
+
+\begin_layout Standard
+Um anagrama é uma transposição de letras de uma palavra ou frase que formam
+ outra palavra ou frase diferente, ou seja, se uma palavra é a permutação
+ das letras de outra, essa palavra é um anagrama.
+ Neste trabalho o problema apresentado foi o de reconhecer anagramas em
+ uma lista de palavras, agrupá-las e informar o tamanho de cada um desses
+ grupos em ordem decrescente.
+ Por exemplo, dada a seguinte frase:
+\end_layout
+
+\begin_layout Itemize
+socorram me subi no onibus em marrocos
+\end_layout
+
+\begin_layout Standard
+A saída do programa seria 2 2 1 1 1 já que as palavras se agrupam da seguinte
+ forma:
+\end_layout
+
+\begin_layout Itemize
+(socorram, marrocos), (me, em), (subi), (no), (onibus)
+\end_layout
+
+\begin_layout Standard
+O programa processa várias listas de palavras em uma única execução até
+ que a entrada indique que o programa deve parar.
+\end_layout
+
+\begin_layout Standard
+Este tipo de problema acontece por exemplo em jogos onde o jogador deve
+ formar várias palavras com as mesmas letras para ganhar pontos.
+ O desafio seria identificar se uma palavra formada pelo jogador possui
+ as mesmas letras da palavra original, e em caso positivo somar um ponto
+ ao seu placar.
+\end_layout
+
+\begin_layout Section
+Modelagem do Problema
+\end_layout
+
+\begin_layout Standard
+Cada lista de palavras pode ter até 10⁶ palavras e cada palavra pode ter
+ no máximo 50 caracteres, mas as listas de palavras nem sempre tem o mesmo
+ número de palavras.
+ Então foi utilizado um TAD Lista encadeada para armazenar as palavras,
+ o que tornou o processo de inserção das palavras mais dinâmico e eficiente.
+\end_layout
+
+\begin_layout Standard
+O TAD consiste de um conjunto de Nodos que apontam ao mesmo tempo para o
+ seu antecessor e para o seu sucessor na lista.
+ A vantagem de se utilizar esse tipo de TAD é que a cada vez que uma 
+\emph on
+string
+\emph default
+ for lida da entrada um nodo será alocado, fazendo com que a lista tenha
+ exatamente o número de nodos de que necessita, fazendo com que apenas a
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename linkedList.png
+	lyxscale 82
+	scale 82
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Representação da estrutura de dados utilizada
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+quantidade de memória necessária seja utilizada.
+ A lista encadeada foi escolhida principalmente por ser um bom método de
+ alocação dinâmica de memória e ser de fácil implementação.
+\end_layout
+
+\begin_layout Standard
+Cada nodo da lista guarda a 
+\emph on
+string
+\emph default
+ recebida na entrada e uma variável 
+\emph on
+int
+\emph default
+ 
+\emph on
+tam
+\emph default
+ que inicialmente começa com o valor 1.
+ Toda vez que uma palavra a ser inserida for encontrada na lista, ao invés
+ dessa palavra ser inserida novamente apenas a variável 
+\emph on
+tam 
+\emph default
+do nodo é incrementada, dessa forma, ao acessar o valor dessa variável,
+ é possível saber quantos anagramas foram inseridos em cada grupo.
+\end_layout
+
+\begin_layout Standard
+Mas apenas inserir as palavras na lista não resolveria o problema de verificar
+ se uma palavra é um anagrama de outra, pois apenas palavras idênticas seriam
+ identificadas como anagramas.
+ Para resolver esse problema foi preciso criar um método para comparar as
+ strings inseridas de forma que fosse possível saber se duas palavras tem
+ exatamente as mesmas letras.
+\end_layout
+
+\begin_layout Standard
+Para resolver esse problema cada 
+\emph on
+string
+\emph default
+ tem seus caracteres ordenados em ordem alfabética.
+ Por exemplo, se a palavra 
+\emph on
+batata
+\emph default
+ for inserida na lista seus caracteres são ordenados de forma que a 
+\emph on
+string
+\emph default
+ 
+\emph on
+aaabtt
+\emph default
+ seja inserida em seu lugar.
+ Essa ordenação foi feita com a função 
+\emph on
+qsort()
+\emph default
+ nativa do C.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\small\sffamily},showstringspaces=false,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+scanf("%d", &n);
+\end_layout
+
+\begin_layout Plain Layout
+
+while(n--){
+\end_layout
+
+\begin_layout Plain Layout
+
+	criaLista(&palavras);
+\end_layout
+
+\begin_layout Plain Layout
+
+	do{
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%s%c", minhaPalavra, &separador);
+\end_layout
+
+\begin_layout Plain Layout
+
+		qsort(minhaPalavra, strlen(minhaPalavra), sizeof(char), cmp);
+\end_layout
+
+\begin_layout Plain Layout
+
+		inserir(minhaPalavra, &palavras);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}while(separador == ' ');
+\end_layout
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ordenação e inserção das strings (o loop roda enquanto o separador das strings
+ for um espaço)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Após todas as palavras serem inseridas na lista, um vetor de inteiros é
+ alocado com uma posição para cada grupo de anagramas e recebe a quantidade
+ de palavras em cada grupo distinto, que no caso é a variável 
+\emph on
+tam
+\emph default
+ de cada nodo da lista de palavras.
+ Este vetor é então ordenado com 
+\emph on
+qsort()
+\emph default
+ e seus valores são impressos na tela em ordem decrescente.
+\end_layout
+
+\begin_layout Section
+Análise Teórica do Custo Assintótico
+\end_layout
+
+\begin_layout Standard
+Apesar de usar o TAD descrito acima o programa em si é muito simples, a
+ 
+\emph on
+main
+\emph default
+ conta apenas com alguns loops para receber a entrada do programa e exibir
+ a saída.
+ A complexidade assintótica será discutida na subseção abaixo.
+\end_layout
+
+\begin_layout Subsection
+Análise Teórica do Custo Assintótico de Tempo
+\end_layout
+
+\begin_layout Itemize
+A primeira parte do programa (
+\series bold
+Algorithm 1
+\series default
+) recebe um número 
+\emph on
+n 
+\emph default
+que representa a quantidade de listas a serem processadas e roda um 
+\emph on
+while
+\emph default
+ 
+\emph on
+n
+\emph default
+ vezes, ou seja, 
+\emph on
+O(n)
+\emph default
+.
+ Dentro desse 
+\emph on
+while
+\emph default
+ a função 
+\emph on
+criaLista()
+\emph default
+ é chamada e aloca o nodo sentinela da lista em 
+\emph on
+O(1)
+\emph default
+.
+ Dentro desse 
+\emph on
+while
+\emph default
+ um loop 
+\emph on
+do-while
+\emph default
+ roda recebendo as strings de entrada e inserindo as palavras com seus caractere
+s ordenados na lista, esse loop roda uma vez para cada palavra na lista,
+ se considerarmos que o número de palavras = 
+\emph on
+p
+\emph default
+ então sua ordem de complexidade é 
+\emph on
+O(p)
+\emph default
+ e o algoritmo usado para ordenar os caracteres das palavras foi o QuickSort
+ nativo do C (
+\emph on
+qsort)
+\emph default
+ que roda em 
+\emph on
+O(c*logc)
+\emph default
+ com 
+\emph on
+c = número de caracteres da palavra
+\emph default
+.
+ A inserção na lista é feita em 
+\emph on
+O(p)
+\emph default
+, pois a função 
+\emph on
+inserir()
+\emph default
+ percorre a lista até encontrar o local correto de inserção, que no pior
+ caso é no final da lista.
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $O(n)*\left(O(1)+O(p)*\left[O(1)+O(c*logc)+O(p)\right]\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $O(n)*(O(1)+O(p)+O(p*c*logc)+O(p\text{²}))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $O(n)+O(n*p)+O(n*p*c*logc)+O(n*p\text{²})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Daí podemos concluir que a complexidade na primeira parte do programa é
+ O(n*p²) uma vez que 
+\emph on
+p
+\emph default
+ é muito maior que as outras grandezas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A segunda parte do programa é ainda mais simples.
+ Ainda dentro do 
+\emph on
+while
+\emph default
+ da primeira parte, um vetor de 
+\emph on
+int
+\emph default
+ chamado 
+\emph on
+grupos
+\emph default
+ é alocado em 
+\emph on
+O(1)
+\emph default
+ para armazenar a quantidade de anagramas em cada grupo.
+ Depois disso, um loop 
+\emph on
+for
+\emph default
+ percorre a lista de palavras atribuindo o valor de cada grupo à uma posição
+ do vetor 
+\emph on
+grupos
+\emph default
+, essa operação executa em 
+\emph on
+O(p)
+\emph default
+.
+ Depois o vetor 
+\emph on
+grupos
+\emph default
+ é ordenado com o 
+\emph on
+qsort()
+\emph default
+ que roda em 
+\emph on
+O(p*logp)
+\emph default
+.
+ Depois de ordenado, o vetor 
+\emph on
+grupos
+\emph default
+ é exibido na tela em 
+\emph on
+O(p)
+\emph default
+ de trás para frente, já que a saída deve ser exibida em ordem decrescente.
+ Com a saída exibida o vetor de grupos é liberado da memória com a função
+ 
+\emph on
+free().
+
+\emph default
+ Para liberar a lista de palavras, a função 
+\emph on
+liberaLista()
+\emph default
+ é usada e libera toda a memória alocada para a lista em 
+\emph on
+O(p).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $O(n)*\left[O(1)+O(p)+O(p*logp)+O(p)+O(1)+O(p)\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $O(n)+O(n*p)+O(n*p*logp)+O(n*p)+O(n)+O(n*p)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos então concluir que a complexidade da segunda parte é 
+\emph on
+
+\begin_inset Formula $O(n*p*logp)$
+\end_inset
+
+
+\emph default
+.
+ Então o custo total é a soma da primeira parte com a segunda, que é 
+\begin_inset Formula $O(n*p{^{2}})+O(n*p*logp)$
+\end_inset
+
+, ou seja, 
+\emph on
+
+\begin_inset Formula $O(n*p²)$
+\end_inset
+
+
+\emph default
+.
+ Lembrando que foi considerado na análise de complexidade o pior caso da
+ inserção, que é quando nenhuma das palavras inseridas é um anagrama, deste
+ modo a lista terá exatamente a mesma quantidade de palavras da entrada,
+ o que torna a complexidade do programa 
+\begin_inset Formula $O(n*p\text{²})$
+\end_inset
+
+.
+ No caso dos testes experimentais um número fixo de listas foi utilizado,
+ então 
+\emph on
+n
+\emph default
+ se torna uma constante, o que faz com que o custo real do programa se torne
+ na verdade 
+\begin_inset Formula $O(p\text{²}).$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Análise Teórica do Custo Assintótico de Espaço
+\end_layout
+
+\begin_layout Standard
+Para analisar o custo de espaço do programa foi levado em consideração a
+ quantidade de memória utilizada pelo TAD lista e o conteúdo armazenado
+ nela e o tamanho do vetor de grupos alocado para exibir a saída do programa.
+ Cada nodo da lista contém dois ponteiros para nodo, uma 
+\emph on
+string
+\emph default
+ e um 
+\emph on
+int
+\emph default
+ e a lista em si tem um 
+\emph on
+int
+\emph default
+ para guardar o tamanho da lista e um ponteiro para nodo sentinela.
+ Considerando que um nodo é alocado para cada palavra e cada nodo tem 2
+ ponteiros para nodo de 8 bytes, um 
+\emph on
+int
+\emph default
+ de 4 bytes e uma 
+\emph on
+string
+\emph default
+ de ate 50 caracteres, então o custo em bytes da lista seria de 
+\emph on
+O(70*numPalavras)
+\emph default
+ ou 
+\emph on
+O(numPalavras)
+\emph default
+.
+ O vetor de grupos é alocado com 
+\emph on
+n
+\emph default
+ inteiros, sendo 
+\emph on
+n
+\emph default
+ o tamanho de palavras presentes na lista.
+ Como cada inteiro ocupa 4 bytes então o custo do vetor de grupos é de 
+\emph on
+O(4*numPalavras)
+\emph default
+ ou 
+\emph on
+O(numPalavras)
+\emph default
+, então o custo assintótico de espaço do programa é proporcional à soma
+ do custo da lista e do vetor de grupos, ou seja, 
+\begin_inset Formula $O(numPalavras+numPalavras)=O(2*numPalavras)=O(numPalavras)$
+\end_inset
+
+.
+ Pode-se então concluir que a cada palavra lida da entrada, o programa ocupa
+ cerca de 74 bytes na memória.
+\end_layout
+
+\begin_layout Section
+Análise Experimental do Custo Assintótico
+\end_layout
+
+\begin_layout Standard
+Para fazer a análise experimental do programa, foi criado um outro programa
+ que gera arquivos de entrada compatíveis de tamanhos variados de forma
+ que a diferença do tempo de execução com entradas diferentes possa ser
+ medido.
+ Para não levar em consideração o tempo que se leva para digitar a entrada
+ no tempo de execução do programa, a entrada foi lida diretamente dos arquivos.
+ Para se medir o tempo de execução do programa foi usado o comando 
+\emph on
+time
+\emph default
+ que ao final da execução do programa grava na saída padrão (
+\emph on
+stdout
+\emph default
+) estatísticas de tempo sobre o programa executado.
+ O comando completo usado na execução do programa e um exemplo de saída
+ do comando 
+\emph on
+time
+\emph default
+ podem ser vistos abaixo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+time ./tp0 < input.txt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+real	0m0.013s
+\end_layout
+
+\begin_layout Plain Layout
+
+user	0m0.000s
+\end_layout
+
+\begin_layout Plain Layout
+
+sys	0m0.000s 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A saída do comando 
+\emph on
+time
+\emph default
+ pode ser interpretada da seguinte maneira:
+\end_layout
+
+\begin_layout Itemize
+real: tempo real de execução.
+ Leva em consideração todo tempo desde o início da execução até que o programa
+ feche.
+\end_layout
+
+\begin_layout Itemize
+user: o tempo de execução na CPU do comando dado pelo usuário.
+\end_layout
+
+\begin_layout Itemize
+sys: o tempo em CPU gasto pelo sistema.
+\end_layout
+
+\begin_layout Standard
+Para fazer a análise de tempo do programa foi levado em consideração a saída
+ 
+\emph on
+user.
+\end_layout
+
+\begin_layout Standard
+Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.04.
+ O computador utilizado tem um processador AMD Phenom II X4 965 3.40GHz e
+ 8GB de memória, porém, a máquina virtual utiliza apenas um núcleo do processado
+r e 2GB de RAM.
+\end_layout
+
+\begin_layout Standard
+Foram criados arquivos de teste com 10 listas de palavras, cada palavra
+ com uma média de 40 caracteres e o tamanho das entradas variando de 1000
+ até 20 mil palavras.
+ O número escolhido para o máximo de palavras não foi maior pois todos os
+ testes foram rodados levando em consideração o pior caso possível, ou seja,
+ o caso em que nenhuma das palavras inseridas sejam anagramas.
+ Com estes arquivos gerados, o tempo de execução foi medido para cada execução.
+ Como pode ser visto no gráfico abaixo, o programa de fato demonstra um
+ comportamento assintótico de tempo quadrático como calculado anteriormente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename grafico.png
+	lyxscale 35
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gráfico da análise experimental de custo assintótico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusão
+\end_layout
+
+\begin_layout Standard
+Resolver o problema dos anagramas inicialmente parecia um pouco complexo,
+ mas logo se mostrou simples o suficiente para que nenhum algoritmo conhecido
+ precisasse ser implementado.
+ O problema foi resolvido usando um tipo abstrato de dados chamado Lista
+ Encadeada para alocar dinamicamente espaço para as palavras recebidas na
+ entrada do programa.
+ Antes de serem inseridas, as palavras tinham seus caracteres ordenados
+ para que caso duas palavras tivessem as mesmas letras, ou seja, fossem
+ um anagrama uma da outra, elas pudessem ser comparadas mais facilmente.
+ Uma vez inseridas, as palavras representavam um grupo de anagramas.
+ Cada vez que uma palavra igual tentasse ser inserida, o contador do tamanho
+ do grupo era incrementado.
+ Por fim, um vetor de inteiros armazena o tamanho de cada grupo, e após
+ ser ordenado esse vetor é exibido de trás para frente, o que faz com que
+ a saída fique em ordem decrescente, assim como pedido.
+ Após ser calculada, a análise de complexidade de tempo foi provada com
+ o auxilio de arquivos de entrada gerados por um programa à parte, que tornou
+ possível criar arquivos com um número de palavras grande o suficiente para
+ notar a diferença entre o tempo de execução do programa e com isso gerar
+ um gráfico que de fato ilustrou um comportamento assintótico compatível
+ com a análise feita.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,7 @@
+tp0: main.c lista.c
+	gcc -Wall *.c -o tp0
+	clear
+	./tp0 < input.txt
+
+clean:
+	rm tp0

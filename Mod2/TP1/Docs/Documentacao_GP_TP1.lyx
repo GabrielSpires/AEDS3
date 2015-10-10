@@ -1,0 +1,505 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{tikz}
+\date {}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 3cm
+\rightmargin 2.5cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+TP1: The city is on fire!
+\end_layout
+
+\begin_layout Author
+Gabriel Henrique Souto Pires {gabrielpires@dcc.ufmg.br}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\backslash
+begin{tikzpicture}[scale=0.2] 
+\backslash
+tikzstyle{every node}+=[inner sep=0pt] 
+\backslash
+draw [black] (9.3,-10.3) circle (3); 
+\backslash
+draw (9.3,-10.3) node {$Saida
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }0
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }$}; 
+\backslash
+draw [black] (9.3,-39.2) circle (3); 
+\backslash
+draw (9.3,-39.2) node {$1$}; 
+\backslash
+draw [black] (25.3,-39.2) circle (3); 
+\backslash
+draw (25.3,-39.2) node {$2$}; 
+\backslash
+draw [black] (33.9,-10.3) circle (3); 
+\backslash
+draw (33.9,-10.3) node {$3$}; 
+\backslash
+draw [black] (33.9,-24.5) circle (3); 
+\backslash
+draw (33.9,-24.5) node {$4$}; 
+\backslash
+draw [black] (40.4,-39.2) circle (3); 
+\backslash
+draw (40.4,-39.2) node {$5$}; 
+\backslash
+draw [black] (57.4,-10.3) circle (3); 
+\backslash
+draw (57.4,-10.3) node {$
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }6
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }Bombeiros
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }$}; 
+\backslash
+draw [black] (57.4,-24.5) circle (3); 
+\backslash
+draw (57.4,-24.5) node {$7$}; 
+\backslash
+draw [black] (57.4,-39.2) circle (3); 
+\backslash
+draw (57.4,-39.2) node {$
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }8
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }
+\backslash
+mbox{ }Chegada
+\backslash
+mbox{ }
+\backslash
+mbox{ }$}; 
+\backslash
+draw [black] (9.3,-13.3) -- (9.3,-36.2); 
+\backslash
+fill [black] (9.3,-36.2) -- (9.8,-35.4) -- (8.8,-35.4); 
+\backslash
+draw (8.8,-24.75) node [left] {$.30$}; 
+\backslash
+draw [black] (12.3,-10.3) -- (30.9,-10.3); 
+\backslash
+fill [black] (30.9,-10.3) -- (30.1,-9.8) -- (30.1,-10.8); 
+\backslash
+draw (21.6,-10.8) node [below] {$.20$}; 
+\backslash
+draw [black] (12.3,-39.2) -- (22.3,-39.2); 
+\backslash
+fill [black] (22.3,-39.2) -- (21.5,-38.7) -- (21.5,-39.7); 
+\backslash
+draw (17.3,-39.7) node [below] {$.30$}; 
+\backslash
+draw [black] (11.88,-37.66) -- (31.32,-26.04); 
+\backslash
+fill [black] (31.32,-26.04) -- (30.38,-26.02) -- (30.89,-26.88); 
+\backslash
+draw (23.35,-32.35) node [below] {$.40$}; 
+\backslash
+draw [black] (28.3,-39.2) -- (37.4,-39.2); 
+\backslash
+fill [black] (37.4,-39.2) -- (36.6,-38.7) -- (36.6,-39.7); 
+\backslash
+draw (32.85,-39.7) node [below] {$.10$}; 
+\backslash
+draw [black] (33.9,-13.3) -- (33.9,-21.5); 
+\backslash
+fill [black] (33.9,-21.5) -- (34.4,-20.7) -- (33.4,-20.7); 
+\backslash
+draw (33.4,-17.4) node [left] {$.20$}; 
+\backslash
+draw [black] (36.9,-10.3) -- (54.4,-10.3); 
+\backslash
+fill [black] (54.4,-10.3) -- (53.6,-9.8) -- (53.6,-10.8); 
+\backslash
+draw (45.65,-10.8) node [below] {$.40$}; 
+\backslash
+draw [black] (36.9,-24.5) -- (54.4,-24.5); 
+\backslash
+fill [black] (54.4,-24.5) -- (53.6,-24) -- (53.6,-25); 
+\backslash
+draw (45.65,-25) node [below] {$.10$}; 
+\backslash
+draw [black] (35.11,-27.24) -- (39.19,-36.46); 
+\backslash
+fill [black] (39.19,-36.46) -- (39.32,-35.52) -- (38.41,-35.93); 
+\backslash
+draw (36.42,-32.84) node [left] {$.15$}; 
+\backslash
+draw [black] (43.4,-39.2) -- (54.4,-39.2); 
+\backslash
+fill [black] (54.4,-39.2) -- (53.6,-38.7) -- (53.6,-39.7); 
+\backslash
+draw (48.9,-39.7) node [below] {$.10$}; 
+\backslash
+draw [black] (57.4,-13.3) -- (57.4,-21.5); 
+\backslash
+fill [black] (57.4,-21.5) -- (57.9,-20.7) -- (56.9,-20.7); 
+\backslash
+draw (56.9,-17.4) node [left] {$.30$}; 
+\backslash
+draw [black] (57.4,-27.5) -- (57.4,-36.2); 
+\backslash
+fill [black] (57.4,-36.2) -- (57.9,-35.4) -- (56.9,-35.4); 
+\backslash
+draw (56.9,-31.85) node [left] {$.10$}; 
+\backslash
+draw [black] (9.3,-36.2) -- (9.3,-13.3); 
+\backslash
+fill [black] (9.3,-13.3) -- (8.8,-14.1) -- (9.8,-14.1); 
+\backslash
+draw [black] (31.32,-26.04) -- (11.88,-37.66); 
+\backslash
+fill [black] (11.88,-37.66) -- (12.82,-37.68) -- (12.31,-36.82); 
+\backslash
+draw [black] (22.3,-39.2) -- (12.3,-39.2); 
+\backslash
+fill [black] (12.3,-39.2) -- (13.1,-39.7) -- (13.1,-38.7); 
+\backslash
+draw [black] (37.4,-39.2) -- (28.3,-39.2); 
+\backslash
+fill [black] (28.3,-39.2) -- (29.1,-39.7) -- (29.1,-38.7); 
+\backslash
+draw [black] (30.9,-10.3) -- (12.3,-10.3); 
+\backslash
+fill [black] (12.3,-10.3) -- (13.1,-10.8) -- (13.1,-9.8); 
+\backslash
+draw [black] (54.4,-10.3) -- (36.9,-10.3); 
+\backslash
+fill [black] (36.9,-10.3) -- (37.7,-10.8) -- (37.7,-9.8); 
+\backslash
+draw [black] (54.4,-24.5) -- (36.9,-24.5); 
+\backslash
+fill [black] (36.9,-24.5) -- (37.7,-25) -- (37.7,-24); 
+\backslash
+draw [black] (54.4,-39.2) -- (43.4,-39.2); 
+\backslash
+fill [black] (43.4,-39.2) -- (44.2,-39.7) -- (44.2,-38.7); 
+\backslash
+draw [black] (57.4,-36.2) -- (57.4,-27.5); 
+\backslash
+fill [black] (57.4,-27.5) -- (56.9,-28.3) -- (57.9,-28.3); 
+\backslash
+draw [black] (39.19,-36.46) -- (35.11,-27.24); 
+\backslash
+fill [black] (35.11,-27.24) -- (34.98,-28.18) -- (35.89,-27.77); 
+\backslash
+draw [black] (57.4,-21.5) -- (57.4,-13.3); 
+\backslash
+fill [black] (57.4,-13.3) -- (56.9,-14.1) -- (57.9,-14.1); 
+\backslash
+end{tikzpicture} 
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Representação de uma cidade dada no problema
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/kastor/teste.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Teste
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
