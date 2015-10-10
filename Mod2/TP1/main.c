@@ -2,7 +2,7 @@
 
 #include "lista.h"
 #include "fila.h"
-//
+
 // void dijkstra(lista* verts, int origem, int numQuarts){
 // 	int i = 0;
 // 	short int* camMin = (short int*)calloc(numQuarts, sizeof(short int));
