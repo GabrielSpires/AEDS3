@@ -10,6 +10,7 @@ void troca(TipoChave *a, TipoChave *b){
 void refazBaixoCima(TipoChave *a, int k){
 	// se pai for menor que filho, troca
 	while(k > 1 && a[k/2] < a[k]){
+		printf("%c\n", a[k]);
 		troca(&a[k], &a[k/2]);
 		// vai pro pai e repete o processo
 		k = k/2;
@@ -17,7 +18,7 @@ void refazBaixoCima(TipoChave *a, int k){
 }
 
 void refazCimaBaixo(TipoChave *a, int k, int dir){
-	int j = 0;
+	int j;
 	while(2*k <= dir){
 		j = 2*k;
 		// encontra o maior filho
@@ -33,7 +34,7 @@ void refazCimaBaixo(TipoChave *a, int k, int dir){
 }
 
 void constroiHeap(TipoChave *a, int n){
-	int esq = 0;
+	int esq;
 
 	esq = (n/2) + 1;
 	while(esq > 1){
@@ -46,11 +47,11 @@ void heapsort(TipoChave *a, int n){
 	int esq, dir;
 
 	constroiHeap(a, n);
-	esq = 0;
-	dir = n-1;
+	esq = 1;
+	dir = n;
 	// ordena o vetor
-	while(dir > 0){
-		troca(&a[0], &a[dir]);
+	while(dir > 1){
+		troca(&a[1], &a[dir]);
 		dir--;
 		refazCimaBaixo(a, esq, dir);
 	}

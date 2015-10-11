@@ -81,16 +81,36 @@ int main(){
 	// Fila minhaFila;
 	// criaFila(&minhaFila);
 	// enfileirar(10, &minhaFila);
+	// enfileirar(50, &minhaFila);
+	// enfileirar(30, &minhaFila);
+	// enfileirar(25, &minhaFila);
 	// imprimeFila(&minhaFila);
 	// desenfileirar(&minhaFila);
 	// imprimeFila(&minhaFila);
 	// liberaFila(&minhaFila);
 
-	char teste[7] = "7654321";
+	// int teste[7] = {1, 3, 5, 2, 6, 8, 4};
+	char teste[] = "_ordenas";
+	int tamCoisa = strlen(teste)-1;
+	for(i=0; i<=tamCoisa; i++) printf("%c ", teste[i]);
+	printf("\n");
 
-	printf("%s\n", teste);
-	heapsort(&teste[0], 7);
-	printf("%s\n", teste);
+	// heapsort(&teste[0], tamCoisa);
+
+	for(i=0; i<=tamCoisa; i++) printf("%c ", teste[i]);
+	printf("\n");
+
+	refazBaixoCima(&teste[0], tamCoisa);
+
+	for(i=0; i<=tamCoisa; i++) printf("%c ", teste[i]);
+	printf("\n");
+
+	teste[1] = 'a';
+
+	refazCimaBaixo(&teste[0], 1, tamCoisa);
+
+	for(i=0; i<=tamCoisa; i++) printf("%c ", teste[i]);
+	printf("\n");
 
 	return 0;
 }
