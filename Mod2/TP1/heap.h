@@ -1,15 +1,29 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "lista.h"
+#include "fila.h"
 
-typedef char TipoChave;
+typedef struct{
+	int quarteirao;
+	double probFogo;
+}itemHeap;
 
-void troca(TipoChave*, TipoChave*);
+typedef struct{
+	itemHeap *vetor;
+	int sizeHeap;
+}Heap;
 
-void refazBaixoCima(TipoChave*, int);
+typedef itemHeap TipoItem;
+typedef double TipoChave;
 
-void refazCimaBaixo(TipoChave*, int, int);
+Heap vetorQ;
 
-void constroiHeap(TipoChave*, int);
+void troca(TipoItem*, TipoItem*);
 
-void heapsort(TipoChave*, int);
+void refazBaixoCima(Heap*, int*);
+
+void refazCimaBaixo(Heap*, int*);
+
+void retiraHeap(Heap*, int*);
+
+void insereHeap(Heap*, double, int, int*);
+
+void constroiHeap(Heap *a, int tamMax);

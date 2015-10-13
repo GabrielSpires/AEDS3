@@ -20,31 +20,28 @@ typedef struct{
 
 typedef Node* iterador;
 
-int cmp(const void* a, const void* b);
-int cmpInt(const void* a, const void* b);
-
 void criaLista(lista* s);
 
 int listaVazia(lista* s);
 
-int tamanho(lista* s);
+int tamanhoLista(lista* s);
 
-iterador inicio(lista* s);
+iterador inicioLista(lista* s);
 
-iterador final(lista* s);
+iterador finalLista(lista* s);
 
-iterador next(iterador x);
+iterador nextLista(iterador x);
 
-iterador prev(iterador x);
+iterador prevLista(iterador x);
 
-Chave key(iterador x);
+Chave keyLista(iterador x);
 
-iterador procura(Chave k, lista* s);
+iterador procuraLista(Chave k, lista* s);
 
-void inserir(Chave k, ChaveProb prob, lista* s);
+void inserirLista(Chave k, ChaveProb prob, lista* s);
 
-void apaga(Chave k, lista* s);
+void apagaNode(Chave k, lista* s);
 
-void limpar(lista* s);
+void limparLista(lista* s);
 
 void liberaLista(lista* s);

@@ -1,13 +1,5 @@
 #include "lista.h"
 
-int cmp(const void* a, const void* b){
-  return *(char*)a - *(char*)b;
-}
-
-int cmpInt(const void* a, const void* b){
-  return *(int*)a - *(int*)b;
-}
-
 void criaLista(lista* s){
   s->tamanho = 0;
   s->final = malloc(sizeof(Node));
@@ -19,52 +11,52 @@ int listaVazia(lista* s){
   return s->tamanho == 0;
 }
 
-int tamanho(lista* s){
+int tamanhoLista(lista* s){
   return s->tamanho;
 }
 
-iterador inicio(lista* s){
+iterador inicioLista(lista* s){
   return s->final->next;
 }
 
-iterador final(lista* s){
+iterador finalLista(lista* s){
   return s->final;
 }
 
-iterador next(iterador x){
+iterador nextLista(iterador x){
   return x->next;
 }
 
-iterador prev(iterador x){
+iterador prevLista(iterador x){
   return x->prev;
 }
 
-Chave key(iterador x){
+Chave keyLista(iterador x){
   return x->key;
 }
 
-iterador procura(Chave k, lista* s){
+iterador procuraLista(Chave k, lista* s){
   iterador i;
-  for (i = inicio(s); i != final(s); i = next(i)){
-    if (key(i) == k){
+  for (i = inicioLista(s); i != finalLista(s); i = nextLista(i)){
+    if (keyLista(i) == k){
       return i;
-    } else if (key(i) > k){
-      return final(s);
+    } else if (keyLista(i) > k){
+      return finalLista(s);
     }
   }
-  return final(s);
+  return finalLista(s);
 }
 
-void inserir(Chave k, ChaveProb prob, lista* s){
-  Node* x = inicio(s);
-  while (x != final(s) && x->probFogo < prob){
-    x = next(x);
+void inserirLista(Chave k, ChaveProb prob, lista* s){
+  Node* x = inicioLista(s);
+  while (x != finalLista(s) && x->probFogo < prob){
+    x = nextLista(x);
   }
-  if (x == final(s) || key(x) != k){
+  if (x == finalLista(s) || keyLista(x) != k){
     Node* node = malloc(sizeof(Node));
     node->key = k;
     node->probFogo = prob;
-    node->prev = prev(x);
+    node->prev = prevLista(x);
     node->next = x;
     x->prev->next = node;
     x->prev = node;
@@ -72,9 +64,9 @@ void inserir(Chave k, ChaveProb prob, lista* s){
   }
 }
 
-void apaga(Chave k, lista* s){
-  Node* x = procura(k, s);
-  if (x != final(s)){
+void apagaNode(Chave k, lista* s){
+  Node* x = procuraLista(k, s);
+  if (x != finalLista(s)){
     x->prev->next = x->next;
     x->next->prev = x->prev;
     free(x);
@@ -82,13 +74,13 @@ void apaga(Chave k, lista* s){
   }
 }
 
-void limpar(lista* s){
+void limparLista(lista* s){
   while (!listaVazia(s)){
-    apaga(key(inicio(s)), s);
+    apagaNode(keyLista(inicioLista(s)), s);
   }
 }
 
 void liberaLista(lista* s){
-  limpar(s);
+  limparLista(s);
   free(s->final);
 }

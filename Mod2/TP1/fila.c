@@ -19,13 +19,18 @@ TipoFila frenteFila(Fila* q){
   return q->end->next->key;
 }
 
+int distPai(Fila* q){
+  return q->end->next->distBomb;
+}
+
 TipoFila fundoFila(Fila* q){
   return q->end->prev->key;
 }
 
-void enfileirar(TipoFila k, Fila* q){
+void enfileirar(TipoFila k, Fila* q, int distBomb){
   // Cria um novo nó e define o valor dos seus campos.
   NodeFila* node = malloc(sizeof(NodeFila));
+  node->distBomb = distBomb+1;
   node->key = k;
   node->prev = q->end->prev;
   node->next = q->end;
@@ -43,22 +48,22 @@ void desenfileirar(Fila* q){
   q->size--;
 }
 
-void copy(Fila* p, Fila* q){
-  // Apaga todos os elementos na fila corrente.
-  while (!filaVazia(p)){
-    desenfileirar(p);
-  }
-  // Insere os elementos de q em p.
-  NodeFila* i = NULL;
-  for (i = q->end->next; i != q->end; i = i->next){
-    enfileirar(i->key, p);
-  }
-}
+// void copy(Fila* p, Fila* q){
+//   // Apaga todos os elementos na fila corrente.
+//   while (!filaVazia(p)){
+//     desenfileirar(p);
+//   }
+//   // Insere os elementos de q em p.
+//   NodeFila* i = NULL;
+//   for (i = q->end->next; i != q->end; i = i->next){
+//     enfileirar(i->key, p, i->distBomb);
+//   }
+// }
 
 void imprimeFila(Fila* q){
   NodeFila* i = NULL;
   for (i = q->end->next; i != q->end; i = i->next){
-    printf("%d\n", i->key);
+    printf("%d %d\n", i->key, i->distBomb);
   }
 }
 
