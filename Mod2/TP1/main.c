@@ -2,11 +2,11 @@
 #define INF 1.0/0.0
 
 void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos){
-	int i = 0;
-	Heap meuHeap;
-	iterador getNodo;
+	int i = 0; //Variavel de controle
+	Heap meuHeap; //Heap usado para saber a menor probabilidade de incendio a ser usada no algoritmo
+	iterador getNodo; //Iterador do tipo Nodo usado pra percorrer a lista
 	short int* caminho = (short int*)calloc(numQuarts, sizeof(short int));
-	int *posHeap = (int*)calloc(numQuarts, sizeof(int));
+	int *posHeap = (int*)calloc(numQuarts, sizeof(int)); //Vetor de posiçao que guarda onde no heap esta um vertice
 	int* distancias = (int*)calloc(numQuarts, sizeof(int)); //Vetor que guarda a distancia do ponto de saida ate cada quarteirao
 	double *probs = (double*)malloc(numQuarts * sizeof(double));
 	
@@ -21,15 +21,27 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos){
 	insereHeap(&meuHeap, 0, origem, posHeap);
 
 	for (i = origem, getNodo = inicioLista(&verts[i]); getNodo != finalLista(&verts[i]); getNodo = nextLista(getNodo)){	
+		double novaProb = (1-getNodo->probFogo)*(1-probs[i]);
 		if(vertsValidos[getNodo->key] == 1 && posHeap[getNodo->key] == -1){
-			insereHeap(&meuHeap, (1-getNodo->probFogo)*(1-probs[i]), getNodo->key, posHeap);
-			probs[getNodo->key] = (1-getNodo->probFogo)*(1-probs[i]);
+			insereHeap(&meuHeap, novaProb, getNodo->key, posHeap);
+			probs[getNodo->key] = novaProb;
+		}
+		else{
+			if(meuHeap[getNodo->key] < novaProb){
+				meuHeap[getNodo->key] = novaProb;
+				probs[getNodo->key] = novaProb;
+			}
 		}
 	}
 
 	for(i=0; i<numQuarts-1; i++){
 		/* código */
 	}
+
+	free(posHeap);
+	free(probs);
+	free(distancias);
+	free(caminho);
 }
 
 void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
@@ -52,11 +64,9 @@ void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
 		desenfileirar(&f);
 		i = frenteFila(&f);
 	}
+	//Desaloca a fila
+	liberaFila(&f);
 }
-
-// double calcProbIncendio(){
-
-// }
 
 int main(){
 	int i = 0, j = 0;
@@ -77,20 +87,27 @@ int main(){
 
 	scanf("%d", &n);
 	while(n--){
+		//Entrada das variaveis
 		scanf("%d %d %d %d %d %d", &q, &r, &s, &c, &k, &d);
+		//Alocaçao dos vetores referentes a 'q' e 'd'
 		bomb = (int*)calloc(d, sizeof(int));
 		verts = (lista*)malloc(q * sizeof(lista));
+
+		//Aloca um vetor para guardar os vertices que podem ser visitados
 		vertsValidos = (int*)calloc(q, sizeof(int));
-		for(i=0; i<q; i++) criaLista(&verts[i]);//Alocaçao dos vetores referentes a 'q' e 'd'
+
+		//Cria a lista de adjacencia
+		for(i=0; i<q; i++) criaLista(&verts[i]);
 
 		while(r--){
-			scanf("%d %d %lf", &x, &y, &probFogo);
-			inserirLista(y, probFogo, &verts[x]);
-			inserirLista(x, probFogo, &verts[y]);
+			scanf("%d %d %lf", &x, &y, &probFogo); //Recebe a entrada (aresta com probabilidade)
+			inserirLista(y, probFogo, &verts[x]); //Insere a aresta na lista de adjacencia
+			inserirLista(x, probFogo, &verts[y]); //Insere a aresta de volta (grafo nao direcionado)
 		}
 		for(y=0; y<d; y++){
-			scanf("%d", &bomb[y]);
+			scanf("%d", &bomb[y]); //Recebe o numero dos vertices que tem bombeiro
 		}
+
 		iterador getNodo;
 		for(i=0; i<q; i++){
 			printf("%d: ", i);
@@ -109,18 +126,18 @@ int main(){
 		}
 		printf("\n");//Printa os bombs
 
-		//Elimina os quarteiroes que nao podem ser visitados
-		for(i=0; i<d; i++){
-			eliminaQuarts(verts, k, bomb[i], vertsValidos);
-		}
+		//Elimina os quarteiroes que nao podem ser visitados (busca em largura)
+		//A busca eh feita a partir de cada vertice com corpo de bombeiros
+		for(i=0; i<d; i++) eliminaQuarts(verts, k, bomb[i], vertsValidos);
+
 		for(j=0; j<q; j++){
 			printf("%d ", vertsValidos[j]);
-		}printf("\n");
-		
+		}printf("\n"); //printa os vertices que podem ser alcançados
 
+		//Desalocaçao de memoria		
 		for(i=0; i<q; i++) liberaLista(&verts[i]);
 		free(verts);
-		free(bomb);//Libera as listas
+		free(bomb);
 		free(vertsValidos);
 	}
 

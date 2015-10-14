@@ -26,4 +26,4 @@ void retiraHeap(Heap*, int*);
 
 void insereHeap(Heap*, double, int, int*);
 
-void constroiHeap(Heap *a, int tamMax);
+void constroiHeap(Heap *, int);
