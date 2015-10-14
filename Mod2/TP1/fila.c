@@ -30,7 +30,7 @@ TipoFila fundoFila(Fila* q){
 void enfileirar(TipoFila k, Fila* q, int distBomb){
   // Cria um novo nó e define o valor dos seus campos.
   NodeFila* node = malloc(sizeof(NodeFila));
-  node->distBomb = distBomb+1;
+  node->distBomb = distBomb;
   node->key = k;
   node->prev = q->end->prev;
   node->next = q->end;

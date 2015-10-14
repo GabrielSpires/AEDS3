@@ -55,27 +55,25 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 }
 
 void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
-	iterador getNodo;
-	Fila f;
-	criaFila(&f);
-	int i = bomb;
-	vertsValidos[bomb] = 1;
-	enfileirar(bomb, &f, -1);
+	iterador getNodo; //Variavel do tipo iterador(Nodo) usada para percorrer a lista
+	Fila f; //Fila usada na busca em largura
+	criaFila(&f); //Cria a fila vazia
+	int i = bomb; //A variavel i recebe o numero do vertice que tem corpo de bombeiros
+	vertsValidos[bomb] = 1; //Seta o vertice inicial como valido
+	enfileirar(bomb, &f, 0); //Enfileira o vertice inicial com distancia zero
 
-	while(!filaVazia(&f)){
-		if(distPai(&f) < k){
-			for (getNodo = inicioLista(&verts[i]); getNodo != finalLista(&verts[i]); getNodo = nextLista(getNodo)){
-				// if(vertsValidos[getNodo->key] != 1){
-				enfileirar(getNodo->key, &f, distPai(&f));
-				vertsValidos[getNodo->key] = 1;
-				// }
+	while(!filaVazia(&f)){ //Faz a busca enquanto a fila aind conter vertices
+		if(distPai(&f) < k){ //So faz a busca nos vertices que estao dentro da distancia limite
+			for(getNodo = inicioLista(&verts[i]); getNodo != finalLista(&verts[i]); getNodo = nextLista(getNodo)){
+				enfileirar(getNodo->key, &f, distPai(&f)+1); //Enfileira o vertice incrementando a distancia do pai
+				vertsValidos[getNodo->key] = 1; //Seta o vertice visitado como valido (esta dentro da distancia limite)
 			}
 		}
-		desenfileirar(&f);
-		i = frenteFila(&f);
+		desenfileirar(&f); //Depois de enfileirar todos os vertices adjacentes, o vertice visitado eh removido da fila
+		i = frenteFila(&f); //Seta a variavel i com o numero do vertice que esta na frente da fila (proximo a visitar)
 	}
 	//Desaloca a fila
-	liberaFila(&f);
+	liberaFila(&f); //Desaloca a fila
 }
 
 int main(){
@@ -125,7 +123,7 @@ int main(){
 	  			printf("%d(%.2lf) ", getNodo->key, getNodo->probFogo);
 	  		}
 	  		if(inicioLista(&verts[i]) == finalLista(&verts[i])){
-	  			printf("vazio");
+	  			printf("isolado");
 	  		}
 	  		printf("\n");
 		}//Printa as listas
@@ -144,11 +142,10 @@ int main(){
 			printf("%d ", vertsValidos[j]);
 		}printf("\n"); //printa os vertices que podem ser alcançados
 
+		//Acha o menor caminho possivel atraves dos vertices validos
+		// dijkstra(verts, s, q, vertsValidos, c); //DIJKSTRA
 
-		dijkstra(verts, s, q, vertsValidos, c);
-
-
-		//Desalocaçao de memoria		
+		//Desalocaçao de memoria
 		for(i=0; i<q; i++) liberaLista(&verts[i]);
 		free(verts);
 		free(bomb);
