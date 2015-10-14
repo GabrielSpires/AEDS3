@@ -41,12 +41,14 @@ void refazCimaBaixo(Heap *a, int *posHeap){
 	}
 }
 
-void retiraHeap(Heap *a, int *posHeap){
+int retiraHeap(Heap *a, int *posHeap){
 	//cimaBaixo
+	int raiz = a->vetor[1].quarteirao;
 	a->vetor[1] = a->vetor[a->sizeHeap];
 	a->sizeHeap--;
 	if(a->sizeHeap > 0)
 		refazCimaBaixo(a, posHeap);
+	return raiz;
 }
 
 void insereHeap(Heap *a, double probF, int quart, int *posHeap){

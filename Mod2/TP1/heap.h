@@ -22,7 +22,7 @@ void refazBaixoCima(Heap*, int*);
 
 void refazCimaBaixo(Heap*, int*);
 
-void retiraHeap(Heap*, int*);
+int retiraHeap(Heap*, int*);
 
 void insereHeap(Heap*, double, int, int*);
 
