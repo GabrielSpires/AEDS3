@@ -4,46 +4,44 @@
 void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c){
 	int i = 0; //Variavel de controle
 	Heap meuHeap; //Heap usado para saber a menor probabilidade de incendio a ser usada no algoritmo
-	iterador getNodo; //Iterador do tipo Nodo usado pra percorrer a lista
+	iterador nodoAtual; //Iterador do tipo Nodo usado pra percorrer a lista
 	short int* caminho = (short int*)calloc(numQuarts, sizeof(short int));
-	int *posHeap = (int*)calloc(numQuarts, sizeof(int)); //Vetor de posiçao que guarda onde no heap esta um vertice
+	int *posHeap = (int*)calloc(numQuarts, sizeof(int)); //Vetor de posiçao que guarda onde no vetor do heap esta um vertice
 	int *distancias = (int*)calloc(numQuarts, sizeof(int)); //Vetor que guarda a distancia do ponto de saida ate cada quarteirao
 	int *visitados = (int*)calloc(numQuarts, sizeof(int)); //Vetor usado pra verificar quais os vertices sairam do heap (ja foram visitados)
-	double *probs = (double*)malloc(numQuarts * sizeof(double));
+	double *probs = (double*)malloc(numQuarts * sizeof(double)); //
 	
 	constroiHeap(&meuHeap, numQuarts);
 
-	for(i=0; i<numQuarts; i++){ //Seta todas as distancias como infinito
-		distancias[i] = INF;
+	for(i=0; i<numQuarts; i++){
+		distancias[i] = INF; //Seta todas as distancias como infinito
 		caminho[i] = -1;
 		posHeap[i] = -1;
 		probs[i] = 0;
 	}
-	distancias[origem] = 0;
+	distancias[origem] = 0; //Seta a distancia para o vertice de origem como zero
 	
 	// insereHeap(&meuHeap, INF, origem, posHeap);
-
+	i = origem;
 	while(meuHeap.sizeHeap >= 0){
-		for (i = origem, getNodo = inicioLista(&verts[i]); getNodo != finalLista(&verts[i]); getNodo = nextLista(getNodo)){	
-			double novaProb = (1-getNodo->probFogo)*(1-probs[i]);
-			if(vertsValidos[getNodo->key] == 1 && posHeap[getNodo->key] == -1){
-				insereHeap(&meuHeap, novaProb, getNodo->key, posHeap);
-				probs[getNodo->key] = novaProb;
+		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){	
+			double probN = (1-probs[i])*(1-nodoAtual->probFogo);
+			if(vertsValidos[nodoAtual->key] == 1 && posHeap[nodoAtual->key] == -1){
+				insereHeap(&meuHeap, probN, nodoAtual->key, posHeap);
+				probs[nodoAtual->key] = probN;
 			}
 			else{
-				if(vertsValidos[getNodo->key] == 1 && meuHeap.vetor[getNodo->key].probFogo < novaProb){ //Atualiza a probabilidade do caminho
-					meuHeap.vetor[getNodo->key].probFogo = novaProb; //O valor da probabilidade do vertice atual eh atualizado
-					probs[getNodo->key] = novaProb; 
+				if(vertsValidos[nodoAtual->key] == 1 && meuHeap.vetor[nodoAtual->key].probFogo < probN){ //Atualiza a probabilidade do caminho
+					meuHeap.vetor[nodoAtual->key].probFogo = probN; //O valor da probabilidade do vertice atual eh atualizado
+					probs[nodoAtual->key] = probN; 
 					refazBaixoCima(&meuHeap, posHeap); //Reorganiza o Heap de baixo pra cima (MaxHeap)
 				}
 			}
-			int j;
-			for(j=0; j <= meuHeap.sizeHeap; j++){
-				printf("%.1lf ", meuHeap.vetor[j].probFogo);
-			}
+			// int j;
+			// for(j=0; j <= meuHeap.sizeHeap; j++) printf("%.1lf ", meuHeap.vetor[j].probFogo);
 		}
 		i = retiraHeap(&meuHeap, posHeap);
-		printf("RET: %d\n", i);
+		// printf("RET: %d\n", i);
 		visitados[i] = 1;
 	}
 	printf("\nProb: %lf\n", 1.0-probs[c]);
@@ -55,7 +53,7 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 }
 
 void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
-	iterador getNodo; //Variavel do tipo iterador(Nodo) usada para percorrer a lista
+	iterador nodoAtual; //Variavel do tipo iterador(Nodo) usada para percorrer a lista
 	Fila f; //Fila usada na busca em largura
 	criaFila(&f); //Cria a fila vazia
 	int i = bomb; //A variavel i recebe o numero do vertice que tem corpo de bombeiros
@@ -64,9 +62,9 @@ void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
 
 	while(!filaVazia(&f)){ //Faz a busca enquanto a fila aind conter vertices
 		if(distPai(&f) < k){ //So faz a busca nos vertices que estao dentro da distancia limite
-			for(getNodo = inicioLista(&verts[i]); getNodo != finalLista(&verts[i]); getNodo = nextLista(getNodo)){
-				enfileirar(getNodo->key, &f, distPai(&f)+1); //Enfileira o vertice incrementando a distancia do pai
-				vertsValidos[getNodo->key] = 1; //Seta o vertice visitado como valido (esta dentro da distancia limite)
+			for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
+				enfileirar(nodoAtual->key, &f, distPai(&f)+1); //Enfileira o vertice incrementando a distancia do pai
+				vertsValidos[nodoAtual->key] = 1; //Seta o vertice visitado como valido (esta dentro da distancia limite)
 			}
 		}
 		desenfileirar(&f); //Depois de enfileirar todos os vertices adjacentes, o vertice visitado eh removido da fila
@@ -143,7 +141,7 @@ int main(){
 		}printf("\n"); //printa os vertices que podem ser alcançados
 
 		//Acha o menor caminho possivel atraves dos vertices validos
-		// dijkstra(verts, s, q, vertsValidos, c); //DIJKSTRA
+		dijkstra(verts, s, q, vertsValidos, c); //DIJKSTRA
 
 		//Desalocaçao de memoria
 		for(i=0; i<q; i++) liberaLista(&verts[i]);
