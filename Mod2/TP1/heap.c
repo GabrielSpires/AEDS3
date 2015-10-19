@@ -1,66 +1,70 @@
 #include "heap.h"
 
-void troca(itemHeap *a, itemHeap *b){
+void trocaItemHeap(itemHeap *a, itemHeap *b, int *posHeap){
+	int posTemp = posHeap[b->quarteirao];
+	posHeap[b->quarteirao] = posHeap[a->quarteirao];
+	posHeap[a->quarteirao] = posTemp;
+
 	itemHeap temp;
 	temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-void refazBaixoCima(Heap *a, int *posHeap){
-	int k = a->sizeHeap;
-	// se pai for menor que filho, troca
-	while(k > 1 && a->vetor[k/2].probFogo < a->vetor[k].probFogo){
-		troca(&a->vetor[k], &a->vetor[k/2]);
-		int temp = posHeap[a->vetor[k].quarteirao];
-		posHeap[a->vetor[k].quarteirao] = posHeap[a->vetor[k/2].quarteirao];
-		posHeap[a->vetor[k/2].quarteirao] = temp;
-		// vai pro pai e repete o processo
-		k = k/2;
+void refazBaixoCima(Heap *meuHeap){
+	int k = meuHeap->sizeHeap;
+	//Roda ate o inicio do vetor. Se pai < filho troca //k/2 = pai //k = filho
+	while(k > 1 && meuHeap->vetor[k/2].probFogo < meuHeap->vetor[k].probFogo){
+		trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[k/2], meuHeap->posHeap);
+		k /= 2;
 	}
 }
 
-void refazCimaBaixo(Heap *a, int *posHeap){
-	int j;
-	int dir = a->sizeHeap;
-	int k = 1;
-	while(2*k <= dir){
-		j = 2*k;
-		// encontra o maior filho
-		if(j+1 < dir && a->vetor[j].probFogo < a->vetor[j+1].probFogo)
-			j++;
-		// testa se pai eh maior que filho
-		if(a->vetor[k].probFogo >= a->vetor[j].probFogo)
+void refazCimaBaixo(Heap *meuHeap){
+	int j = 0,
+		k = 1,
+		dir = meuHeap->sizeHeap;
+	while( (k*2) <= dir ){
+		j = k * 2;
+		//Descobre qual dos filhos eh maior
+		if(j+1 < dir && meuHeap->vetor[j].probFogo < meuHeap->vetor[j+1].probFogo){
+		 	j++; //j vira o maior dos filhos
+		}
+		//Se o pai for >= ao maior dos filhos, pare
+		if(meuHeap->vetor[k].probFogo >= meuHeap->vetor[j].probFogo){
 			break;
-		// pai eh menor que filho, troca posiçoes
-		troca(&a->vetor[k], &a->vetor[j]);
-		int temp = posHeap[a->vetor[k].quarteirao];
-		posHeap[a->vetor[k].quarteirao] = posHeap[a->vetor[j].quarteirao];
-		posHeap[a->vetor[j].quarteirao] = temp;
+		}
+		//Se pai for < que maior dos filhos, troca os dois
+		trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[j], meuHeap->posHeap);
 		k = j;
 	}
 }
 
-int retiraHeap(Heap *a, int *posHeap){
-	//cimaBaixo
-	int raiz = a->vetor[1].quarteirao;
-	a->vetor[1] = a->vetor[a->sizeHeap];
-	a->sizeHeap--;
-	if(a->sizeHeap > 0)
-		refazCimaBaixo(a, posHeap);
-	return raiz;
+int retiraHeap(Heap *meuHeap){
+	//Variavel recebe o numero do quarteirao removido
+	int itemRemovido = meuHeap->vetor[1].quarteirao;
+
+	//Joga o ultimo elemento do heap na raiz
+	trocaItemHeap(&meuHeap->vetor[1], &meuHeap->vetor[meuHeap->sizeHeap], meuHeap->posHeap);
+	meuHeap->sizeHeap--;
+	if(meuHeap->sizeHeap > 0){
+		refazCimaBaixo(meuHeap);
+	}
+	return itemRemovido;
 }
 
-void insereHeap(Heap *a, double probF, int quart, int *posHeap){
-	//baixoCima
-	a->sizeHeap++;
-	a->vetor[a->sizeHeap].quarteirao = quart;
-	a->vetor[a->sizeHeap].probFogo = probF;
-	posHeap[quart] = a->sizeHeap;
-	refazBaixoCima(a, posHeap);
+void insereHeap(Heap *meuHeap, double probF, int quart){
+	meuHeap->sizeHeap++;
+	meuHeap->vetor[meuHeap->sizeHeap].quarteirao = quart;
+	meuHeap->vetor[meuHeap->sizeHeap].probFogo = probF;
+	meuHeap->posHeap[quart] = meuHeap->sizeHeap;
+	if(meuHeap->sizeHeap > 1){
+		refazBaixoCima(meuHeap);
+	}
 }
 
-void constroiHeap(Heap *a, int tamMax){
-	a->vetor = (TipoItem*)malloc(1 + (tamMax * sizeof(TipoItem)));
-	a->sizeHeap = 0;
+void constroiHeap(Heap *meuHeap, int tamMax){
+	meuHeap->vetor = (TipoItem*)malloc(1 + (tamMax * sizeof(TipoItem)));
+	meuHeap->posHeap = (int*)malloc(1 + (tamMax * sizeof(int)));
+	meuHeap->sizeHeap = 0;
 }
