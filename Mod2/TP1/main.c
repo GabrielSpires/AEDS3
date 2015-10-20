@@ -27,10 +27,10 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 		visitado[i] = 1;
 		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
 			// printf("prob[i] = %lf\n", prob[i]);
+			/**/printf("NodoAtual: %d\n", nodoAtual->key);
+			pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
+			/**/printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
 			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
-				/**/printf("NodoAtual: %d\n", nodoAtual->key);
-				pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
-				/**/printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
 				
 				insereHeap(&meuHeap, pN, nodoAtual->key);
 				antecessor[nodoAtual->key] = i;
