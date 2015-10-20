@@ -2,49 +2,64 @@
 #define INF 1.0/0.0
 
 void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c){
-	int i = 0; //Variavel de controle
-	Heap meuHeap; //Heap usado para saber a menor probabilidade de incendio a ser usada no algoritmo
-	iterador nodoAtual; //Iterador do tipo Nodo usado pra percorrer a lista
-	short int* caminho = (short int*)calloc(1 + numQuarts, sizeof(short int));
-	int *visitados = (int*)calloc(1 + numQuarts, sizeof(int)); //Vetor usado pra verificar quais os vertices sairam do heap (ja foram visitados)
-	double *probs = (double*)malloc((1 + numQuarts) * sizeof(double)); 
-	double probN;
-
+	Heap meuHeap;
 	constroiHeap(&meuHeap, numQuarts);
 
-	for(i=0; i<=numQuarts; i++){
-		caminho[i] = -1;
+	int *caminho  = (int*)	 malloc(numQuarts * sizeof(int));
+	int *visitado = (int*)	 calloc(numQuarts , sizeof(int));
+	double *prob  = (double*)malloc(numQuarts * sizeof(double));
+
+	double pN;
+	int i;
+
+	for(i=0; i<numQuarts; i++){
+		caminho[i] 		   = -1;
 		meuHeap.posHeap[i] = -1;
-		probs[i] = -INF; //Seta todas as distancias como infinito
+		prob[i] 		   = -INF;
 	}
-	probs[origem] = 0;
-	
-	i = origem; //i recebe o numero do vertice de origem
+	prob[origem] = 0;
+	i = origem;
+	iterador nodoAtual;
+
 	while(meuHeap.sizeHeap >= 0){
-		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){	
-			probN = (1-probs[i]) * (1-nodoAtual->probFogo);
-			if(vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
-				insereHeap(&meuHeap, probN, nodoAtual->key);
-				probs[nodoAtual->key] = probN;
+		visitado[i] = 1;
+		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
+			// printf("prob[i] = %lf\n", prob[i]);
+			printf("NodoAtual: %d\n", nodoAtual->key);
+			pN = (1-prob[i])*(1-nodoAtual->probFogo);
+			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] && meuHeap.posHeap[nodoAtual->key] == -1){
+				insereHeap(&meuHeap, pN, nodoAtual->key);
+				printf("Inseriu: %d\n", nodoAtual->key);
+				prob[nodoAtual->key] = pN;
 			}
 			else{
-				if(vertsValidos[nodoAtual->key] == 1 && meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo < probN){ //Atualiza a probabilidade do caminho
-					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = probN; //O valor da probabilidade do vertice atual eh atualizado
-					probs[nodoAtual->key] = probN; 
-					refazBaixoCima(&meuHeap); //Reorganiza o Heap de baixo pra cima (MaxHeap)
+				if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] && meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo > pN){
+					printf("PENES\n");
+					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = pN;
+					refazBaixoCima(&meuHeap);
 				}
 			}
-			//int j;
-			//for(j=0; j <= meuHeap.sizeHeap; j++) printf("%.1lf ", meuHeap.vetor[j].probFogo);
 		}
-		i = retiraHeap(&meuHeap);
-		printf("RET: %d\n", i);
-		visitados[i] = 1;
-	}
-	printf("\nProb: %lf\n", 1.0-probs[0]);
+		// 
+		int j;
+		printf("Heap -> [");
+		for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d ", meuHeap.vetor[j].quarteirao);
+		printf("\b]\n");
+		// 
 
-	free(probs);
+		i = retiraHeap(&meuHeap);
+
+		// 
+		printf("Retirou: %d\n", i);
+		// 
+
+		visitado[i] = 1;
+	}
+	printf("\nProb: %lf\n", 1.0-prob[c]);
+
+	free(prob);
 	free(caminho);
+	free(visitado);
 }
 
 void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
