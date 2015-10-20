@@ -5,19 +5,21 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	Heap meuHeap;
 	constroiHeap(&meuHeap, numQuarts);
 
-	int *caminho  = (int*)	 malloc(numQuarts * sizeof(int));
-	int *visitado = (int*)	 calloc(numQuarts , sizeof(int));
-	double *prob  = (double*)malloc(numQuarts * sizeof(double));
+	int *antecessor  = (int*)	 malloc(numQuarts * sizeof(int));
+	int *caminho	 = (int*)	 malloc(numQuarts * sizeof(int));
+	int *visitado	 = (int*)	 calloc(numQuarts , sizeof(int));
+	double *prob	 = (double*) malloc(numQuarts * sizeof(double));
 
 	double pN;
-	int i;
+	int i, j = 1;
 
 	for(i=0; i<numQuarts; i++){
-		caminho[i] 		   = -1;
+		antecessor[i]	   = -1;
+		caminho[i]		   = -1;
 		meuHeap.posHeap[i] = -1;
 		prob[i] 		   = -INF;
 	}
-	prob[origem] = 0;
+	prob[origem] = 1;
 	i = origem;
 	iterador nodoAtual;
 
@@ -25,40 +27,53 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 		visitado[i] = 1;
 		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
 			// printf("prob[i] = %lf\n", prob[i]);
-			printf("NodoAtual: %d\n", nodoAtual->key);
-			pN = (1-prob[i])*(1-nodoAtual->probFogo);
-			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] && meuHeap.posHeap[nodoAtual->key] == -1){
+			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
+				/**/printf("NodoAtual: %d\n", nodoAtual->key);
+				pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
+				/**/printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
+				
 				insereHeap(&meuHeap, pN, nodoAtual->key);
-				printf("Inseriu: %d\n", nodoAtual->key);
+				antecessor[nodoAtual->key] = i;
+				/**/printf("Inseriu: %d\n", nodoAtual->key);
 				prob[nodoAtual->key] = pN;
 			}
 			else{
-				if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] && meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo > pN){
-					printf("PENES\n");
+				if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 
+				&&	meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo > prob[nodoAtual->key]){
+					/**/printf("PENES\n");
 					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = pN;
 					refazBaixoCima(&meuHeap);
+					antecessor[nodoAtual->key] = i;
 				}
 			}
 		}
-		// 
-		int j;
-		printf("Heap -> [");
-		for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d ", meuHeap.vetor[j].quarteirao);
-		printf("\b]\n");
-		// 
+		
+		/**/printf("Heap -> [");
+		/**/for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d(%.2lf) ", meuHeap.vetor[j].quarteirao, meuHeap.vetor[j].probFogo);
+		/**/printf("\b]\n");
 
 		i = retiraHeap(&meuHeap);
 
-		// 
-		printf("Retirou: %d\n", i);
-		// 
+		/**/printf("Retirou: %d\n", i);
 
-		visitado[i] = 1;
+		//visitado[i] = 1;
 	}
-	printf("\nProb: %lf\n", 1.0-prob[c]);
+
+	j=1;
+	printf("\n%.2lf ", 1.0-prob[c]);
+	caminho[0] = c;
+
+	for(i = c; i != origem;){
+		caminho[j++] = antecessor[i];
+		i = antecessor[i];
+	}caminho[j] = origem;
+
+	for(i=j-1; i>=0; i--){
+		printf("%d ", caminho[i]);
+	}printf("\n");
 
 	free(prob);
-	free(caminho);
+	free(antecessor);
 	free(visitado);
 }
 
@@ -130,7 +145,7 @@ int main(){
 		bomb = (int*)calloc(d, sizeof(int));
 		verts = (lista*)malloc(q * sizeof(lista));
 
-		//Aloca um vetor para guardar os vertices que podem ser visitados
+		//Aloca um vetor para guardar os vertices que podem ser percorridos
 		vertsValidos = (int*)calloc(q, sizeof(int));
 
 		//Cria a lista de adjacencia
