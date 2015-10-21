@@ -19,22 +19,22 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 		meuHeap.posHeap[i] = -1;
 		prob[i] 		   = -INF;
 	}
-	prob[origem] = 1;
+	prob[origem] = 1; //A chance de nao pegar fogo no vertice de saida eh de 100%
 	i = origem;
 	iterador nodoAtual;
 
 	while(meuHeap.sizeHeap >= 0){
 		visitado[i] = 1;
 		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
-			// printf("prob[i] = %lf\n", prob[i]);
+			 printf("prob[i] = %lf\n", prob[i]);
 			/**/printf("NodoAtual: %d\n", nodoAtual->key);
 			pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
 			/**/printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
 			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
 				
 				insereHeap(&meuHeap, pN, nodoAtual->key);
-				antecessor[nodoAtual->key] = i;
 				/**/printf("Inseriu: %d\n", nodoAtual->key);
+				antecessor[nodoAtual->key] = i;
 				prob[nodoAtual->key] = pN;
 			}
 			else{
@@ -51,27 +51,34 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 		/**/printf("Heap -> [");
 		/**/for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d(%.2lf) ", meuHeap.vetor[j].quarteirao, meuHeap.vetor[j].probFogo);
 		/**/printf("\b]\n");
-
 		i = retiraHeap(&meuHeap);
 
-		/**/printf("Retirou: %d\n", i);
+		 /**/printf("Retirou: %d\n\n", i);
 
 		//visitado[i] = 1;
 	}
-
 	j=1;
-	printf("\n%.2lf ", 1.0-prob[c]);
-	caminho[0] = c;
+	if(1.0-prob[c] == INF) printf("-1\n");
+	else{
+		printf(">> ");
+		for(i=0; i<numQuarts; i++){
+			printf("%d ", antecessor[i]);
+		}printf("\n");
+		printf("%.2lf ", 1.0-prob[c]);
 
-	for(i = c; i != origem;){
-		caminho[j++] = antecessor[i];
-		i = antecessor[i];
-	}caminho[j] = origem;
+		caminho[0] = c;
 
-	for(i=j-1; i>=0; i--){
-		printf("%d ", caminho[i]);
-	}printf("\n");
+		for(i = c; i != origem;){
+			caminho[j++] = antecessor[i];
+			i = antecessor[i];
+		}caminho[j] = origem;
 
+		for(i=j-1; i>=0; i--){
+			printf("%d ", caminho[i]);
+		}printf("\n");
+	}
+
+	free(caminho);
 	free(prob);
 	free(antecessor);
 	free(visitado);
@@ -148,7 +155,7 @@ int main(){
 		//Aloca um vetor para guardar os vertices que podem ser percorridos
 		vertsValidos = (int*)calloc(q, sizeof(int));
 
-		//Cria a lista de adjacencia
+		//Cria a lista de adjacencias
 		for(i=0; i<q; i++) criaLista(&verts[i]);
 
 		while(r--){
@@ -159,32 +166,31 @@ int main(){
 		for(y=0; y<d; y++){
 			scanf("%d", &bomb[y]); //Recebe o numero dos vertices que tem bombeiro
 		}
-
+		/*
 		iterador getNodo;
 		for(i=0; i<q; i++){
 			printf("%d: ", i);
 			for (getNodo = inicioLista(&verts[i]); getNodo != finalLista(&verts[i]); getNodo = nextLista(getNodo)){
-	  			printf("%d(%.2lf) ", getNodo->key, getNodo->probFogo);
-	  		}
-	  		if(inicioLista(&verts[i]) == finalLista(&verts[i])){
-	  			printf("isolado");
-	  		}
-	  		printf("\n");
+				printf("%d(%.2lf) ", getNodo->key, getNodo->probFogo);
+			}
+			if(inicioLista(&verts[i]) == finalLista(&verts[i])){
+				printf("isolado");
+			}
+			printf("\n");
 		}//Printa as listas
-
 		printf("\nBombs: ");
 		for(i=0; i<d; i++){
 			printf("%d ", bomb[i]);
 		}
 		printf("\n");//Printa os bombs
-
+		*/
 		//Elimina os quarteiroes que nao podem ser visitados (busca em largura)
 		//A busca eh feita a partir de cada vertice com corpo de bombeiros
 		for(i=0; i<d; i++) eliminaQuarts(verts, k, bomb[i], vertsValidos);
 
-		for(j=0; j<q; j++){
-			printf("%d ", vertsValidos[j]);
-		}printf("\n"); //printa os vertices que podem ser alcançados
+		// for(j=0; j<q; j++){
+		// 	printf("%d ", vertsValidos[j]);
+		// }printf("\n"); //printa os vertices que podem ser alcançados
 
 		//Acha o menor caminho possivel atraves dos vertices validos
 		dijkstra(verts, s, q, vertsValidos, c); //DIJKSTRA

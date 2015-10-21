@@ -1,6 +1,7 @@
 #include "heap.h"
 
 void trocaItemHeap(itemHeap *a, itemHeap *b, int *posHeap){
+	// printf("QUARTEIRAO %d %d\n", a->quarteirao, b->quarteirao);
 	int posTemp = posHeap[b->quarteirao];
 	posHeap[b->quarteirao] = posHeap[a->quarteirao];
 	posHeap[a->quarteirao] = posTemp;
@@ -15,7 +16,7 @@ void refazBaixoCima(Heap *meuHeap){
 	int k = meuHeap->sizeHeap;
 	//Roda ate o inicio do vetor. Se pai < filho troca //k/2 = pai //k = filho
 	while(k > 1 && meuHeap->vetor[k/2].probFogo < meuHeap->vetor[k].probFogo){
-		trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[k/2], meuHeap->posHeap);
+		if(meuHeap->sizeHeap > 0) trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[k/2], meuHeap->posHeap);
 		k /= 2;
 	}
 }
@@ -35,7 +36,7 @@ void refazCimaBaixo(Heap *meuHeap){
 			break;
 		}
 		//Se pai for < que maior dos filhos, troca os dois
-		trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[j], meuHeap->posHeap);
+		if(meuHeap->sizeHeap > 0) trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[j], meuHeap->posHeap);
 		k = j;
 	}
 }
@@ -45,7 +46,7 @@ int retiraHeap(Heap *meuHeap){
 	int itemRemovido = meuHeap->vetor[1].quarteirao;
 
 	//Joga o ultimo elemento do heap na raiz
-	trocaItemHeap(&meuHeap->vetor[1], &meuHeap->vetor[meuHeap->sizeHeap], meuHeap->posHeap);
+	if(meuHeap->sizeHeap > 0) trocaItemHeap(&meuHeap->vetor[1], &meuHeap->vetor[meuHeap->sizeHeap], meuHeap->posHeap);
 	meuHeap->sizeHeap--;
 	if(meuHeap->sizeHeap > 0){
 		refazCimaBaixo(meuHeap);
@@ -65,6 +66,6 @@ void insereHeap(Heap *meuHeap, double probF, int quart){
 
 void constroiHeap(Heap *meuHeap, int tamMax){
 	meuHeap->vetor = (TipoItem*)malloc(1 + (tamMax * sizeof(TipoItem)));
-	meuHeap->posHeap = (int*)malloc(1 + (tamMax * sizeof(int)));
+	meuHeap->posHeap = (int*)calloc(1 + tamMax , sizeof(int));
 	meuHeap->sizeHeap = 0;
 }

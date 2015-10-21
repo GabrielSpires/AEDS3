@@ -102,7 +102,15 @@ Neste problema são dados um conjunto de vértices que representam os quarteirõ
 \begin_inset Formula $P(u,v)$
 \end_inset
 
- de ter um incêndio é alta, sendo que 
+ de ter um incêndio é alta entre os quarteires 
+\emph on
+u
+\emph default
+ e 
+\emph on
+v
+\emph default
+, sendo que 
 \begin_inset Formula $P(u,v)=P(v,u)$
 \end_inset
 
@@ -129,7 +137,7 @@ k
 \end_layout
 
 \begin_layout Section
-Modelagem do Problema
+Solução do Problema
 \end_layout
 
 \begin_layout Standard
@@ -138,7 +146,26 @@ A probabilidade
 \end_inset
 
  de ter um incêndio em dado trecho pode ser interpretada como o peso das
- arestas
+ arestas entre os vértices do grafo que são os quarteirões da cidade.
+ Desta forma, o caminho mais curto é aquele em que o peso total das arestas
+ é mínimo, ou seja, a probabilidade de incêndio é menor.
+ Para resolver o problema, foi criado uma lista
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Os TADs Lista, Fila e Heap utilizados neste TP foram feitos usando como
+ referência o código desenvolvido pelos professores Thiago Noronha e William
+ Schwartz durante a disciplina de AEDS 2 no semestre passado.
+\end_layout
+
+\end_inset
+
+ de adjacência para representar o grafo (os vértices e as arestas que ligam
+ os vertices adjacentes à eles).
+ A lista de adjacência é basicamente um vetor com uma posição para cada
+ vértice, cada posição do vetor contém uma lista encadeada onde são inseridos
+ os vértices adjacentes ao vértice referente à posição atual do vetor.
 \end_layout
 
 \begin_layout Standard
@@ -149,6 +176,13 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename lista_adjacencia.jpg
+	scale 55
+
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -156,9 +190,7 @@ status open
 
 
 \backslash
-begin{center} 
-\backslash
-begin{tikzpicture}[scale=0.2] 
+begin{tikzpicture}[scale=0.1] 
 \backslash
 tikzstyle{every node}+=[inner sep=0pt] 
 \backslash
@@ -504,9 +536,118 @@ draw [black] (54.8,-12.3) -- (54.8,-22.9);
 \backslash
 fill [black] (54.8,-22.9) -- (55.3,-22.1) -- (54.3,-22.1); 
 \backslash
-end{tikzpicture} 
-\backslash
-end{center}
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align left
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Representação do grafo (direita) em forma de lista de adjacências (esquerda)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Uma vez que os vértices que estão a uma distância 
+\emph on
+k
+\emph default
+ maior que a máxima permitida não podem ser percorridos, o menor caminho
+ nunca passará por eles, então esses vértices devem ser desconsiderados
+ na hora de se procurar a solução no grafo.
+ Isso foi feito com uma 
+\emph on
+busca em largura
+\emph default
+ onde para cada vértice com corpo de bombeiros uma busca é feita e apenas
+ os vértices a uma distância máxima 
+\emph on
+k
+\emph default
+ do vértice de origem são marcados como válidos em um vetor.
+ Dessa forma, ao se rodar o algoritmo que acha o caminho mínimo, os vértices
+ inválidos não são nem testados, o que torna o algoritmo mais rápido e evita
+ que caminhos mínimos que passam por vértices inválidos sejam considerados
+ no final da execução.
+ Como visto no pseudo código abaixo, uma fila é utilizada
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\normalsize},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+while(!filaVazia){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(distPai < k){
+\end_layout
+
+\begin_layout Plain Layout
+
+		for(Percorre a lista(vertice[i]) até o final da lista){
+\end_layout
+
+\begin_layout Plain Layout
+
+			enfileira(nodoAtual, distPai+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+			vertsValidos[nodoAtual] = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	desenfileira(fila);
+\end_layout
+
+\begin_layout Plain Layout
+
+	i = frenteFila(fila);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -518,7 +659,7 @@ end{center}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Representação de uma cidade dada no problema
+Pseudo código do loop principal da busca em largura
 \end_layout
 
 \end_inset
@@ -533,6 +674,18 @@ Representação de uma cidade dada no problema
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Com os vértices válidos marcados no vetor, o grafo foi submetido ao algoritmo
+ de 
+\emph on
+Dijkstra
+\emph default
+ que acha o menor caminho entre dois vértices em um grafo onde as arestas
+ não tem peso negativo e como as arestas no problema em questão não terão
+ valor negativo uma vez que a probabilidade de incêndio varia de 0 a 1,
+ isso não será um problema.
 \end_layout
 
 \begin_layout Section
