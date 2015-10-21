@@ -13,8 +13,8 @@
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
-\language_package default
+\language brazilian
+\language_package none
 \inputencoding auto
 \fontencoding global
 \font_roman times
@@ -86,7 +86,7 @@ Trabalho Prático 1: The city is on fire!
 \end_layout
 
 \begin_layout Author
-Gabriel Henrique Souto Pires {gabrielpires@dcc.ufmg.br}
+Gabriel Henrique Souto Pires {gabrielpires@ufmg.br}
 \end_layout
 
 \begin_layout Section
@@ -102,7 +102,7 @@ Neste problema são dados um conjunto de vértices que representam os quarteirõ
 \begin_inset Formula $P(u,v)$
 \end_inset
 
- de ter um incêndio é alta entre os quarteires 
+ de ter um incêndio é alta entre os quarterões 
 \emph on
 u
 \emph default
@@ -162,7 +162,7 @@ Os TADs Lista, Fila e Heap utilizados neste TP foram feitos usando como
 \end_inset
 
  de adjacência para representar o grafo (os vértices e as arestas que ligam
- os vertices adjacentes à eles).
+ os vértices adjacentes à eles).
  A lista de adjacência é basicamente um vetor com uma posição para cada
  vértice, cada posição do vetor contém uma lista encadeada onde são inseridos
  os vértices adjacentes ao vértice referente à posição atual do vetor.
@@ -596,7 +596,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset listings
-lstparams "language=C,basicstyle={\normalsize},tabsize=4"
+lstparams "language=C,basicstyle={\small},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -686,6 +686,14 @@ Dijkstra
  não tem peso negativo e como as arestas no problema em questão não terão
  valor negativo uma vez que a probabilidade de incêndio varia de 0 a 1,
  isso não será um problema.
+\end_layout
+
+\begin_layout Standard
+O 
+\emph on
+Dijsktra
+\emph default
+ recebe o grafo como parâmetro
 \end_layout
 
 \begin_layout Section
