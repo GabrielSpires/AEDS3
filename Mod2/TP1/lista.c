@@ -49,7 +49,7 @@ iterador procuraLista(Chave k, lista* s){
 
 void inserirLista(Chave k, ChaveProb prob, lista* s){
   Node* x = inicioLista(s);
-  while (x != finalLista(s) && x->probFogo < prob){
+  while (x != finalLista(s) && x->key < k){
     x = nextLista(x);
   }
   if (x == finalLista(s) || keyLista(x) != k){

@@ -1,210 +1,424 @@
 reset
 ./tp1 < inputs/input.txt
-0: 16(0.18) 19(0.61) 7(0.96) 
-1: isolado
-2: 12(0.19) 13(0.75) 
-3: 4(0.39) 13(0.76) 
-4: 3(0.39) 
-5: 18(0.13) 17(0.55) 
-6: isolado
-7: 17(0.54) 15(0.91) 0(0.96) 
-8: 19(0.60) 10(0.72) 
-9: isolado
-10: 8(0.72) 
-11: isolado
-12: 2(0.19) 18(0.61) 
-13: 16(0.32) 2(0.75) 3(0.76) 
-14: 17(0.11) 19(0.77) 
-15: 7(0.91) 
-16: 0(0.18) 13(0.32) 17(0.91) 
-17: 19(0.07) 14(0.11) 7(0.54) 5(0.55) 16(0.91) 
-18: 19(0.10) 5(0.13) 12(0.61) 
-19: 17(0.07) 18(0.10) 8(0.60) 0(0.61) 14(0.77) 
+prob[i] = 1.000000
+NodoAtual: 10
+pN = 1.00*0.88
++Inseriu: 10 -> ProbN = 0.88
+prob[i] = 1.000000
+NodoAtual: 12
+pN = 1.00*0.74
++Inseriu: 12 -> ProbN = 0.74
+prob[i] = 1.000000
+NodoAtual: 11
+pN = 1.00*0.49
++Inseriu: 11 -> ProbN = 0.49
+prob[i] = 1.000000
+NodoAtual: 1
+pN = 1.00*0.37
++Inseriu: 1 -> ProbN = 0.37
+prob[i] = 1.000000
+NodoAtual: 6
+pN = 1.00*0.31
++Inseriu: 6 -> ProbN = 0.31
+prob[i] = 1.000000
+NodoAtual: 8
+pN = 1.00*0.21
++Inseriu: 8 -> ProbN = 0.21
+Heap -> [10(0.88) 12(0.74) 11(0.49) 1(0.37) 6(0.31) 8(0.21) ]
+-Retirou: 10 pN = 0.88
 
-Bombs: 19 18 14 5 1 9 3 4 
-1 1 1 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 1 1 
-+Inseriu: 19 -> ProbN = 0.40
-+Inseriu: 10 -> ProbN = 0.28
--Retirou: 19 pN = 0.40
+prob[i] = 0.880000
+NodoAtual: 18
+pN = 0.88*0.88
++Inseriu: 18 -> ProbN = 0.77
+prob[i] = 0.880000
+NodoAtual: 16
+pN = 0.88*0.88
+prob[i] = 0.880000
+NodoAtual: 2
+pN = 0.88*0.37
++Inseriu: 2 -> ProbN = 0.33
+Heap -> [18(0.77) 1(0.37) 12(0.74) 8(0.21) 6(0.31) 11(0.49) 2(0.33) ]
+-Retirou: 18 pN = 0.77
 
-+Inseriu: 17 -> ProbN = 0.37
-+Inseriu: 18 -> ProbN = 0.36
+prob[i] = 0.774400
+NodoAtual: 10
+pN = 0.77*0.88
+prob[i] = 0.774400
+NodoAtual: 8
+pN = 0.77*0.31
 ELSE 8
-ELSE posHeap: -1
-ELSE visitado: 1
+ELSE posHeap: 4
+ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.00 > 0.40 ?
-+Inseriu: 0 -> ProbN = 0.16
-+Inseriu: 14 -> ProbN = 0.09
--Retirou: 17 pN = 0.37
+ELSE probs: 0.21 < 0.24 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 8: 0.24
+prob[i] = 0.774400
+NodoAtual: 19
+pN = 0.77*0.08
++Inseriu: 19 -> ProbN = 0.06
+prob[i] = 0.774400
+NodoAtual: 11
+pN = 0.77*0.07
+prob[i] = 0.774400
+NodoAtual: 7
+pN = 0.77*0.01
++Inseriu: 7 -> ProbN = 0.01
+Heap -> [12(0.74) 1(0.37) 11(0.49) 8(0.24) 6(0.31) 2(0.33) 19(0.06) 7(0.01) ]
+-Retirou: 12 pN = 0.74
 
-ELSE 19
-ELSE posHeap: 2
-ELSE visitado: 1
+prob[i] = 0.740000
+NodoAtual: 13
+pN = 0.74*0.91
++Inseriu: 13 -> ProbN = 0.67
+prob[i] = 0.740000
+NodoAtual: 16
+pN = 0.74*0.74
+prob[i] = 0.740000
+NodoAtual: 17
+pN = 0.74*0.70
++Inseriu: 17 -> ProbN = 0.52
+prob[i] = 0.740000
+NodoAtual: 15
+pN = 0.74*0.69
++Inseriu: 15 -> ProbN = 0.51
+prob[i] = 0.740000
+NodoAtual: 14
+pN = 0.74*0.25
++Inseriu: 14 -> ProbN = 0.18
+Heap -> [13(0.67) 17(0.52) 2(0.33) 11(0.49) 15(0.51) 7(0.01) 19(0.06) 8(0.24) 1(0.37) 6(0.31) 14(0.18) ]
+-Retirou: 13 pN = 0.67
+
+prob[i] = 0.673400
+NodoAtual: 12
+pN = 0.67*0.91
+prob[i] = 0.673400
+NodoAtual: 5
+pN = 0.67*0.89
++Inseriu: 5 -> ProbN = 0.60
+prob[i] = 0.673400
+NodoAtual: 8
+pN = 0.67*0.83
+ELSE 8
+ELSE posHeap: 8
+ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.28 > 0.15 ?
+ELSE probs: 0.24 < 0.56 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 8: 0.56
+prob[i] = 0.673400
+NodoAtual: 2
+pN = 0.67*0.38
+prob[i] = 0.673400
+NodoAtual: 6
+pN = 0.67*0.34
+prob[i] = 0.673400
+NodoAtual: 0
+pN = 0.67*0.08
++Inseriu: 0 -> ProbN = 0.05
+prob[i] = 0.673400
+NodoAtual: 3
+pN = 0.67*0.05
++Inseriu: 3 -> ProbN = 0.03
+Heap -> [5(0.60) 17(0.52) 2(0.33) 11(0.49) 15(0.51) 0(0.05) 19(0.06) 8(0.56) 1(0.37) 14(0.18) 6(0.31) 7(0.01) 3(0.03) ]
+-Retirou: 5 pN = 0.60
+
+prob[i] = 0.599326
+NodoAtual: 13
+pN = 0.60*0.89
+prob[i] = 0.599326
+NodoAtual: 2
+pN = 0.60*0.55
+ELSE 2
+ELSE posHeap: 3
+ELSE visitado: 0
+ELSE validos: 1
+ELSE probs: 0.33 < 0.33 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 2: 0.33
+Heap -> [17(0.52) 15(0.51) 2(0.33) 11(0.49) 6(0.31) 0(0.05) 19(0.06) 8(0.56) 1(0.37) 14(0.18) 3(0.03) 7(0.01) ]
+-Retirou: 17 pN = 0.52
+
+prob[i] = 0.518000
+NodoAtual: 1
+pN = 0.52*0.99
+ELSE 1
+ELSE posHeap: 9
+ELSE visitado: 0
+ELSE validos: 1
+ELSE probs: 0.37 < 0.51 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 1: 0.51
+prob[i] = 0.518000
+NodoAtual: 12
+pN = 0.52*0.70
+prob[i] = 0.518000
+NodoAtual: 6
+pN = 0.52*0.47
+prob[i] = 0.518000
+NodoAtual: 2
+pN = 0.52*0.41
+Heap -> [15(0.51) 11(0.49) 2(0.33) 8(0.56) 6(0.31) 0(0.05) 19(0.06) 7(0.01) 1(0.51) 14(0.18) 3(0.03) ]
+-Retirou: 15 pN = 0.51
+
+prob[i] = 0.510600
+NodoAtual: 12
+pN = 0.51*0.69
+prob[i] = 0.510600
+NodoAtual: 4
+pN = 0.51*0.52
++Inseriu: 4 -> ProbN = 0.27
+prob[i] = 0.510600
+NodoAtual: 2
+pN = 0.51*0.52
+prob[i] = 0.510600
+NodoAtual: 3
+pN = 0.51*0.44
+ELSE 3
+ELSE posHeap: 9
+ELSE visitado: 0
+ELSE validos: 1
+ELSE probs: 0.03 < 0.22 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 3: 0.22
+prob[i] = 0.510600
+NodoAtual: 14
+pN = 0.51*0.09
+Heap -> [11(0.49) 8(0.56) 2(0.33) 1(0.51) 6(0.31) 0(0.05) 19(0.06) 7(0.01) 3(0.22) 14(0.18) 4(0.27) ]
+-Retirou: 11 pN = 0.49
+
+prob[i] = 0.490000
+NodoAtual: 1
+pN = 0.49*0.84
+prob[i] = 0.490000
+NodoAtual: 16
+pN = 0.49*0.49
+prob[i] = 0.490000
+NodoAtual: 14
+pN = 0.49*0.40
 ELSE 14
-ELSE posHeap: 3
+ELSE posHeap: 10
 ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.09 > 0.03 ?
+ELSE probs: 0.18 < 0.20 ?
 >> ENTROU NO ELSE IF <<
-Nova Prob do vertice 14: 0.03
-+Inseriu: 7 -> ProbN = 0.17
-+Inseriu: 5 -> ProbN = 0.17
-+Inseriu: 16 -> ProbN = 0.03
--Retirou: 18 pN = 0.36
-
+Nova Prob do vertice 14: 0.20
+prob[i] = 0.490000
+NodoAtual: 19
+pN = 0.49*0.13
 ELSE 19
-ELSE posHeap: 2
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.17 > 0.14 ?
-ELSE 5
-ELSE posHeap: 3
+ELSE posHeap: 7
 ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.17 > 0.06 ?
+ELSE probs: 0.06 < 0.06 ?
 >> ENTROU NO ELSE IF <<
-Nova Prob do vertice 5: 0.06
-+Inseriu: 12 -> ProbN = 0.14
--Retirou: 10 pN = 0.28
+Nova Prob do vertice 19: 0.06
+prob[i] = 0.490000
+NodoAtual: 18
+pN = 0.49*0.07
+Heap -> [8(0.56) 1(0.51) 2(0.33) 4(0.27) 6(0.31) 0(0.05) 19(0.06) 7(0.01) 3(0.22) 14(0.20) ]
+-Retirou: 8 pN = 0.56
 
-ELSE 8
-ELSE posHeap: -1
-ELSE visitado: 1
+prob[i] = 0.558922
+NodoAtual: 6
+pN = 0.56*0.99
+ELSE 6
+ELSE posHeap: 2
+ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.00 > 0.28 ?
--Retirou: 7 pN = 0.17
+ELSE probs: 0.31 < 0.55 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 6: 0.55
+prob[i] = 0.558922
+NodoAtual: 13
+pN = 0.56*0.83
+prob[i] = 0.558922
+NodoAtual: 18
+pN = 0.56*0.31
+prob[i] = 0.558922
+NodoAtual: 16
+pN = 0.56*0.21
+Heap -> [1(0.51) 6(0.55) 2(0.33) 4(0.27) 14(0.20) 0(0.05) 19(0.06) 7(0.01) 3(0.22) ]
+-Retirou: 1 pN = 0.51
 
-ELSE 17
-ELSE posHeap: 5
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.03 > 0.06 ?
-+Inseriu: 15 -> ProbN = 0.02
+prob[i] = 0.512820
+NodoAtual: 17
+pN = 0.51*0.99
+prob[i] = 0.512820
+NodoAtual: 11
+pN = 0.51*0.84
+prob[i] = 0.512820
+NodoAtual: 16
+pN = 0.51*0.37
+prob[i] = 0.512820
+NodoAtual: 2
+pN = 0.51*0.35
+Heap -> [6(0.55) 4(0.27) 2(0.33) 3(0.22) 14(0.20) 0(0.05) 19(0.06) 7(0.01) ]
+-Retirou: 6 pN = 0.55
+
+prob[i] = 0.553333
+NodoAtual: 8
+pN = 0.55*0.99
+prob[i] = 0.553333
+NodoAtual: 0
+pN = 0.55*0.85
 ELSE 0
+ELSE posHeap: 6
+ELSE visitado: 0
+ELSE validos: 1
+ELSE probs: 0.05 < 0.47 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 0: 0.47
+prob[i] = 0.553333
+NodoAtual: 17
+pN = 0.55*0.47
+prob[i] = 0.553333
+NodoAtual: 9
+pN = 0.55*0.45
++Inseriu: 9 -> ProbN = 0.25
+prob[i] = 0.553333
+NodoAtual: 13
+pN = 0.55*0.34
+prob[i] = 0.553333
+NodoAtual: 16
+pN = 0.55*0.31
+Heap -> [2(0.33) 4(0.27) 19(0.06) 9(0.25) 14(0.20) 0(0.47) 7(0.01) 3(0.22) ]
+-Retirou: 2 pN = 0.33
+
+prob[i] = 0.329629
+NodoAtual: 14
+pN = 0.33*0.99
+ELSE 14
+ELSE posHeap: 5
+ELSE visitado: 0
+ELSE validos: 1
+ELSE probs: 0.20 < 0.33 ?
+>> ENTROU NO ELSE IF <<
+Nova Prob do vertice 14: 0.33
+prob[i] = 0.329629
+NodoAtual: 5
+pN = 0.33*0.55
+prob[i] = 0.329629
+NodoAtual: 15
+pN = 0.33*0.52
+prob[i] = 0.329629
+NodoAtual: 17
+pN = 0.33*0.41
+prob[i] = 0.329629
+NodoAtual: 13
+pN = 0.33*0.38
+prob[i] = 0.329629
+NodoAtual: 10
+pN = 0.33*0.37
+prob[i] = 0.329629
+NodoAtual: 1
+pN = 0.33*0.35
+Heap -> [4(0.27) 9(0.25) 19(0.06) 3(0.22) 14(0.33) 0(0.47) 7(0.01) ]
+-Retirou: 4 pN = 0.27
+
+prob[i] = 0.265512
+NodoAtual: 15
+pN = 0.27*0.52
+prob[i] = 0.265512
+NodoAtual: 3
+pN = 0.27*0.23
+Heap -> [9(0.25) 14(0.33) 19(0.06) 3(0.22) 7(0.01) 0(0.47) ]
+-Retirou: 9 pN = 0.25
+
+prob[i] = 0.249000
+NodoAtual: 3
+pN = 0.25*0.72
+prob[i] = 0.249000
+NodoAtual: 6
+pN = 0.25*0.45
+Heap -> [0(0.47) 14(0.33) 19(0.06) 3(0.22) 7(0.01) ]
+-Retirou: 0 pN = 0.47
+
+prob[i] = 0.470333
+NodoAtual: 14
+pN = 0.47*0.98
+ELSE 14
 ELSE posHeap: 1
 ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.16 > 0.03 ?
+ELSE probs: 0.33 < 0.46 ?
 >> ENTROU NO ELSE IF <<
-Nova Prob do vertice 0: 0.03
--Retirou: 0 pN = 0.16
+Nova Prob do vertice 14: 0.46
+prob[i] = 0.470333
+NodoAtual: 6
+pN = 0.47*0.85
+prob[i] = 0.470333
+NodoAtual: 13
+pN = 0.47*0.08
+Heap -> [14(0.46) 3(0.22) 19(0.06) 7(0.01) ]
+-Retirou: 14 pN = 0.46
 
-ELSE 16
-ELSE posHeap: 5
-ELSE visitado: 0
-ELSE validos: 1
-ELSE probs: 0.03 > 0.01 ?
->> ENTROU NO ELSE IF <<
-Nova Prob do vertice 16: 0.01
-ELSE 19
-ELSE posHeap: 2
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.06 > 0.06 ?
+prob[i] = 0.460926
+NodoAtual: 2
+pN = 0.46*0.99
+prob[i] = 0.460926
+NodoAtual: 0
+pN = 0.46*0.98
+prob[i] = 0.460926
+NodoAtual: 11
+pN = 0.46*0.40
+prob[i] = 0.460926
+NodoAtual: 12
+pN = 0.46*0.25
+prob[i] = 0.460926
+NodoAtual: 15
+pN = 0.46*0.09
+Heap -> [3(0.22) 7(0.01) 19(0.06) ]
+-Retirou: 3 pN = 0.22
+
+prob[i] = 0.224664
+NodoAtual: 9
+pN = 0.22*0.72
+prob[i] = 0.224664
+NodoAtual: 7
+pN = 0.22*0.55
 ELSE 7
-ELSE posHeap: 6
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.03 > 0.03 ?
--Retirou: 12 pN = 0.14
-
-+Inseriu: 2 -> ProbN = 0.11
-ELSE 18
-ELSE posHeap: 7
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.28 > 0.05 ?
--Retirou: 2 pN = 0.11
-
-ELSE 12
-ELSE posHeap: 5
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.11 > 0.02 ?
-+Inseriu: 13 -> ProbN = 0.03
--Retirou: 5 pN = 0.17
-
-ELSE 18
-ELSE posHeap: 7
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.28 > 0.06 ?
-ELSE 17
-ELSE posHeap: 5
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.06 > 0.06 ?
--Retirou: 14 pN = 0.09
-
-ELSE 17
-ELSE posHeap: 5
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.06 > 0.03 ?
-ELSE 19
-ELSE posHeap: 2
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.01 > 0.04 ?
--Retirou: 13 pN = 0.03
-
-ELSE 16
 ELSE posHeap: 2
 ELSE visitado: 0
 ELSE validos: 1
-ELSE probs: 0.01 > 0.00 ?
+ELSE probs: 0.01 < 0.12 ?
 >> ENTROU NO ELSE IF <<
-Nova Prob do vertice 16: 0.00
-ELSE 2
-ELSE posHeap: 5
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.06 > 0.00 ?
-+Inseriu: 3 -> ProbN = 0.01
--Retirou: 15 pN = 0.02
+Nova Prob do vertice 7: 0.12
+prob[i] = 0.224664
+NodoAtual: 15
+pN = 0.22*0.44
+prob[i] = 0.224664
+NodoAtual: 4
+pN = 0.22*0.23
+prob[i] = 0.224664
+NodoAtual: 13
+pN = 0.22*0.05
+Heap -> [7(0.12) 19(0.06) ]
+-Retirou: 7 pN = 0.12
 
-ELSE 7
-ELSE posHeap: 6
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.03 > 0.00 ?
--Retirou: 3 pN = 0.01
+prob[i] = 0.123565
+NodoAtual: 3
+pN = 0.12*0.55
+prob[i] = 0.123565
+NodoAtual: 19
+pN = 0.12*0.46
+prob[i] = 0.123565
+NodoAtual: 18
+pN = 0.12*0.01
+Heap -> [19(0.06) ]
+-Retirou: 19 pN = 0.06
 
-+Inseriu: 4 -> ProbN = 0.00
-ELSE 13
-ELSE posHeap: 3
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.02 > 0.00 ?
--Retirou: 4 pN = 0.00
+prob[i] = 0.063700
+NodoAtual: 7
+pN = 0.06*0.46
+prob[i] = 0.063700
+NodoAtual: 11
+pN = 0.06*0.13
+prob[i] = 0.063700
+NodoAtual: 18
+pN = 0.06*0.08
+Heap -> []
+-Retirou: 19 pN = 0.06
 
-ELSE 3
-ELSE posHeap: 2
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.00 > 0.00 ?
--Retirou: 16 pN = 0.03
-
-ELSE 0
-ELSE posHeap: 6
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.03 > 0.01 ?
-ELSE 13
-ELSE posHeap: 3
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.02 > 0.00 ?
-ELSE 17
-ELSE posHeap: 5
-ELSE visitado: 1
-ELSE validos: 1
-ELSE probs: 0.06 > 0.01 ?
--Retirou: 16 pN = 0.03
-
-0(0.16), 1(-inf), 2(0.11), 3(0.01), 4(0.00), 5(0.17), 6(-inf), 7(0.17), 8(1.00), 9(-inf), 10(0.28), 11(-inf), 12(0.14), 13(0.03), 14(0.09), 15(0.02), 16(0.03), 17(0.37), 18(0.36), 19(0.40), 
->> 7 -1 12 13 3 18 -1 17 -1 -1 8 -1 18 2 17 7 13 19 19 8 
-0.91 8 19 17 14 
+0.67 16 12 13 5 2

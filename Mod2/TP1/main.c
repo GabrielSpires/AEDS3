@@ -2,10 +2,15 @@
 #define INF 1.0/0.0
 
 void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c){
+	if(!vertsValidos[origem]){
+		printf("-1\n");
+		return;
+	}
 	Heap meuHeap;
 	constroiHeap(&meuHeap, numQuarts);
+ 
 
-	int *antecessor  = (int*)	 malloc(numQuarts * sizeof(int));
+ 	int *antecessor  = (int*)	 malloc(numQuarts * sizeof(int));
 	int *caminho	 = (int*)	 malloc(numQuarts * sizeof(int));
 	int *visitado	 = (int*)	 calloc(numQuarts , sizeof(int));
 	double *prob	 = (double*) malloc(numQuarts * sizeof(double));
@@ -14,65 +19,64 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	int i, j = 1;
 	for(i=0; i<=numQuarts; i++) meuHeap.posHeap[i] = -1;
 	for(i=0; i<numQuarts; i++){
-		antecessor[i]	   = -1;
-		caminho[i]		   = -1;
-		//meuHeap.posHeap[i] = -1;
-		prob[i] 		   = -INF;
+		antecessor[i] = -1;
+		caminho[i]	  = -1;
+		prob[i] 	  = -INF;
 	}
 	prob[origem] = 1; //A chance de nao pegar fogo no vertice de saida eh de 100%
 	i = origem;
 	iterador nodoAtual;
-
+	int printar = 0;
 	while(meuHeap.sizeHeap >= 0){
 		visitado[i] = 1;
 		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
-			//printf("prob[i] = %lf\n", prob[i]);
-			//**/printf("NodoAtual: %d\n", nodoAtual->key);
+			if(printar == 1) printf("prob[i] = %lf\n", prob[i]);
+			if(printar == 1) printf("NodoAtual: %d\n", nodoAtual->key);
 			pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
-			//**/printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
+			if(printar == 1) printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
 			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
-				
+				if(printar == 1) printf("+Inseriu: %d -> ProbN = %.2lf\n", nodoAtual->key, pN);
 				insereHeap(&meuHeap, pN, nodoAtual->key);
-				/**/printf("+Inseriu: %d -> ProbN = %.2lf\n", nodoAtual->key, pN);
 				antecessor[nodoAtual->key] = i;
 				prob[nodoAtual->key] = pN;
 			}
 			else{
-				printf("ELSE %d\n", nodoAtual->key);
-				printf("ELSE posHeap: %d\n", meuHeap.posHeap[nodoAtual->key]);
-				printf("ELSE visitado: %d\n", visitado[nodoAtual->key]);
-				printf("ELSE validos: %d\n", vertsValidos[nodoAtual->key]);
-				printf("ELSE probs: %.2lf > %.2lf ?\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo, prob[i]*prob[nodoAtual->key]);
 				if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 
-				&&	meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo > prob[i]*prob[nodoAtual->key]){
-					printf(">> ENTROU NO ELSE IF <<\n");
-					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = prob[i]*prob[nodoAtual->key];
-					printf("Nova Prob do vertice %d: %.2lf\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].quarteirao, meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo);
-					refazBaixoCima(&meuHeap);
+				&&	meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo < prob[i]*(1-nodoAtual->probFogo)){
+				if(printar == 1) printf("ELSE %d\n", nodoAtual->key);
+				if(printar == 1) printf("ELSE posHeap: %d\n", meuHeap.posHeap[nodoAtual->key]);
+				if(printar == 1) printf("ELSE visitado: %d\n", visitado[nodoAtual->key]);
+				if(printar == 1) printf("ELSE validos: %d\n", vertsValidos[nodoAtual->key]);
+				if(printar == 1) printf("ELSE probs: %.2lf < %.2lf ?\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo, prob[i]*(1-nodoAtual->probFogo));
+					if(printar == 1) printf(">> ENTROU NO ELSE IF <<\n");
+					prob[nodoAtual->key] = prob[i]*(1-nodoAtual->probFogo);
+					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = prob[i]*(1-nodoAtual->probFogo);
+					if(printar == 1) printf("Nova Prob do vertice %d: %.2lf\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].quarteirao, meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo);
+					refazBaixoCima(&meuHeap, meuHeap.posHeap[nodoAtual->key]);
 					antecessor[nodoAtual->key] = i;
 				}
 			}
 		}
 		
-		//**/printf("Heap -> [");
-		//**/for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d(%.2lf) ", meuHeap.vetor[j].quarteirao, meuHeap.vetor[j].probFogo);
-		//**/printf("\b]\n");
+		if(printar == 1) printf("Heap -> [");
+		if(printar == 1) for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d(%.2lf) ", meuHeap.vetor[j].quarteirao, meuHeap.vetor[j].probFogo);
+		if(printar == 1) printf("\b]\n");
 		i = retiraHeap(&meuHeap);
-		/**/printf("-Retirou: %d pN = %.2lf\n\n", i, prob[i]);
-
+		if(printar == 1) printf("-Retirou: %d pN = %.2lf\n\n", i, prob[i]);
 		//visitado[i] = 1;
+
 	}
-	for(i=0; i<numQuarts; i++){
-		printf("%d(%.2lf), ", i, prob[i]);
-	}printf("\b\b\n");
+	// for(i=0; i<numQuarts; i++){
+	// 	printf("%d(%.2lf), ", i, prob[i]);
+	// }printf("\b\b\n");
 	j=1;
 	if(1.0-prob[c] == INF) printf("-1\n");
 	else{
-		printf(">> ");
-		for(i=0; i<numQuarts; i++){
-			printf("%d ", antecessor[i]);
-		}printf("\n");
-		printf("%.2lf ", 1.0-prob[c]);
+		// printf(">> ");
+		// for(i=0; i<numQuarts; i++){
+		// 	printf("%d ", antecessor[i]);
+		// }printf("\n");
+		printf("%.2lf", 1.0-prob[c]);
 
 		caminho[0] = c;
 
@@ -82,7 +86,7 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 		}caminho[j] = origem;
 
 		for(i=j-1; i>=0; i--){
-			printf("%d ", caminho[i]);
+			printf(" %d", caminho[i]);
 		}printf("\n");
 	}
 
@@ -92,18 +96,22 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	free(visitado);
 }
 
-void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
+void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos, int q){
 	iterador nodoAtual; //Variavel do tipo iterador(Nodo) usada para percorrer a lista
 	Fila f; //Fila usada na busca em largura
 	criaFila(&f); //Cria a fila vazia
 	int i = bomb; //A variavel i recebe o numero do vertice que tem corpo de bombeiros
 	vertsValidos[bomb] = 1; //Seta o vertice inicial como valido
 	enfileirar(bomb, &f, 0); //Enfileira o vertice inicial com distancia zero
+	int *visitado = (int*) calloc(q,sizeof(int));
 
 	while(!filaVazia(&f)){ //Faz a busca enquanto a fila aind conter vertices
 		if(distPai(&f) < k){ //So faz a busca nos vertices que estao dentro da distancia limite
 			for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
-				enfileirar(nodoAtual->key, &f, distPai(&f)+1); //Enfileira o vertice incrementando a distancia do pai
+				if(!visitado[nodoAtual->key]){
+					enfileirar(nodoAtual->key, &f, distPai(&f)+1); //Enfileira o vertice incrementando a distancia do pai
+					visitado[nodoAtual->key] = 1;
+				}
 				vertsValidos[nodoAtual->key] = 1; //Seta o vertice visitado como valido (esta dentro da distancia limite)
 			}
 		}
@@ -116,26 +124,6 @@ void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos){
 
 int main(){
 	int i;
-	// Heap meuHeapizinho;
-
-	// constroiHeap(&meuHeapizinho, 8);
-
-	// insereHeap(&meuHeapizinho, 0.3, 3);
-	// insereHeap(&meuHeapizinho, 0.1, 1);
-	// insereHeap(&meuHeapizinho, 0.2, 2);
-	// insereHeap(&meuHeapizinho, 0.4, 4);
-	// insereHeap(&meuHeapizinho, 0.5, 5);
-	// insereHeap(&meuHeapizinho, 0.6, 6);
-	// insereHeap(&meuHeapizinho, 0.7, 7);
-	// for(i=1; i<=meuHeapizinho.sizeHeap; i++) printf("%d ", meuHeapizinho.vetor[i].quarteirao);
-	// 	printf("\n");
-	// for(i=1; i<8; i++) printf("%d ", meuHeapizinho.posHeap[i]);
-	// 	printf("\n");
-	// retiraHeap(&meuHeapizinho);
-	// for(i=1; i<=meuHeapizinho.sizeHeap; i++) printf("%d ", meuHeapizinho.vetor[i].quarteirao);
-	// 	printf("\n");
-	// for(i=1; i<8; i++) printf("%d ", meuHeapizinho.posHeap[i]);
-	// 	printf("\n");
 	int j = 0;
 	int x = 0, //id do quarteirao
 		y = 0, //id do outro quarteirao
@@ -174,7 +162,7 @@ int main(){
 		for(y=0; y<d; y++){
 			scanf("%d", &bomb[y]); //Recebe o numero dos vertices que tem bombeiro
 		}
-		
+		/*
 		iterador getNodo;
 		for(i=0; i<q; i++){
 			printf("%d: ", i);
@@ -191,14 +179,14 @@ int main(){
 			printf("%d ", bomb[i]);
 		}
 		printf("\n");//Printa os bombs
-		
+		*/
 		//Elimina os quarteiroes que nao podem ser visitados (busca em largura)
 		//A busca eh feita a partir de cada vertice com corpo de bombeiros
-		for(i=0; i<d; i++) eliminaQuarts(verts, k, bomb[i], vertsValidos);
+		for(i=0; i<d; i++) eliminaQuarts(verts, k, bomb[i], vertsValidos, q);
 
-		for(j=0; j<q; j++){
-			printf("%d ", vertsValidos[j]);
-		}printf("\n"); //printa os vertices que podem ser alcançados
+		// for(j=0; j<q; j++){
+		// 	printf("%d ", vertsValidos[j]);
+		// }printf("\n"); //printa os vertices que podem ser alcançados
 
 		//Acha o menor caminho possivel atraves dos vertices validos
 		dijkstra(verts, s, q, vertsValidos, c); //DIJKSTRA

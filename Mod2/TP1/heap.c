@@ -12,8 +12,8 @@ void trocaItemHeap(itemHeap *a, itemHeap *b, int *posHeap){
 	*b = temp;
 }
 
-void refazBaixoCima(Heap *meuHeap){
-	int k = meuHeap->sizeHeap;
+void refazBaixoCima(Heap *meuHeap, int inicio){
+	int k = inicio;
 	//Roda ate o inicio do vetor. Se pai < filho troca //k/2 = pai //k = filho
 	while(k > 1 && meuHeap->vetor[k/2].probFogo < meuHeap->vetor[k].probFogo){
 		if(meuHeap->sizeHeap > 0) trocaItemHeap(&meuHeap->vetor[k], &meuHeap->vetor[k/2], meuHeap->posHeap);
@@ -28,7 +28,7 @@ void refazCimaBaixo(Heap *meuHeap){
 	while( (k*2) <= dir ){
 		j = k * 2;
 		//Descobre qual dos filhos eh maior
-		if(j+1 < dir && meuHeap->vetor[j].probFogo < meuHeap->vetor[j+1].probFogo){
+		if(j+1 <= dir && meuHeap->vetor[j].probFogo < meuHeap->vetor[j+1].probFogo){
 		 	j++; //j vira o maior dos filhos
 		}
 		//Se o pai for >= ao maior dos filhos, pare
@@ -60,7 +60,7 @@ void insereHeap(Heap *meuHeap, double probF, int quart){
 	meuHeap->vetor[meuHeap->sizeHeap].probFogo = probF;
 	meuHeap->posHeap[quart] = meuHeap->sizeHeap;
 	if(meuHeap->sizeHeap > 1){
-		refazBaixoCima(meuHeap);
+		refazBaixoCima(meuHeap, meuHeap->sizeHeap);
 	}
 }
 

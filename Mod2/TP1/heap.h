@@ -19,7 +19,7 @@ Heap vetorQ;
 
 void trocaItemHeap(itemHeap *a, itemHeap *b, int *posHeap);
 
-void refazBaixoCima(Heap* /*, int* */);
+void refazBaixoCima(Heap*, int /*, int* */);
 
 void refazCimaBaixo(Heap* /*, int* */);
 
