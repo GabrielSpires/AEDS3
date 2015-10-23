@@ -157,6 +157,18 @@ status collapsed
 Os TADs Lista, Fila e Heap utilizados neste TP foram feitos usando como
  referência o código desenvolvido pelos professores Thiago Noronha e William
  Schwartz durante a disciplina de AEDS 2 no semestre passado.
+ Os aquivos podem ser baixados em 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://homepages.dcc.ufmg.br/~gabrielpires/disc/aeds3/tads_referencia/
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -775,7 +787,7 @@ Caso existam dois caminhos com a mesma probabilidade final, o caminho escolhido
 \end_layout
 
 \begin_layout Standard
-Se não for possível respeitas as restrições impostas na especificação ao
+Se não for possível respeitar as restrições impostas na especificação, ao
  invés de imprimir o caminho, é exibido na tela o número -1.
 \end_layout
 
@@ -1000,9 +1012,23 @@ Heap
 \end_layout
 
 \begin_layout Standard
+Em ambos os algoritmos é usado uma lista de adjacência, que no pior caso
+ tem 
+\begin_inset Formula $O(|V|)$
+\end_inset
+
+ items em cada posição, e como a lista tem sempre uma posição para cada
+ vértice, o custo da fila é de 
+\begin_inset Formula $O(|V|*|V|)=O(|V\text{²}|)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Pode-se concluir que a complexidade de espaço do algoritmo é proporcional
  à soma dessas complexidades, e pode ser representada como 
-\begin_inset Formula $O(|V|+|V|)=O(|V|)$
+\begin_inset Formula $O(|V|+|V|+|V\text{²}|)=O(|V\text{²}|)$
 \end_inset
 
 .
@@ -1040,7 +1066,9 @@ r e 2GB de RAM.
 \begin_layout Standard
 Foram criados arquivos de teste com 1 caso de teste cada, variando o número
  de vértices de 100 até 10³, e o número de arestas variando de 4851 até
- 49850.
+ 49850, e em todos os casos a busca em largura tem o pior caso que é quando
+ todos os vértices do grafo tem corpo de bombeiros e também no Dijkstra
+ que é testado sempre no caso em que todos os vértices podem ser visitados.
  O gráfico abaixo ilustra a variação de tempo em segundos com a entrada
  que está representada como 
 \begin_inset Quotes eld
@@ -1097,9 +1125,10 @@ Conclusão
 O problema proposto neste trabalho foi o do Bombeiro Preguiçoso que foi
  resolvido transformando a entrada do problema em um grafo e submetendo-o
  aos algoritmos de Busca em Largura e Dijkstra.
- Foram utilizados também os TADs Lista, Fila e Heap que foram desenvolvidos
- tomando como referência os códigos cedidos pelos professores Thiago Noronha
- e William Schwartz.
+ Foram utilizados também os TADs Lista, para representar o grafo, Fila para
+ auxiliar no Dijkstra e Heap para agilizar a escolha das arestas no Dijkstra.
+ Os TADs foram desenvolvidos tomando como referência os códigos cedidos
+ pelos professores Thiago Noronha e William Schwartz.
 \end_layout
 
 \end_body
