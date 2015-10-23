@@ -798,8 +798,8 @@ A análise de custo assintótico de tempo pode ser feita ao se analisar os
 \end_layout
 
 \begin_layout Itemize
-O primeiro algoritmo executa uma busca em largura usando um TAD auxiliar
- Fila para enfileirar as arestas.
+O primeiro algoritmo executa uma busca em largura usando uma Fila para enfileira
+r as arestas.
  Inicialmente uma fila vazia é criada e o vértice um vértice com corpo de
  bombeiros é enfileirado.
  A partir desse vértice, todos os seus adjacentes que estão a uma distância
@@ -814,10 +814,11 @@ k
  de adjacência, o pior caso é aquele em que todos os vértices e arestas
  são explorados pelo algoritmo.
  A complexidade de tempo pode ser representada pela expressão 
-\begin_inset Formula $O(|E|+|V|)$
+\begin_inset Formula $O(|E|*|V|)$
 \end_inset
 
-, onde 
+ já que a busca é chamada para cada vértice com corpo de bombeiros, onde
+ 
 \begin_inset Formula $|E|$
 \end_inset
 
@@ -826,7 +827,15 @@ k
 \begin_inset Formula $O(1)$
 \end_inset
 
- sobre uma aresta, e 
+ sobre uma aresta mas no pior caso 
+\begin_inset Formula $|E|$
+\end_inset
+
+ pode ser 
+\begin_inset Formula $|V\text{²}|$
+\end_inset
+
+, e 
 \begin_inset Formula $|V|$
 \end_inset
 
@@ -837,6 +846,11 @@ k
 
  para cada vértice uma vez que todo vértice é enfileirado e desenfileirado
  uma única vez.
+ Então no pior caso, da Busca em Largura seria 
+\begin_inset Formula $O(|V\text{²}|*|V|)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -901,6 +915,23 @@ refazBaixoCima()
 \end_inset
 
 , assim como quando um valor de probabilidade é atualizado.
+ Então o loop principal do 
+\emph on
+Dijkstra
+\emph default
+ roda em 
+\begin_inset Formula $O(V\text{²}logV)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Podemos concluir então que o custo total de tempo do algoritmo é 
+\begin_inset Formula $O(|V\text{²}|*|V|)+O(V\text{²}logV)=O(V\text{³})$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -914,7 +945,7 @@ Na busca em largura, quando o número de vértices no grafo é conhecido e
 \begin_inset Formula $O(|V|)$
 \end_inset
 
-onde 
+ onde 
 \begin_inset Formula $|V|$
 \end_inset
 
@@ -923,6 +954,47 @@ onde
 
 \begin_layout Section
 Análise Experimental do Custo Assintótico
+\end_layout
+
+\begin_layout Standard
+Para fazer a análise experimental do programa, foi criado um outro programa
+ que gera arquivos de entrada compatíveis de tamanhos variados de forma
+ que a diferença do tempo de execução com entradas diferentes possa ser
+ medido.
+ Para não levar em consideração o tempo que se leva para digitar a entrada
+ no tempo de execução do programa, a entrada foi lida diretamente dos arquivos.
+ Para se medir o tempo de execução do programa foi usado o comando 
+\emph on
+time
+\emph default
+ que ao final da execução do programa grava na saída padrão (
+\emph on
+stdout
+\emph default
+) estatísticas de tempo sobre o programa executado.
+\end_layout
+
+\begin_layout Standard
+Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.04.
+ O computador utilizado tem um processador AMD Phenom II X4 965 3.40GHz e
+ 8GB de memória, porém, a máquina virtual utiliza apenas um núcleo do processado
+r e 2GB de RAM.
+\end_layout
+
+\begin_layout Standard
+Foram criados arquivos de teste com 1 caso de teste cada, variando o número
+ de vértices de 100 até 10³, e o número de arestas variando de 4851 até
+ 49850.
+ O gráfico abaixo ilustra a variação de tempo em segundos com a entrada
+ que está representada como 
+\begin_inset Quotes eld
+\end_inset
+
+(vértices / arestas)
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
