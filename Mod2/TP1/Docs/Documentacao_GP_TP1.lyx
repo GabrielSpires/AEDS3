@@ -914,7 +914,8 @@ refazBaixoCima()
 \begin_inset Formula $O(logV)$
 \end_inset
 
-, assim como quando um valor de probabilidade é atualizado.
+ para manter a condição de heap no vetor, assim como quando um valor de
+ probabilidade é atualizado.
  Então o loop principal do 
 \emph on
 Dijkstra
@@ -938,8 +939,18 @@ Podemos concluir então que o custo total de tempo do algoritmo é
 Análise Teórica do Custo Assintótico de Espaço
 \end_layout
 
-\begin_layout Itemize
-Na busca em largura, quando o número de vértices no grafo é conhecido e
+\begin_layout Standard
+Para analisar o custo de espaço do programa foi levado em consideração a
+ quantidade de memória utilizada pelos dois principais algoritmos, o 
+\emph on
+Dijkstra
+\emph default
+ e a 
+\emph on
+Busca em Largura
+\emph default
+.
+ Na busca em largura, quando o número de vértices no grafo é conhecido e
  supondo-se a representação deste em listas de adjacência, a complexidade
  de espaço do algoritmo pode ser representada por 
 \begin_inset Formula $O(|V|)$
@@ -950,6 +961,51 @@ Na busca em largura, quando o número de vértices no grafo é conhecido e
 \end_inset
 
  representa o número total de vértices no grafo.
+ No 
+\emph on
+Dijkstra
+\emph default
+ existe um 
+\emph on
+Heap
+\emph default
+ que é composto de um vetor em que cada posição tem 2 atributos, um 
+\emph on
+int
+\emph default
+ e um 
+\emph on
+double
+\emph default
+, ou seja 4+8 bytes.
+ Como o tamanho do 
+\emph on
+Heap
+\emph default
+ varia de acordo com o número de vértices, então a complexidade de espaço
+ do 
+\emph on
+Heap
+\emph default
+ pode ser representada como 
+\begin_inset Formula $O(|V|)$
+\end_inset
+
+ assim como todos os outros vetores que são alocados com tamanho baseado
+ em 
+\begin_inset Formula $|V|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pode-se concluir que a complexidade de espaço do algoritmo é proporcional
+ à soma dessas complexidades, e pode ser representada como 
+\begin_inset Formula $O(|V|+|V|)=O(|V|)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
