@@ -48,10 +48,10 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 				if(printar == 1) printf("ELSE visitado: %d\n", visitado[nodoAtual->key]);
 				if(printar == 1) printf("ELSE validos: %d\n", vertsValidos[nodoAtual->key]);
 				if(printar == 1) printf("ELSE probs: %.2lf < %.2lf ?\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo, prob[i]*(1-nodoAtual->probFogo));
-					if(printar == 1) printf(">> ENTROU NO ELSE IF <<\n");
+				if(printar == 1) printf(">> ENTROU NO ELSE IF <<\n");
 					prob[nodoAtual->key] = prob[i]*(1-nodoAtual->probFogo);
 					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = prob[i]*(1-nodoAtual->probFogo);
-					if(printar == 1) printf("Nova Prob do vertice %d: %.2lf\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].quarteirao, meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo);
+				if(printar == 1) printf("Nova Prob do vertice %d: %.2lf\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].quarteirao, meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo);
 					refazBaixoCima(&meuHeap, meuHeap.posHeap[nodoAtual->key]);
 					antecessor[nodoAtual->key] = i;
 				}
@@ -125,7 +125,6 @@ void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos, int q){
 
 int main(){
 	int i;
-	//int j = 0;
 	int x = 0, //id do quarteirao
 		y = 0, //id do outro quarteirao
 		n = 0, //n° de testes
@@ -188,7 +187,6 @@ int main(){
 		// for(j=0; j<q; j++){
 		// 	printf("%d ", vertsValidos[j]);
 		// }printf("\n"); //printa os vertices que podem ser alcançados
-
 		//Acha o menor caminho possivel atraves dos vertices validos
 		dijkstra(verts, s, q, vertsValidos, c); //DIJKSTRA
 

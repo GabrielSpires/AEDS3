@@ -732,25 +732,69 @@ O(1)
 \emph default
  já que basta apenas retirar a maior aresta do Heap (Max-Heap) e seguir
  a partir dela repetindo o processo até que se ache a solução.
+ Cada vez que uma aresta é inserida, o vértice em que ela chega recebe como
+ antecessor o vértice de saída da aresta.
+ Essa operação é útil na hora de se identificar o caminho que foi feito
+ pelo algoritmo, já que basta fazer o caminho de volta nesse vetor de antecessor
+es para saber quais vértices foram percorridos.
 \end_layout
 
 \begin_layout Standard
-Ao final do algoritmo, a maior probabilidade de não haver incêndio é armazenada
- na posição de um vetor de probabilidades referente ao vértice de chegada.
- Essa posição é então exibida na tela no formato 
+Durante a execução do algoritmo, a maior probabilidade de não haver incêndio
+ de um vértice até o vértice de saída é armazenada na posição de um vetor
+ de probabilidades referente a cada vértice.
+ Ao final da execução, é exibida na tela 
 \begin_inset Formula $1-prob[c]$
 \end_inset
 
 , que representa a probabilidade de incêndio no melhor caminho possível
- até o vértice de chegada.
+ até o vértice de chegada, assim como o caminho, obtido através do vetor
+ de antecessores.
+\end_layout
+
+\begin_layout Standard
+Caso existam dois caminhos com a mesma probabilidade final, o caminho escolhido
+ deve ser aquele que respeita a ordem lexicográfica, ou seja, se o caminho
+ pode passar tanto pelos vértices 
+\begin_inset Formula $1-3-4$
+\end_inset
+
+ quanto pelos vértices 
+\begin_inset Formula $1-2-4$
+\end_inset
+
+, o caminho escolhido será 
+\begin_inset Formula $1-2-4$
+\end_inset
+
+ já que 2 é menor que 3.
+ Esse problema foi solucionado ao se inserir os vértices na fila por ordem
+ de número de vértice, ou seja, os vértices com menor número estarão sempre
+ na frente da fila e serão testados no Dijkstra primeiro, dando preferência
+ para os caminhos de menor ordem lexicográfica.
+\end_layout
+
+\begin_layout Standard
+Se não for possível respeitas as restrições impostas na especificação ao
+ invés de imprimir o caminho, é exibido na tela o número -1.
 \end_layout
 
 \begin_layout Section
 Análise Teórica do Custo Assintótico
 \end_layout
 
+\begin_layout Standard
+Nesta seção serão apresentadas as análises de custo assintótico de tempo
+ e de espaço.
+\end_layout
+
 \begin_layout Subsection
 Análise Teórica do Custo Assintótico de Tempo
+\end_layout
+
+\begin_layout Standard
+A análise de custo assintótico de tempo pode ser feita ao se analisar os
+ 2 algoritmos principais usados:
 \end_layout
 
 \begin_layout Subsection
@@ -763,6 +807,15 @@ Análise Experimental do Custo Assintótico
 
 \begin_layout Section
 Conclusão
+\end_layout
+
+\begin_layout Standard
+O problema proposto neste trabalho foi o do Bombeiro Preguiçoso que foi
+ resolvido transformando a entrada do problema em um grafo e submetendo-o
+ aos algoritmos de Busca em Largura e Dijkstra.
+ Foram utilizados também os TADs Lista, Fila e Heap que foram desenvolvidos
+ tomando como referência os códigos cedidos pelos professores Thiago Noronha
+ e William Schwartz.
 \end_layout
 
 \end_body
