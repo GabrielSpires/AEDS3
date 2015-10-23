@@ -8,7 +8,7 @@ run:
 	./tp1 < inputs/input.txt
 
 val:
-	valgrind --track-origins=yes ./tp1 < inputs/input.txt
+	valgrind --track-origins=yes --leak-check=full ./tp1 < inputs/input.txt
 
 clean:
 	rm tp1

@@ -27,4 +27,6 @@ int retiraHeap(Heap* /*, int* */);
 
 void insereHeap(Heap*, double, int /*, int* */);
 
+void liberaHeap(Heap*);
+
 void constroiHeap(Heap *, int);

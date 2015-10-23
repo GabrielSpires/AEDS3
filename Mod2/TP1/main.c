@@ -94,6 +94,7 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	free(prob);
 	free(antecessor);
 	free(visitado);
+	liberaHeap(&meuHeap);
 }
 
 void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos, int q){
@@ -118,13 +119,13 @@ void eliminaQuarts(lista *verts, int k, int bomb, int *vertsValidos, int q){
 		desenfileirar(&f); //Depois de enfileirar todos os vertices adjacentes, o vertice visitado eh removido da fila
 		i = frenteFila(&f); //Seta a variavel i com o numero do vertice que esta na frente da fila (proximo a visitar)
 	}
-	//Desaloca a fila
+	free(visitado);//Desaloca a fila
 	liberaFila(&f); //Desaloca a fila
 }
 
 int main(){
 	int i;
-	int j = 0;
+	//int j = 0;
 	int x = 0, //id do quarteirao
 		y = 0, //id do outro quarteirao
 		n = 0, //n° de testes

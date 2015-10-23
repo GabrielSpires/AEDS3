@@ -69,3 +69,8 @@ void constroiHeap(Heap *meuHeap, int tamMax){
 	meuHeap->posHeap = (int*)calloc(1 + tamMax , sizeof(int));
 	meuHeap->sizeHeap = 0;
 }
+
+void liberaHeap(Heap *meuHeap){
+	free(meuHeap->vetor);
+	free(meuHeap->posHeap);
+}
