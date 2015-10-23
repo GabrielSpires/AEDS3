@@ -797,8 +797,107 @@ A análise de custo assintótico de tempo pode ser feita ao se analisar os
  2 algoritmos principais usados:
 \end_layout
 
+\begin_layout Itemize
+O primeiro algoritmo executa uma busca em largura usando um TAD auxiliar
+ Fila para enfileirar as arestas.
+ Inicialmente uma fila vazia é criada e o vértice um vértice com corpo de
+ bombeiros é enfileirado.
+ A partir desse vértice, todos os seus adjacentes que estão a uma distância
+ máxima 
+\emph on
+k
+\emph default
+ dele são enfileirados e marcados como visitados, e então o mesmo é feito
+ para cada vértice enfileirado.
+ Dessa forma, todos os vértices válidos são conhecidos.
+ Considerando que o grafo do problema foi representado em forma de lista
+ de adjacência, o pior caso é aquele em que todos os vértices e arestas
+ são explorados pelo algoritmo.
+ A complexidade de tempo pode ser representada pela expressão 
+\begin_inset Formula $O(|E|+|V|)$
+\end_inset
+
+, onde 
+\begin_inset Formula $|E|$
+\end_inset
+
+ é o tempo total gasto pelas operações sobre todas as arestas do grafo onde
+ cada operação requer um tempo constante 
+\begin_inset Formula $O(1)$
+\end_inset
+
+ sobre uma aresta, e 
+\begin_inset Formula $|V|$
+\end_inset
+
+ que significa o número de operações sobre todos os vértices que possui
+ uma complexidade constante 
+\begin_inset Formula $O(1)$
+\end_inset
+
+ para cada vértice uma vez que todo vértice é enfileirado e desenfileirado
+ uma unica vez.
+\end_layout
+
+\begin_layout Itemize
+O segundo algoritmo é o
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename grafico.png
+	scale 38
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gráfico representando a complexidade do programa
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Análise Teórica do Custo Assintótico de Espaço
+\end_layout
+
+\begin_layout Itemize
+Na busca em largura, quando o número de vértices no grafo é conhecido e
+ supondo-se a representação deste em listas de adjacência, a complexidade
+ de espaço do algoritmo pode ser representada por 
+\begin_inset Formula $O(|V|)$
+\end_inset
+
+onde 
+\begin_inset Formula $|V|$
+\end_inset
+
+ representa o número total de vértices no grafo.
 \end_layout
 
 \begin_layout Section

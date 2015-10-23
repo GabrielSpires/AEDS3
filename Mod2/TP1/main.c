@@ -9,7 +9,6 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	Heap meuHeap;
 	constroiHeap(&meuHeap, numQuarts);
  
-
  	int *antecessor  = (int*)	 malloc(numQuarts * sizeof(int));
 	int *caminho	 = (int*)	 malloc(numQuarts * sizeof(int));
 	int *visitado	 = (int*)	 calloc(numQuarts , sizeof(int));
@@ -26,58 +25,32 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	prob[origem] = 1; //A chance de nao pegar fogo no vertice de saida eh de 100%
 	i = origem;
 	iterador nodoAtual;
-	int printar = 0;
 	while(meuHeap.sizeHeap >= 0){
 		visitado[i] = 1;
 		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
-			if(printar == 1) printf("prob[i] = %lf\n", prob[i]);
-			if(printar == 1) printf("NodoAtual: %d\n", nodoAtual->key);
 			pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
-			if(printar == 1) printf("pN = %.2lf*%.2lf\n", (prob[i]), (1-nodoAtual->probFogo));
 			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
-				if(printar == 1) printf("+Inseriu: %d -> ProbN = %.2lf\n", nodoAtual->key, pN);
 				insereHeap(&meuHeap, pN, nodoAtual->key);
 				antecessor[nodoAtual->key] = i;
 				prob[nodoAtual->key] = pN;
 			}
 			else{
-				if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 
-				&&	meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo < prob[i]*(1-nodoAtual->probFogo)){
-				if(printar == 1) printf("ELSE %d\n", nodoAtual->key);
-				if(printar == 1) printf("ELSE posHeap: %d\n", meuHeap.posHeap[nodoAtual->key]);
-				if(printar == 1) printf("ELSE visitado: %d\n", visitado[nodoAtual->key]);
-				if(printar == 1) printf("ELSE validos: %d\n", vertsValidos[nodoAtual->key]);
-				if(printar == 1) printf("ELSE probs: %.2lf < %.2lf ?\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo, prob[i]*(1-nodoAtual->probFogo));
-				if(printar == 1) printf(">> ENTROU NO ELSE IF <<\n");
-					prob[nodoAtual->key] = prob[i]*(1-nodoAtual->probFogo);
-					meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = prob[i]*(1-nodoAtual->probFogo);
-				if(printar == 1) printf("Nova Prob do vertice %d: %.2lf\n", meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].quarteirao, meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo);
-					refazBaixoCima(&meuHeap, meuHeap.posHeap[nodoAtual->key]);
-					antecessor[nodoAtual->key] = i;
+				if(visitado[nodoAtual->key] == 0 
+					&& vertsValidos[nodoAtual->key] == 1 
+					&& meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo < prob[i]*(1-nodoAtual->probFogo)){
+						prob[nodoAtual->key] = prob[i]*(1-nodoAtual->probFogo);
+						meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = prob[i]*(1-nodoAtual->probFogo);
+						refazBaixoCima(&meuHeap, meuHeap.posHeap[nodoAtual->key]);
+						antecessor[nodoAtual->key] = i;
 				}
 			}
 		}
-		
-		if(printar == 1) printf("Heap -> [");
-		if(printar == 1) for(j=1; j <= meuHeap.sizeHeap; j++) printf("%d(%.2lf) ", meuHeap.vetor[j].quarteirao, meuHeap.vetor[j].probFogo);
-		if(printar == 1) printf("\b]\n");
 		i = retiraHeap(&meuHeap);
-		if(printar == 1) printf("-Retirou: %d pN = %.2lf\n\n", i, prob[i]);
-		//visitado[i] = 1;
-
 	}
-	// for(i=0; i<numQuarts; i++){
-	// 	printf("%d(%.2lf), ", i, prob[i]);
-	// }printf("\b\b\n");
 	j=1;
 	if(1.0-prob[c] == INF) printf("-1\n");
 	else{
-		// printf(">> ");
-		// for(i=0; i<numQuarts; i++){
-		// 	printf("%d ", antecessor[i]);
-		// }printf("\n");
 		printf("%.2lf", 1.0-prob[c]);
-
 		caminho[0] = c;
 
 		for(i = c; i != origem;){
