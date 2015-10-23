@@ -836,7 +836,7 @@ k
 \end_inset
 
  para cada vértice uma vez que todo vértice é enfileirado e desenfileirado
- uma unica vez.
+ uma única vez.
 \end_layout
 
 \begin_layout Itemize
@@ -851,57 +851,56 @@ Dijkstra
 \emph on
 Heap
 \emph default
- vazio é criado.
+ vazio é criado em 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+ São criados os vetores auxiliares que guardam os antecessores e as probabilidad
+es e seus valores iniciais são setados em 
+\begin_inset Formula $O(|V|)$
+\end_inset
+
+.
  No loop principal do 
 \emph on
 Dijsktra
 \emph default
  é testado se os vértices percorridos são válidos e se já foram visitados
- ou não, caso eles nao tenham sido visitados eles são inseridos no 
+ ou não, caso eles não tenham sido visitados eles são inseridos no 
 \emph on
 Heap
 \emph default
 , seu antecessor é setado como o vértice anterior e sua probabilidade é
  guardada no vetor de probabilidades.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename grafico.png
-	scale 38
-
+ Essa parte roda enquanto o 
+\emph on
+Heap
+\emph default
+ não estiver vazio, e como no pior caso o heap tera 
+\begin_inset Formula $V$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Gráfico representando a complexidade do programa
-\end_layout
-
+ elementos, essa parte roda em 
+\begin_inset Formula $O(|V|)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
+.
+ Dentro desse loop, um outro loop roda para percorrer a lista e inserir
+ as arestas no 
+\emph on
+heap, 
+\emph default
+cada vez que o algoritmo acha uma aresta válida e insere ela no heap é chamada
+ a função 
+\emph on
+refazBaixoCima()
+\emph default
+ que roda em 
+\begin_inset Formula $O(logV)$
 \end_inset
 
-
+, assim como quando um valor de probabilidade é atualizado.
 \end_layout
 
 \begin_layout Subsection
@@ -924,6 +923,42 @@ onde
 
 \begin_layout Section
 Análise Experimental do Custo Assintótico
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename grafico.png
+	scale 36
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gráfico representando a complexidade do programa
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

@@ -25,12 +25,12 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 	prob[origem] = 1; //A chance de nao pegar fogo no vertice de saida eh de 100%
 	i = origem;
 	iterador nodoAtual;
-	while(meuHeap.sizeHeap >= 0){
+	while(meuHeap.sizeHeap >= 0){ //v
 		visitado[i] = 1;
-		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){
+		for(nodoAtual = inicioLista(&verts[i]); nodoAtual != finalLista(&verts[i]); nodoAtual = nextLista(nodoAtual)){ //v
 			pN = (prob[i])*(1-nodoAtual->probFogo); //PN (0, 3, 4) = (PN (0, 3) ∗ PN (3, 4))
 			if(visitado[nodoAtual->key] == 0 && vertsValidos[nodoAtual->key] == 1 && meuHeap.posHeap[nodoAtual->key] == -1){
-				insereHeap(&meuHeap, pN, nodoAtual->key);
+				insereHeap(&meuHeap, pN, nodoAtual->key); //logv
 				antecessor[nodoAtual->key] = i;
 				prob[nodoAtual->key] = pN;
 			}
@@ -40,7 +40,7 @@ void dijkstra(lista* verts, int origem, int numQuarts, int *vertsValidos, int c)
 					&& meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo < prob[i]*(1-nodoAtual->probFogo)){
 						prob[nodoAtual->key] = prob[i]*(1-nodoAtual->probFogo);
 						meuHeap.vetor[meuHeap.posHeap[nodoAtual->key]].probFogo = prob[i]*(1-nodoAtual->probFogo);
-						refazBaixoCima(&meuHeap, meuHeap.posHeap[nodoAtual->key]);
+						refazBaixoCima(&meuHeap, meuHeap.posHeap[nodoAtual->key]);//logv
 						antecessor[nodoAtual->key] = i;
 				}
 			}
