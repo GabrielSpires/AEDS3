@@ -693,7 +693,56 @@ O
 \emph on
 Dijsktra
 \emph default
- recebe o grafo como parâmetro
+ recebe como parâmetro o grafo em forma de lista de adjacência, o vértice
+ de origem, o número de quarteirões, o vetor de vértices válidos gerado
+ pela busca em largura e o número do vértice de chegada.
+ Na função os vértices válidos são percorridos a fim de se encontrar o melhor
+ caminho entre o vértice de origem e o de chegada.
+ Nessa função, cada vez que se chega até um vértice todas as suas arestas
+ são inseridas em um 
+\emph on
+Heap
+\emph default
+ na forma de 
+\begin_inset Formula $P_{N}$
+\end_inset
+
+, ou melhor, 
+\begin_inset Formula $P(s,u)*(1-P(u,v))$
+\end_inset
+
+, sendo que 
+\emph on
+s 
+\emph default
+é o vértice de saída, 
+\emph on
+u
+\emph default
+ é o vértice atual e 
+\emph on
+v
+\emph default
+ é o próximo vértice a ser percorrido.
+ Esta probabilidade representa a chance de não haver incêndio no caminho
+ até a origem.
+ Desta forma é possível saber qual aresta percorrer em 
+\emph on
+O(1)
+\emph default
+ já que basta apenas retirar a maior aresta do Heap (Max-Heap) e seguir
+ a partir dela repetindo o processo até que se ache a solução.
+\end_layout
+
+\begin_layout Standard
+Ao final do algoritmo, a maior probabilidade de não haver incêndio é armazenada
+ na posição de um vetor de probabilidades referente ao vértice de chegada.
+ Essa posição é então exibida na tela no formato 
+\begin_inset Formula $1-prob[c]$
+\end_inset
+
+, que representa a probabilidade de incêndio no melhor caminho possível
+ até o vértice de chegada.
 \end_layout
 
 \begin_layout Section
