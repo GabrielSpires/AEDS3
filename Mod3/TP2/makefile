@@ -1,25 +1,34 @@
 tp2: main.c
 	gcc -g -Wall -o tp2 main.c
 
-p:
+pd:
+	reset
+	gcc -g -Wall -o tp2 main.c
 	./tp2 -PD
 
-g:
+ag:
+	reset
+	gcc -g -Wall -o tp2 main.c
 	./tp2 -AG
 
-f:
+fb:
+	reset
+	gcc -g -Wall -o tp2 main.c
 	./tp2 -FB
 
-valp:
+valpd:
 	reset
+	gcc -g -Wall -o tp2 main.c
 	valgrind --leak-check=full --track-origins=yes ./tp2 -PD
 
-valg:
+valag:
 	reset
+	gcc -g -Wall -o tp2 main.c
 	valgrind --leak-check=full --track-origins=yes ./tp2 -AG
 
-valf:
+valfb:
 	reset
+	gcc -g -Wall -o tp2 main.c
 	valgrind --leak-check=full --track-origins=yes ./tp2 -FB
 
 clean:
