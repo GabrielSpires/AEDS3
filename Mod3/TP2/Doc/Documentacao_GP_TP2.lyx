@@ -94,7 +94,27 @@ Introdução
 \end_layout
 
 \begin_layout Standard
-
+Após 30 anos de paz na galáxia, o lado negro da força planeja seu retorno
+ e você como o novo Lord Sith planeja reconquistar a galáxia, vingar a morte
+ de seu mestre Darth Vader e terminar o que ele começou.
+ O problema proposto consiste em conquistar um número 
+\emph on
+k
+\emph default
+ de planetas usando a sua nova super arma galática, a Estrela da Morte III.
+ Com um mapa da galáxia em mãos é possível criar uma rota que começa no
+ ponto atual da Estrela da Morte III, passa por todos os planetas que podem
+ ser conquistados nas proximidades contando com o valor da distância entre
+ eles e terminando em um ponto de chegada.
+ Como a nova estação do império ainda esta em fase de testes, é necessário
+ conquistar os planetas usando o minimo de recursos possível, ou seja, se
+ deslocando o mínimo possível entre cada planeta.
+ Usando a rota traçada entre os planetas a serem conquistados, 
+\emph on
+k 
+\emph default
+planetas devem ser escolhidos para se conquistar de modo que a sub-distância
+ mínima do percurso seja minimizada.
 \end_layout
 
 \begin_layout Section
