@@ -32,7 +32,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
@@ -60,9 +60,9 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 3cm
+\leftmargin 2.5cm
 \topmargin 3cm
-\rightmargin 3cm
+\rightmargin 2.5cm
 \bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
@@ -135,6 +135,67 @@ Análise Teórica do Custo Assintótico de Espaço
 
 \begin_layout Section
 Análise Experimental do Custo Assintótico
+\end_layout
+
+\begin_layout Standard
+Para fazer a análise experimental do programa, foi criado um outro programa
+ que gera arquivos de entrada compatíveis de tamanhos variados de forma
+ que a diferença do tempo de execução com entradas diferentes possa ser
+ medido.
+ Para não levar em consideração o tempo que se leva para digitar a entrada
+ no tempo de execução do programa, a entrada foi lida diretamente dos arquivos.
+ Para se medir o tempo de execução do programa foi usado o comando 
+\emph on
+time
+\emph default
+ que ao final da execução do programa grava na saída padrão (
+\emph on
+stdout
+\emph default
+) estatísticas de tempo sobre o programa executado.
+\end_layout
+
+\begin_layout Standard
+Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.10.
+ O computador utilizado tem um processador AMD Phenom II X4 965 3.40GHz e
+ 8GB de memória, porém, a máquina virtual utiliza apenas um núcleo do processado
+r e 2GB de RAM.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Grafico.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gráfico da análise experimental
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
