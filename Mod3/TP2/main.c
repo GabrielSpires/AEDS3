@@ -40,7 +40,7 @@ int main(int argc, char const *argv[]){
 			printf("%d |", i);
 			for(j=0; j<n; j++){
 				if(dist[i][j] != 0) printf("%2d |", dist[i][j]);
-				else printf("%2d |", dist[i][j]);
+				else printf("   |");
 			}printf("\n  +");
 			for(m=0; m<n; m++) printf("---+");
 			printf("\n");

@@ -33,7 +33,7 @@ sftp-config.json
 *.lyx~
 *.lyx#
 <<<<<<< HEAD
-*.pdf
+#*.pdf
 =======
 >>>>>>> f87061d605aef2479b9d3b98239945b6730530e0
 

@@ -82,7 +82,11 @@
 \begin_body
 
 \begin_layout Title
-Trabalho Prático 2: The Force Awakens
+
+\series bold
+Trabalho Prático 2:
+\series default
+ The Force Awakens
 \end_layout
 
 \begin_layout Author
@@ -121,16 +125,61 @@ planetas devem ser escolhidos para se conquistar de modo que a sub-distância
 Solução do Problema
 \end_layout
 
+\begin_layout Standard
+O problema proposto foi resolvido utilizando três paradigmas de programação,
+ sendo eles força bruta, programação dinâmica e um algoritmo guloso.
+\end_layout
+
+\begin_layout Subsection
+Força Bruta
+\end_layout
+
+\begin_layout Subsection
+Programação Dinâmica
+\end_layout
+
+\begin_layout Subsection
+Algoritmo Guloso
+\end_layout
+
 \begin_layout Section
 Análise Teórica do Custo Assintótico
+\end_layout
+
+\begin_layout Standard
+A complexidade assintótica do programa será discutida na subseção abaixo.
 \end_layout
 
 \begin_layout Subsection
 Análise Teórica do Custo Assintótico de Tempo
 \end_layout
 
+\begin_layout Subsubsection
+Força Bruta
+\end_layout
+
+\begin_layout Subsubsection
+Programação Dinâmica
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmo Guloso
+\end_layout
+
 \begin_layout Subsection
 Análise Teórica do Custo Assintótico de Espaço
+\end_layout
+
+\begin_layout Subsubsection
+Força Bruta
+\end_layout
+
+\begin_layout Subsubsection
+Programação Dinâmica
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmo Guloso
 \end_layout
 
 \begin_layout Section
@@ -164,13 +213,16 @@ r e 2GB de RAM.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename Grafico.pdf
+	scale 130
 
 \end_inset
 
