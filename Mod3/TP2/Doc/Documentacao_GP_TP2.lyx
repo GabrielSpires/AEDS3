@@ -142,6 +142,60 @@ Programação Dinâmica
 Algoritmo Guloso
 \end_layout
 
+\begin_layout Standard
+Na solução gulosa foi utilizado um vetor para guardar as distâncias a serem
+ percorridas.
+ Nesse vetor cada posição representa um estágio do caminho a ser percorrido
+ pela nave, sendo que a posição 
+\begin_inset Formula $0$
+\end_inset
+
+ é referente ao início do caminho e a posição 
+\begin_inset Formula $n+2$
+\end_inset
+
+ representa o final do caminho.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename entrada.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Formatação da entrada
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Análise Teórica do Custo Assintótico
 \end_layout
@@ -222,7 +276,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Grafico.pdf
-	scale 130
+	scale 70
 
 \end_inset
 
