@@ -510,7 +510,21 @@ Força Bruta
 \end_layout
 
 \begin_layout Standard
+O algoritmo de força bruta gera todas as combinações possíveis de escolhas
+ de planetas, dessa forma a complexidade dessa implementação tende a ser
+ 
+\begin_inset Formula $O(n!)$
+\end_inset
 
+ já que uma combinação 
+\begin_inset Formula $\binom{n}{k}$
+\end_inset
+
+ gera 
+\begin_inset Formula $\frac{n!}{(n-k)!*k!}$
+\end_inset
+
+ vetores diferentes que tem de ser verificados.
 \end_layout
 
 \begin_layout Subsubsection
@@ -736,6 +750,17 @@ Programação Dinâmica
 
 \begin_layout Section
 Conclusão
+\end_layout
+
+\begin_layout Standard
+Neste trabalho foi resolvido o problema de otimização da sub-distância máxima
+ em uma rota de planetas a serem conquistados.
+ O problema proposto foi resolvido usando diferentes paradigmas de programação
+ que mostraram se comportar de maneiras bem diferentes uns dos outros, chegando
+ até a não mostrar a solução ótima sempre como no caso do algoritmo guloso.
+ Isso nos mostra que ao se resolver um problema é essencial saber qual paradigma
+ usar, uma vez que nem todos os paradigmas servem para resolver todos os
+ tipos de problemas.
 \end_layout
 
 \end_body
