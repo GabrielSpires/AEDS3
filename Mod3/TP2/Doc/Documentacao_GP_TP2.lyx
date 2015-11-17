@@ -127,15 +127,8 @@ Solução do Problema
 
 \begin_layout Standard
 O problema proposto foi resolvido utilizando três paradigmas de programação,
- sendo eles força bruta, programação dinâmica e um algoritmo guloso.
-\end_layout
-
-\begin_layout Subsection
-Força Bruta
-\end_layout
-
-\begin_layout Subsection
-Programação Dinâmica
+ sendo eles força bruta, programação dinâmica e um algoritmo guloso, que
+ são explicados abaixo.
 \end_layout
 
 \begin_layout Subsection
@@ -184,10 +177,6 @@ Formatação da entrada
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -258,15 +247,26 @@ vezes, o vetor final é obtido.
  Mas o algoritmo guloso não da a solução ótima em todos os testes.
  Como a melhor decisão disponível no momento é sempre tomada, em um caso
  onde conquistar um planeta seja a melhor estratégia ao invés de pulá-lo,
- o algoritmo guloso pode vir a mostrar uma solução não ótima.
+ o algoritmo guloso pode vir a mostrar uma solução não ótima, já que uma
+ vez tomada uma decisão por ele não é possível voltar atrás.
  Assim como mostrado na Figura 3, no passo onde o guloso falha a melhor
  estratégia seria pular a posição de valor 4 e somar 3 com 11, mas o que
- ele faz na verdade é somar 4 com 3 e depois 11 com 7, dando a resposta
- 18 quando a solução ótima é na verdade 15.
+ ele faz na verdade é somar 4 com 3, o que parece ser a melhor solução no
+ momento, e depois soma 11 com 7, dando a resposta 18 quando a solução ótima
+ é na verdade 15.
+ Então se pode perceber que quando uma soluçao aparentemente ótima no momento
+ aparece no vetor antes da solução ótima de fato, o algoritmo guloso falha,
+ já que uma de suas características é nunca ter que reconsiderar suas escolhas
+ anteriores por supor que as soluções ótimas no momento são de fato parte
+ da solução final.
+ O problema proposto também não é ideal para ser resolvido com um algortimo
+ guloso, uma vez que a solução ótima para o problema nem sempre contém as
+ soluções ótimas para os sub-problemas, assim como mostrado na Figura 3.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -293,13 +293,140 @@ Caso de teste em que o algoritmo guloso falha
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
+
+\begin_layout Subsection
+Força Bruta
+\end_layout
+
+\begin_layout Standard
+Na força bruta, todas as possibilidades de escolha foram levadas em consideração
+, assim ao se testar todos os casos, algum deles deve ser a solução ótima
+ e a resposta será encontrada.
+ Como na entrada são dados o número de planetas e a quantidade de planetas
+ a serem escolhidos, os casos podem ser gerados ao se fazer a combinação
+ utilizando esses números.
+ Usando como referência a entrada da Figura 1, a combinação usada pode ser
+ representada pela fórmula e pela tabela abaixo:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula 
+\[
+\binom{n}{k}=\frac{n!}{(n-k)!*k!}
+\]
 
 \end_inset
 
 
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Combinação
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maior sub-distância
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+{1,2}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+{1,3}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+{2,3}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada combinação gerada é jogada em um vetor que representa as posições que
+ devem ser visitadas no vetor de distâncias.
+ Para cada combinação gerada, um teste é feito para achar a maior sub-distância
+ possível fazendo a escolha gerada e o valor encontrado é jogado em uma
+ váriável.
+ Depois que todas as combinações são geradas e testadas, a menor maior sub-distâ
+ncia de todos os testes é exibida como resultado.
+\end_layout
+
+\begin_layout Subsection
+Programação Dinâmica
 \end_layout
 
 \begin_layout Section
@@ -315,15 +442,79 @@ Análise Teórica do Custo Assintótico de Tempo
 \end_layout
 
 \begin_layout Subsubsection
+Algoritmo Guloso
+\end_layout
+
+\begin_layout Standard
+No algoritmo guloso existe um loop que controla quantos planetas deverão
+ ser ignorados no trajeto que roda 
+\emph on
+n-k 
+\emph default
+vezes já que esse é o número de distâncias que deverão ser somadas, então
+ 
+\begin_inset Formula $O(n-k)$
+\end_inset
+
+.
+ Dentro desse loop um outro laço vai de 1 até 
+\emph on
+numPlanetas-1
+\emph default
+, e como o vetor de distâncias tem 
+\emph on
+n+2
+\emph default
+ posições pode-se dizer que o laço roda n vezes, então 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+ Dentro do mesmo loop existe um 
+\emph on
+for 
+\emph default
+que roda da posição a ser somada até o fim do vetor, fazendo o deslocamento
+ necessário.
+ No pior caso esse loop rodará o vetor todo que tem 
+\begin_inset Formula $n+2$
+\end_inset
+
+ posições, então 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+ Fora de todos os loops existe um último 
+\emph on
+for 
+\emph default
+que roda o vetor todo à procura da maior sub-distância contida nele que
+ também roda em 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Desta forma podemos concluir que o algoritmo guloso roda em 
+\begin_inset Formula $O(n+k)*(O(n)+O(n))+O(n)=O(2n\text{²}+2nk+n)=O(n\text{²})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Força Bruta
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsubsection
 Programação Dinâmica
-\end_layout
-
-\begin_layout Subsubsection
-Algoritmo Guloso
 \end_layout
 
 \begin_layout Subsection
@@ -334,12 +525,53 @@ Análise Teórica do Custo Assintótico de Espaço
 Força Bruta
 \end_layout
 
+\begin_layout Standard
+O algoritmo de força bruta utiliza um vetor que guarda as combinações com
+ 
+\emph on
+k 
+\emph default
+posições, um vetor de índices com 
+\emph on
+n 
+\emph default
+posições que serve como referencia para a combinação, um vetor que guarda
+ as posições a visitar ou não com 
+\emph on
+n 
+\emph default
+posições e um vetor auxiliar também com 
+\emph on
+n 
+\emph default
+posições.
+ Então a complexidade de espaço do algoritmo força bruta é de 
+\begin_inset Formula $O(k+n+n+n)=O(3n+k)=O(n+k)$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsubsection
 Programação Dinâmica
 \end_layout
 
 \begin_layout Subsubsection
 Algoritmo Guloso
+\end_layout
+
+\begin_layout Standard
+O único recurso relevante que o algoritmo guloso utiliza é um vetor de inteiros
+ com 
+\emph on
+n+2
+\emph default
+ posições que guarda as distâncias entre os planetas, então o custo assintótico
+ de espaço pode ser considerado como 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -353,15 +585,26 @@ Para fazer a análise experimental do programa, foi criado um outro programa
  medido.
  Para não levar em consideração o tempo que se leva para digitar a entrada
  no tempo de execução do programa, a entrada foi lida diretamente dos arquivos.
- Para se medir o tempo de execução do programa foi usado o comando 
+ Para medir o tempo de execução do programa foi usada a biblioteca 
 \emph on
-time
+time.h
 \emph default
- que ao final da execução do programa grava na saída padrão (
+.
+ Ao se criar uma variável do tipo 
 \emph on
-stdout
+clock_t
 \emph default
-) estatísticas de tempo sobre o programa executado.
+ e atribuindo à ela o valor que a função 
+\emph on
+clock()
+\emph default
+ retorna, o número de clocks necessários para executar o código pode ser
+ obtido e exibido ao se transformar esse valor em um float e dividi-lo pela
+ constante 
+\emph on
+CLOCKS_PER_SEC
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -371,18 +614,41 @@ Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.10.
 r e 2GB de RAM.
 \end_layout
 
+\begin_layout Subsection
+Algoritmo Guloso
+\end_layout
+
+\begin_layout Standard
+No teste do algoritmo guloso foram criados arquivos de entrada variando
+ tanto o total de planetas quanto o número de planetas a se conquistar.
+ O total de planetas em uma entrada variou de 1000 a 5000 com um intervalo
+ de 100 planetas entre cada ponto e na outra entrada o número de planetas
+ foi mantido constante em 5000 e o número de planetas a se conquistar variou
+ de 200 a 5000.
+ Pode-se notar que quanto mais planetas devem ser visitados, mais rápido
+ é o algoritmo guloso, já que serão feitas menos operações no vetor como
+ somar as distâncias e deslcar suas posições.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Grafico.pdf
-	scale 70
+	filename guloso.pdf
+	scale 65
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename guloso_k.pdf
+	scale 65
 
 \end_inset
 
@@ -393,8 +659,54 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Gráfico da análise experimental
+Gráfico da Análise assintótica de tempo do algoritmo guloso
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Força Bruta
+\end_layout
+
+\begin_layout Standard
+Para testar o tempo de execução do algoritmo força bruta, foi gerado um
+ arquivo de entrada em que o número de planetas total varia de 0 a 25 com
+ a quantidade a se conquistar fixada em 2, e outro onde o número de planetas
+ a se conquistar varia de 2 a 7 e o número de planetas total fica fixo em
+ 40.
+ Os gráficos abaixo demonstram o comportamento fatorial do algoritmo, por
+ esse motivo não foi possível testar com um número maior de planetas a se
+ conquistar (gráfico da direita) já que o algoritmo não é muito eficiente
+ e demora muito a rodar a medida que mais combinações tem que ser feitas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename forcabruta.pdf
+	scale 65
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename forcabruta_k.pdf
+	scale 65
 
 \end_inset
 
@@ -402,12 +714,24 @@ Gráfico da análise experimental
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gráfico da Análise assintótica de tempo do algoritmo força bruta
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Programação Dinâmica
 \end_layout
 
 \begin_layout Section

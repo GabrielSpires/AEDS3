@@ -61,23 +61,29 @@ int main(int argc, char const *argv[]){
   	while(n--){
   		scanf("%d %d", &c, &s);
   		saidaAnt = 0;
-  		while(tamPilha(&minhaPilha) > 0 && c >= topoPilha(&minhaPilha)){
-  			if(topoPilha(&minhaPilha) >= saidaAnt && aux) aux = 1; //Sim
-  			else aux = 0; //Nao
-  			saidaAnt = topoPilha(&minhaPilha);
+  		while(tamPilha(&minhaPilha) > 0 && topoPilha(&minhaPilha) <= c){ //Tamanho da pilha > 0 e Saida do anterior menor que chegada do atual
+  			if(topoPilha(&minhaPilha) >= saidaAnt && aux) //Saida do topo >= saída do que tava em cima && não falhou
+          aux = 1; //Sim
+  			else
+          aux = 0; //Nao
+  			saidaAnt = topoPilha(&minhaPilha); //Recebe a saida do que vai ser desempilhado
   			desempilha(&minhaPilha);
   		}
 
-  		if(tamPilha(&minhaPilha) < k && aux) aux = 1; //Sim
-  		else aux = 0; //Nao
+  		if(tamPilha(&minhaPilha) < k && aux) //Tamanho da pilha < capacidade && não falhou
+        aux = 1; //Sim
+  		else
+        aux = 0; //Nao
   		empilha(c, s, &minhaPilha);
   	}
 
   	saidaAnt = 0;
   	while(tamPilha(&minhaPilha) > 0){
-  		if(topoPilha(&minhaPilha) >= saidaAnt && aux) aux = 1;
-			else aux = 0;
-			saidaAnt = topoPilha(&minhaPilha);
+  		if(topoPilha(&minhaPilha) >= saidaAnt && aux) //Saida do topo >= saída do de cima && não falhou
+        aux = 1;
+			else
+        aux = 0;
+			saidaAnt = topoPilha(&minhaPilha); //Recebe a saida do que vai ser desempilhado
 			desempilha(&minhaPilha);
   	}
 

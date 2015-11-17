@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "ag.h"
 #include "fb.h"
 #include "pd.h"
 
 int main(int argc, char const *argv[]){
+	// clock_t tempo;
+	// tempo = clock();
 	int t, //num de instancias
 		n, //planetas consecutivos de uma rota
 		k, //num de planetas a serem reconquistados
@@ -62,9 +65,8 @@ int main(int argc, char const *argv[]){
 				printf("\n");
 			}
 		}
-		
 		if(!strcmp(argv[1], "-a") && !strcmp(argv[2], "PD")){
-			printf("Executar PD\n");
+			// printf("Executar PD\n");
 		}else if(!strcmp(argv[1], "-a") && !strcmp(argv[2], "AG")){
 			// printf("Executar AG\n");
 			ag(n, k, distVetor);
@@ -77,6 +79,8 @@ int main(int argc, char const *argv[]){
 		for(i=0; i<n; i++) free(distMatriz[i]);
 		free(distMatriz);
 	}
+	// tempo = clock() - tempo;
+	// printf("%f\n", (float)tempo/CLOCKS_PER_SEC);	
 
 	return 0;
 }

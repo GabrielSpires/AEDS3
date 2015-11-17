@@ -1,5 +1,5 @@
-tp2: main.c
-	gcc -Wall -o tp2 main.c ag.c fb.c pd.c
+tp2: main.c ag.c fb.c pd.c
+	gcc -o tp2 main.c ag.c fb.c pd.c
 
 pd:
 	reset
