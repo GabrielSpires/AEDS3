@@ -196,6 +196,66 @@ Formatação da entrada
 
 \end_layout
 
+\begin_layout Standard
+Inicialmente a menor sub-distância escolhida é a distância do início ao
+ planeta 2, ou seja, a soma das posições 1 e 2 do vetor.
+ O índice 
+\emph on
+k 
+\emph default
+da primeira posição a ser somada também é guardado para que depois seja
+ possível saber onde no vetor alterar os valores e a partir de qual posição
+ deslocar as posições das demais distâncias.
+ Depois de escolher a menor sub-distância inicial, o vetor é percorrido
+ à procura de uma soma que seja menor do que a escolhida anteriormente,
+ isso indicaria que a sub-distância anterior não é a melhor no momento e
+ então ela é substituída pela nova encontrada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename guloso_vetor.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Teste de sub-distâncias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Depois de percorrer o vetor de distâncias e somar as menores sub-distâncias
+ 
+\emph on
+n-k 
+\emph default
+vezes, o vetor final é obtido.
+ O maior valor contido nesse vetor representa a maior sub-distância possível.
+\end_layout
+
 \begin_layout Section
 Análise Teórica do Custo Assintótico
 \end_layout
