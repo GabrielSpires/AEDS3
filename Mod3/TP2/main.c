@@ -4,7 +4,6 @@
 #include "ag.h"
 #include "fb.h"
 #include "pd.h"
-#define INF 1.0/0.0
 
 int main(int argc, char const *argv[]){
 	int t, //num de instancias

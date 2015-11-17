@@ -28,7 +28,7 @@ void ag(int numPlanetas, int aConquistar, int *distVetor){
 			}			
 			j++;
 		}
-
+		// printf("Somou %d com %d\n", distVetor[k], distVetor[k+1]);
 		//Coloca a soma (menor sub-distancia encontrada) na posiçao k do vetor
 		distVetor[k] = menorSubDist;
 

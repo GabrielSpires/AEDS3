@@ -217,7 +217,7 @@ da primeira posição a ser somada também é guardado para que depois seja
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -253,7 +253,53 @@ Depois de percorrer o vetor de distâncias e somar as menores sub-distâncias
 n-k 
 \emph default
 vezes, o vetor final é obtido.
- O maior valor contido nesse vetor representa a maior sub-distância possível.
+ O maior valor contido nesse vetor representa a maior sub-distância possível
+ que é a resposta para o problema.
+ Mas o algoritmo guloso não da a solução ótima em todos os testes.
+ Como a melhor decisão disponível no momento é sempre tomada, em um caso
+ onde conquistar um planeta seja a melhor estratégia ao invés de pulá-lo,
+ o algoritmo guloso pode vir a mostrar uma solução não ótima.
+ Assim como mostrado na Figura 3, no passo onde o guloso falha a melhor
+ estratégia seria pular a posição de valor 4 e somar 3 com 11, mas o que
+ ele faz na verdade é somar 4 com 3 e depois 11 com 7, dando a resposta
+ 18 quando a solução ótima é na verdade 15.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename guloso_falha.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de teste em que o algoritmo guloso falha
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
