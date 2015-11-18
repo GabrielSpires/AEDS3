@@ -118,7 +118,7 @@ k
 k 
 \emph default
 planetas devem ser escolhidos para se conquistar de modo que a sub-distância
- mínima do percurso seja minimizada.
+ máxima do percurso seja minimizada.
 \end_layout
 
 \begin_layout Section
@@ -126,9 +126,8 @@ Solução do Problema
 \end_layout
 
 \begin_layout Standard
-O problema proposto foi resolvido utilizando três paradigmas de programação,
- sendo eles força bruta, programação dinâmica e um algoritmo guloso, que
- são explicados abaixo.
+O problema proposto foi resolvido utilizando diferentes paradigmas de programaçã
+o que são explicados abaixo.
 \end_layout
 
 \begin_layout Subsection
@@ -419,14 +418,9 @@ Maior sub-distância
 Cada combinação gerada é jogada em um vetor que representa as posições que
  devem ser visitadas no vetor de distâncias.
  Para cada combinação gerada, um teste é feito para achar a maior sub-distância
- possível fazendo a escolha gerada e o valor encontrado é jogado em uma
- váriável.
+ possível e o valor encontrado é jogado em uma váriável.
  Depois que todas as combinações são geradas e testadas, a menor maior sub-distâ
-ncia de todos os testes é exibida como resultado.
-\end_layout
-
-\begin_layout Subsection
-Programação Dinâmica
+ncia de todos os testes é exibida como solução.
 \end_layout
 
 \begin_layout Section
@@ -511,8 +505,39 @@ Força Bruta
 
 \begin_layout Standard
 O algoritmo de força bruta gera todas as combinações possíveis de escolhas
- de planetas, dessa forma a complexidade dessa implementação tende a ser
- 
+ de planetas e para cada escolha, uma função roda para encontrar a maior
+ sub-distância possível.
+ Nessa função existe um loop para popular o vetor de distâncias auxiliar
+ que roda em 
+\begin_inset Formula $O(n)$
+\end_inset
+
+, em paralelo a esse loop existe um outro que roda também em 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ que é usado para percorrer o vetor de distancias.
+ Dentro desse loop um outro loop roda toda vez que um planeta a ser ignorado
+ é encontrado, esse loop no pior caso também roda em 
+\begin_inset Formula $O(n).$
+\end_inset
+
+ No final da função um loop é usado para achar a maior sub-distância no
+ vetor, esse loop também roda em 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+ Então essa parte do algoritmo roda em 
+\begin_inset Formula $O(n)+O(n)*O(n)+O(n)=O(n\text{²})+O(2n)=O(n\text{²})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Como a parte do algoritmo analisada acima roda uma vez para cada combinação,
+ a complexidade dessa implementação tende a ser 
 \begin_inset Formula $O(n!)$
 \end_inset
 
@@ -525,10 +550,6 @@ O algoritmo de força bruta gera todas as combinações possíveis de escolhas
 \end_inset
 
  vetores diferentes que tem de ser verificados.
-\end_layout
-
-\begin_layout Subsubsection
-Programação Dinâmica
 \end_layout
 
 \begin_layout Subsection
@@ -564,10 +585,6 @@ posições.
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Subsubsection
-Programação Dinâmica
 \end_layout
 
 \begin_layout Subsubsection
@@ -744,10 +761,6 @@ Gráfico da Análise assintótica de tempo do algoritmo força bruta
 
 \end_layout
 
-\begin_layout Subsection
-Programação Dinâmica
-\end_layout
-
 \begin_layout Section
 Conclusão
 \end_layout
@@ -757,7 +770,7 @@ Neste trabalho foi resolvido o problema de otimização da sub-distância máxim
  em uma rota de planetas a serem conquistados.
  O problema proposto foi resolvido usando diferentes paradigmas de programação
  que mostraram se comportar de maneiras bem diferentes uns dos outros, chegando
- até a não mostrar a solução ótima sempre como no caso do algoritmo guloso.
+ até a não mostrar a solução ótima sempre, como no caso do algoritmo guloso.
  Isso nos mostra que ao se resolver um problema é essencial saber qual paradigma
  usar, uma vez que nem todos os paradigmas servem para resolver todos os
  tipos de problemas.
