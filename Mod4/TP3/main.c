@@ -1,53 +1,49 @@
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
-#include <semaphore.h>
+// #include <semaphore.h>
 #include <stdlib.h>
-
-#define true 1
-#define false 0
-typedef int bool;
 
 // int cmpInt(const void* a, const void* b){
 //   return *(int*)a - *(int*)b;
 // }
 
-bool isSubsetSum(int set[], int n, int sum)
-{
-    // The value of subset[i][j] will be true if there is a subset of set[0..j-1]
-    //  with sum equal to i
-    bool subset[sum+1][n+1];
+int achaSoma(int valores[], int qtdV, int soma){
+	int **subConjunto;
+	int i, j;
+
+	subConjunto = (int**)malloc((qtdV+1) * sizeof(int*));
+	for(i=0; i<=qtdV; i++) subConjunto[i] = (int*)calloc((soma+1), sizeof(int));
+
+	// Se a soma não for zero e o conjunto for vazio o resultado é 0
+	for(i=1; i<=soma; i++){
+		subConjunto[0][i] = 0;
+	}
+
+	/*Se a soma for 0, então o resultado é 1 uma vez que
+	em sub-conjuntos vazios a soma é zero*/
+	for(i=0; i<=qtdV; i++){
+		subConjunto[i][0] = 1;
+	}
  
-    // If sum is 0, then answer is true
-    for (int i = 0; i <= n; i++)
-      subset[0][i] = true;
- 
-    // If sum is not 0 and set is empty, then answer is false
-    for (int i = 1; i <= sum; i++)
-      subset[i][0] = false;
- 
-     // Fill the subset table in botton up manner
-     for (int i = 1; i <= sum; i++)
-     {
-       for (int j = 1; j <= n; j++)
-       {
-         subset[i][j] = subset[i][j-1];
-         if (i >= set[j-1])
-           subset[i][j] = subset[i][j] || subset[i - set[j-1]][j-1];
-       }
-     }
- 
-    /*
-    // uncomment this code to print table
-     for (int i = 0; i <= sum; i++)
-     {
-       for (int j = 0; j <= n; j++)
-          printf ("%4d", subset[i][j]);
-       printf("\n");
-     }
-     */
- 
-     return subset[sum][n];
+	// Preenche a matriz de subConjuntos
+	for(i=1; i<=qtdV; i++){
+		for(j=1; j<=soma; j++){
+			subConjunto[i][j] = subConjunto[i-1][j];
+
+			if(j >= valores[i-1]){
+				subConjunto[i][j] = subConjunto[i][j] || subConjunto[i-1][j- valores[i-1]];
+			}
+		}
+	}
+
+	// Joga o resultado em uma variável e da free na matriz
+	int resultado = subConjunto[qtdV-1][soma];
+
+	for(i=0; i<qtdV; i++) free(subConjunto[i]);
+	free(subConjunto);
+
+	return resultado;
 }
 
 int main(int argc, char const *argv[]){
@@ -78,7 +74,7 @@ int main(int argc, char const *argv[]){
 				continue;
 			}
 
-			if(isSubsetSum(valores, qtdV, soma))
+			if(achaSoma(valores, qtdV, soma)) //O(( qtdV+1)*(soma+1) )
 				printf("sim\n");
 			else
 				printf("nao\n");

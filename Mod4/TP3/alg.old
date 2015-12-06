@@ -1,0 +1,42 @@
+
+
+// int achaSoma(int valores[], int qtdV, int soma){
+// 	int **subConjunto;
+// 	int i, j;
+
+// 	subConjunto = (int**)malloc((soma+1) * sizeof(int*));
+// 	for(i=0; i<soma+1; i++) subConjunto[i] = (int*)malloc((qtdV+1) * sizeof(int));
+
+// 	// Se a soma não for zero e o conjunto for vazio o resultado é 0
+// 	for(i=1; i<=soma; i++){
+// 		subConjunto[i][0] = 0;
+// 	}
+
+// 	/*Se a soma for 0, então o resultado é 1 uma vez que
+// 	em sub-conjuntos vazios a soma é zero*/
+// 	for(i=0; i<=qtdV; i++){
+// 		subConjunto[0][i] = 1;
+// 	}
+ 
+// 	// Preenche a tabela do subConjunto de baixo para cima
+// 	for(i=1; i<=soma; i++){
+// 		for(j=1; j<=qtdV; j++){
+// 			subConjunto[i][j] = subConjunto[i][j-1];
+// 			if(i >= valores[j-1])
+// 				subConjunto[i][j] = subConjunto[i][j-1] || subConjunto[i - valores[j-1]][j-1];
+// 		}
+// 	}
+
+// 	for (int i = 0; i <= soma; i++)
+//      {
+//        for (int j = 0; j <= qtdV; j++)
+//           printf ("%4d", subConjunto[i][j]);
+//        printf("\n");
+//      }
+ 
+// 	int resultado = subConjunto[soma][qtdV];
+// 	for(i=0; i<soma+1; i++) free(subConjunto[i]);
+// 	free(subConjunto);
+
+// 	return resultado;
+// }
