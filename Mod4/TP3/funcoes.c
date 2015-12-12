@@ -1,8 +1,8 @@
 #include "funcoes.h"
 
-// int cmpInt(const void* a, const void* b){
-//   return *(int*)a - *(int*)b;
-// }
+int cmpInt(const void* a, const void* b){
+  return *(int*)a - *(int*)b;
+}
 
 int achaSomaPD(int valores[], int qtdV, int soma){
 	int **subConjunto;
