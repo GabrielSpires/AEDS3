@@ -1,0 +1,33 @@
+[topazio:~/work/courses/aeds3/threads/quick ]QuickParallel -n 10000000
+4 processo(s) foi(ram) usado(s)
+Tamanho maximo da pilha: 170
+
+ 0 proc   10625 particoes
+ 0 Execucao    96.102220 usr:    20.900000000 sys:     0.140000000
+ 0 Insercao    40.911457 usr:     8.960000000 sys:     0.040000000
+ 0 Particao    40.669252 usr:     8.960000000 sys:     0.020000000
+ 0 Pilha       11.100154 usr:     2.680000000 sys:     0.000000000
+ 0 Barreira     0.035620
+ 0 Mutex        2.071348
+ 1 proc   11415 particoes
+ 1 Execucao    96.141913 usr:    18.570000000 sys:     0.210000000
+ 1 Insercao    48.669601 usr:     9.690000000 sys:     0.030000000
+ 1 Particao    34.389719 usr:     7.100000000 sys:     0.020000000
+ 1 Pilha        8.218960 usr:     1.480000000 sys:     0.000000000
+ 1 Barreira     0.035098
+ 1 Mutex        1.757397
+ 2 proc   10889 particoes
+ 2 Execucao    96.225087 usr:    18.470000000 sys:     0.120000000
+ 2 Insercao    53.761163 usr:     9.350000000 sys:     0.030000000
+ 2 Particao    38.821273 usr:     8.640000000 sys:     0.020000000
+ 2 Pilha        0.231059 usr:     0.060000000 sys:     0.000000000
+ 2 Barreira     0.001820
+ 2 Mutex        2.188514
+ 3 proc   10928 particoes
+ 3 Execucao    96.152137 usr:    19.200000000 sys:     0.150000000
+ 3 Insercao    42.801960 usr:     9.240000000 sys:     0.020000000
+ 3 Particao    37.755989 usr:     7.190000000 sys:     0.020000000
+ 3 Pilha       11.560193 usr:     2.470000000 sys:     0.000000000
+ 3 Barreira     0.072902
+ 3 Mutex        2.118605
+
