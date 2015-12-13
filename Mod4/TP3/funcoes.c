@@ -4,22 +4,21 @@ int cmpInt(const void* a, const void* b){
   return *(int*)a - *(int*)b;
 }
 
-void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam, int soma){
+void bar(long* cal, long* subGrp, int calIndx, int subIndx, int calTam, int subTam, long soma){
 	if(somaAchada) return;
+	// printf("AEHOOOO:::%d\n", subTam);
 	
 	int i, somaSubGrupo = 0;
 	
 	if(subIndx==subTam){
 		for(i=0; i<subTam; i++){
 			somaSubGrupo += subGrp[i];
-			// printf("%d ", subGrp[i]);
+			printf("%ld ", subGrp[i]);
 		}
 		if(somaSubGrupo == soma){
-			printf("sim\n");
 			somaAchada = 1;
-			return;
 		}
-		// printf("\n");
+		printf("\n");
 	}
 	else{
 		for(i=calIndx; i<calTam; i++){
@@ -32,9 +31,15 @@ void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam
 void *foo(void *argumento){
 	Arg *in = (Arg*)argumento;
 
-	int *subGrp;
-	subGrp = (int*)calloc(in->tamConj, sizeof(int));
+	
+	printf("in.tamConj:::%ld\n", in->tamConj);
+
+	long *subGrp;
+	subGrp = (long*)calloc(in->tamConj, sizeof(long));
+
 	bar(in->valores, subGrp, 0, 0, in->qtdV, in->tamConj, in->soma);
+
+	free(subGrp);
 }
 
 int achaSomaPD(int valores[], int qtdV, int soma){
