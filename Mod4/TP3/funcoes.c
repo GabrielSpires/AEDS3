@@ -4,6 +4,37 @@ int cmpInt(const void* a, const void* b){
   return *(int*)a - *(int*)b;
 }
 
+void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam, int soma){
+	if(somaAchada) return;
+	
+	int i, somaSubGrupo = 0;
+	
+	if(subIndx==subTam){
+		for(i=0; i<subTam; i++){
+			somaSubGrupo += subGrp[i];
+			// printf("%d ", subGrp[i]);
+		}
+		if(somaSubGrupo == soma){
+			printf("sim\n");
+			somaAchada = 1;
+			return;
+		}
+		// printf("\n");
+	}
+	else{
+		for(i=calIndx; i<calTam; i++){
+			subGrp[subIndx] = cal[i];
+			bar(cal, subGrp, i+1, subIndx+1, calTam, subTam, soma);
+		}
+	}
+}
+
+void foo(int* cal, int size, int tamSubGrp, int soma){
+	int *subGrp;
+	subGrp = (int*)calloc(tamSubGrp, sizeof(int));
+	bar(cal, subGrp, 0, 0, size, tamSubGrp, soma);
+}
+
 int achaSomaPD(int valores[], int qtdV, int soma){
 	int **subConjunto;
 	int i, j;
