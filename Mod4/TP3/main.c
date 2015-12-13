@@ -5,7 +5,6 @@ int main(int argc, char const *argv[]){
 		int i, j, k,
 			numThreads,	  //Número de threads usadas (argumento do programa)
 			t, 			  //Número de instâncias do problema a serem simuladas
-			soma, 		  //Valor da soma
 			total; 		  //Variável que guarda a soma de todos os elementos
 		Arg in;	  		  //Struct que guarda os valores da entrada
 		char proxChar; 	  //Char que recebe o caractere após cada número
@@ -16,7 +15,7 @@ int main(int argc, char const *argv[]){
 		scanf("%d", &t);
 
 		while(in.qtdV=0, total=0, somaAchada=0, t--){
-			scanf("%d", &soma);
+			scanf("%d", &in.soma);
 
 			do{
 				scanf("%d%c", &in.valores[in.qtdV], &proxChar);
@@ -37,23 +36,25 @@ int main(int argc, char const *argv[]){
 			/*se a soma total é menor que a soma procurada,
 			então não precisamos buscar nos subgrupos já que
 			a soma nunca será encontrada*/
-			if(total < soma){
+			if(total < in.soma){
 				printf("nao\n");
 				continue;
 			}
 
 			// qsort(&in.valores, in.qtdV, sizeof(int), cmpInt);
 
-			for(i=0; in.tamConj=i, i<soma && !somaAchada; i++){
+			for(i=0; in.tamConj=i, i<in.soma && !somaAchada; i += numThreads){
+
 				for(j=0; j<numThreads; j++){
 					pthread_create(&threads[j], NULL, foo, (void*)&in);
+					printf(" %d\n", j);
 
-					for(k=0; k<numThreads; k++){
+					for(k=0; k<=j; k++){
 						pthread_join(threads[k], NULL);
 					}
-					
+
 				}
-				foo(&in.valores[0], in.qtdV, i, soma);
+				// foo(&in.valores[0], in.qtdV, i, in.soma);
 			}
 			if(!somaAchada){
 				printf("nao\n");

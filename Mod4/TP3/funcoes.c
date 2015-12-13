@@ -29,10 +29,12 @@ void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam
 	}
 }
 
-void foo(int* cal, int size, int tamSubGrp, int soma){
+void *foo(void *argumento){
+	Arg *in = (Arg*)argumento;
+
 	int *subGrp;
-	subGrp = (int*)calloc(tamSubGrp, sizeof(int));
-	bar(cal, subGrp, 0, 0, size, tamSubGrp, soma);
+	subGrp = (int*)calloc(in->tamConj, sizeof(int));
+	bar(in->valores, subGrp, 0, 0, in->qtdV, in->tamConj, in->soma);
 }
 
 int achaSomaPD(int valores[], int qtdV, int soma){
