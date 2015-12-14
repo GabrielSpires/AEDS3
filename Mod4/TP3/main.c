@@ -80,6 +80,6 @@ int main(int argc, char const *argv[]){
 	// tempo = clock() - tempo;
 	// printf("%f\n", (float)tempo/CLOCKS_PER_SEC);
 	
-	pthread_exit(NULL);
+	// pthread_exit(NULL);
 	return 0;
 }

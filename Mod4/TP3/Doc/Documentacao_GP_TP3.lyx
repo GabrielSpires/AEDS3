@@ -176,8 +176,187 @@ que representa uma soma e um conjunto de números inteiros, a tarefa é dizer
 S
 \emph default
 .
- Uma forma de resolver esse problema é usar o conjunto original para criar
- todas as combinações
+ A forma escolhida para se resolver esse problema foi usar o conjunto original
+ para criar todas as suas combinações possíveis e então verificar um a um
+ se a soma de seus elementos é igual à soma procurada.
+ O algoritmo implementado é muito demorado se for executado de forma serial,
+ por este motivo foram usadas várias threads para executar o programa de
+ forma paralela.
+\end_layout
+
+\begin_layout Standard
+Técnicamente, uma thread é definida como um fluxo de instruções independente
+ que pode ser programado para rodar de tal forma pelo sistema operacional.
+ Imagine um programa principal que contém um número de procedimentos.
+ Então imagine todos esses procedimentos sendo capazes de rodar simultâneamente
+ e/ou independentemente pelo sistema operacional.
+ Isso descreveria um programa 
+\begin_inset Quotes eld
+\end_inset
+
+multi-threaded
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Para implementar a paralelização neste trabalho, foi utilizada a biblioteca
+ 
+\emph on
+<pthread.h>
+\emph default
+.
+ Pthread é o padrão POSIX para threads em sistemas UNIX.
+\end_layout
+
+\begin_layout Standard
+Inicialmente, o programa é executado com o número de threads como argumento
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+./tp -t <threads>
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, esse número então é usado para criar um vetor de threads do tipo 
+\emph on
+pthread_t
+\emph default
+.
+ Então a entrada do programa é lida e armazenada em uma struct que mais
+ tarde será usada para enviar os argumentos para a função a ser paralelizada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\small},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+typedef struct{
+\end_layout
+
+\begin_layout Plain Layout
+
+	int valores[310], //Vetor que armazena o conjunto
+\end_layout
+
+\begin_layout Plain Layout
+
+	qtdV, //Variável que indica quantos elementos foram lidos
+\end_layout
+
+\begin_layout Plain Layout
+
+	tamConjInicial,//Tamanho do primeiro subconjunto a ser gerado
+\end_layout
+
+\begin_layout Plain Layout
+
+	tamConjFinal,//Tamanho do último subconjunto a ser gerado
+\end_layout
+
+\begin_layout Plain Layout
+
+	soma;//Valor da soma 
+\end_layout
+
+\begin_layout Plain Layout
+
+}Arg;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Struct usada para armezenar os valores
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Depois de ler a entrada, é criado um vetor de structs do tipo 
+\emph on
+Arg 
+\emph default
+com
+\emph on
+ 
+\emph default
+uma posição para cada thread, a entrada é então copiada para cada uma dessas
+ structs no vetor ao mesmo tempo que é calculado o intervalo que cada thread
+ irá calcular.
+ Esse intervalo é calculado ao se dividir o número de valores lidos na entrada
+ pelo numero de threads usadas, dessa forma cada thread gerará a mesma quantidad
+e de sub-grupos, com exceção da última thread, caso a quantidade de valores
+ da entrada não seja um múltiplo do intervalo.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename separacao_threads.pdf
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Representação da divisão de trabalho entre as threads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
