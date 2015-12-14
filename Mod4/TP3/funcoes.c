@@ -4,23 +4,24 @@ int cmpInt(const void* a, const void* b){
   return *(int*)a - *(int*)b;
 }
 
-void bar(long* cal, long* subGrp, int calIndx, int subIndx, int calTam, int subTam, long soma){
+void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam, int soma){
 	if(somaAchada) return;
-	// printf("AEHOOOO:::%d\n", subTam);
 	
 	int i, somaSubGrupo = 0;
 	
 	if(subIndx==subTam){
 		for(i=0; i<subTam; i++){
 			somaSubGrupo += subGrp[i];
-			printf("%ld ", subGrp[i]);
+			// printf("%d ", subGrp[i]);
 		}
 		if(somaSubGrupo == soma){
 			somaAchada = 1;
+			return;
 		}
-		printf("\n");
+		// printf("\n");
 	}
 	else{
+		if(somaAchada) return;
 		for(i=calIndx; i<calTam; i++){
 			subGrp[subIndx] = cal[i];
 			bar(cal, subGrp, i+1, subIndx+1, calTam, subTam, soma);
@@ -31,15 +32,21 @@ void bar(long* cal, long* subGrp, int calIndx, int subIndx, int calTam, int subT
 void *foo(void *argumento){
 	Arg *in = (Arg*)argumento;
 
-	
-	printf("in.tamConj:::%ld\n", in->tamConj);
+	// printf("in.tamConj:::%d-%d\n", in->tamConjInicial, in->tamConjFinal);
 
-	long *subGrp;
-	subGrp = (long*)calloc(in->tamConj, sizeof(long));
+	int *subGrp;
+	int i = 0;
+	// printf("Inicio: %d Fim:%d\n", in->tamConjInicial, in->tamConjFinal);
 
-	bar(in->valores, subGrp, 0, 0, in->qtdV, in->tamConj, in->soma);
+	for(i=in->tamConjInicial; i <= in->tamConjFinal; i++){
+		if(somaAchada) break;
+		subGrp = (int*)calloc(i, sizeof(int));
+		// printf("Comb(%d,%d)\n", in->qtdV, i);
+		bar(in->valores, subGrp, 0, 0, in->qtdV, i, in->soma);
 
-	free(subGrp);
+		free(subGrp);
+	}
+	pthread_exit(NULL);
 }
 
 int achaSomaPD(int valores[], int qtdV, int soma){

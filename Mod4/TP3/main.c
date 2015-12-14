@@ -10,29 +10,18 @@ int main(int argc, char const *argv[]){
 		char proxChar; 	  //Char que recebe o caractere após cada número
 
 		numThreads = atoi(argv[2]);
-
 		pthread_t threads[numThreads];
 
 		scanf("%d", &t);
 
 		while(in.qtdV=0, total=0, somaAchada=0, t--){
-			scanf("%ld", &in.soma);
+			scanf("%d", &in.soma);
 
 			do{
-				scanf("%ld%c", &in.valores[in.qtdV], &proxChar);
-				/*Poda de merda*/
-					// if(in.valores[in.qtdV] == soma){
-					// 	printf("sim\n");
-					// 	somaAchada = 1;
-					// 	break;
-					// }
-				/**/
+				scanf("%d%c", &in.valores[in.qtdV], &proxChar);
 				total+= in.valores[in.qtdV]; //soma todos os valores da entrada
 				in.qtdV++;
 			}while(proxChar != '\n'); //quando o próximo char é '\n' para de ler
-			
-			// Se a soma é um dos valores da entrada então ela já foi encontrada
-			// if(somaAchada) continue;
 
 			/*se a soma total é menor que a soma procurada,
 			então não precisamos buscar nos subgrupos já que
@@ -45,26 +34,42 @@ int main(int argc, char const *argv[]){
 			// qsort(&in.valores, in.qtdV, sizeof(int), cmpInt);
 
 			//Cria uma copia da entrada 
-			Arg vetIn[in.qtdV];
-			for(i=0; i<in.qtdV; i++){
-				for(j=0; j<in.qtdV; j++)
+			Arg vetIn[numThreads];
+			int intervalo = in.qtdV/numThreads;
+
+			if(numThreads > in.qtdV) intervalo = 1;
+
+			for(i=0; i<numThreads; i++){
+				for(j=0; j<in.qtdV; j++){
 					vetIn[i].valores[j] = in.valores[j];
-
+				}
+				
 				vetIn[i].qtdV = in.qtdV;
-				vetIn[i].tamConj = i+1;
 				vetIn[i].soma = in.soma;
+
+				//Se tem mais threads que valores algumas threads nao trabalham
+				if(i > in.qtdV){
+					vetIn[i].tamConjInicial = 0;
+					vetIn[i].tamConjFinal = 0;
+				}else{
+					vetIn[i].tamConjInicial = (i*intervalo)+1;
+					if(i < numThreads-1) vetIn[i].tamConjFinal = (i*intervalo)+intervalo;
+					else vetIn[i].tamConjFinal = in.qtdV;
+				}
+				// printf("Thread %d: %d-%d\n", i,vetIn[i].tamConjInicial ,vetIn[i].tamConjFinal);
 			}
 
-			if(numThreads > in.qtdV) numThreads = in.qtdV;
+			// for(i=0; i<numThreads; i++)
+			// 	printf("Imain: %d Fmain:%d\n", vetIn[i].tamConjInicial, vetIn[i].tamConjFinal);
 
-			for(i=0; i<in.qtdV && !somaAchada; i+=numThreads){
-				for(j=0; j<numThreads && (i+j) < in.qtdV-1; j++){
-					pthread_create(&threads[j], NULL, foo, &vetIn[i+j]);
-				}
-				for(k=0; k<numThreads; k++){
-					pthread_join(threads[k], NULL);
-				}
+			for(i=0; i<numThreads; i++){
+			// printf("Thread %d: %d-%d\n", i,vetIn[i].tamConjInicial ,vetIn[i].tamConjFinal);
+				pthread_create(&threads[i], NULL, foo, &vetIn[i]);
 			}
+			for(i=0; i<numThreads; i++){
+				pthread_join(threads[i], NULL);
+			}
+
 			if(!somaAchada)
 				printf("nao\n");
 			else
@@ -76,5 +81,6 @@ int main(int argc, char const *argv[]){
 			// 	printf("nao\n");
 		}
 	}
+	pthread_exit(NULL);
 	return 0;
 }
