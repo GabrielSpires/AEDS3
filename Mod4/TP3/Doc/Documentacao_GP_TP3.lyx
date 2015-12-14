@@ -107,10 +107,10 @@ Problema da Soma dos Subconjuntos
 (SubSet Sum Problem)
 \emph default
  que trata de achar se em um dado conjunto de números inteiros, existe um
- sub-conjunto não vazio cujo a soma de seus elementos é 0.
+ subconjunto não vazio cujo a soma de seus elementos é 0.
  No caso deste trabalho prático é dado um valor inteiro que representa uma
  soma, um conjunto de inteiros e é pedido que se responda se é possível
- encontrar este número ao se somar os elementos de algum dos sub-conjuntos
+ encontrar este número ao se somar os elementos de algum dos subconjuntos
  que podem ser gerados.
  Em caso positivo a palavra 
 \begin_inset Quotes eld
@@ -130,7 +130,7 @@ nao
 
 .
  No exemplo abaixo a resposta seria sim, uma vez que ao se somar os elementos
- do sub-conjunto 
+ do subconjunto 
 \begin_inset Formula $\left[4,6,12,18\right]$
 \end_inset
 
@@ -170,8 +170,8 @@ Dado um número
 S 
 \emph default
 que representa uma soma e um conjunto de números inteiros, a tarefa é dizer
- se existe um sub-conjunto do conjunto dado em que a soma de seus elementos
- sejá igual a 
+ se existe um subconjunto do conjunto dado em que a soma de seus elementos
+ seja igual a 
 \emph on
 S
 \emph default
@@ -185,7 +185,7 @@ S
 \end_layout
 
 \begin_layout Standard
-Técnicamente, uma thread é definida como um fluxo de instruções independente
+Tecnicamente, uma thread é definida como um fluxo de instruções independente
  que pode ser programado para rodar de tal forma pelo sistema operacional.
  Imagine um programa principal que contém um número de procedimentos.
  Então imagine todos esses procedimentos sendo capazes de rodar simultâneamente
@@ -319,8 +319,28 @@ uma posição para cada thread, a entrada é então copiada para cada uma dessas
  irá calcular.
  Esse intervalo é calculado ao se dividir o número de valores lidos na entrada
  pelo numero de threads usadas, dessa forma cada thread gerará a mesma quantidad
-e de sub-grupos, com exceção da última thread, caso a quantidade de valores
+e de subgrupos, com exceção da última thread, caso a quantidade de valores
  da entrada não seja um múltiplo do intervalo.
+ Isso garante até certo nível que todas as threads terão a mesma quantidade
+ de trabalho, mas se o tamanho dos grupos a serem gerados for levado em
+ consideração fica claro que as threads que geram os grupos de tamanho mais
+ próximo da metade do tamanho do vetor trabalharão mais, uma vez que são
+ geradas mais combinações nesses casos já que na fórmula 
+\begin_inset Formula $\frac{n!}{(n-k)!k!}$
+\end_inset
+
+ que representa as combinações, a quantidade de combinações cresce a medida
+ que o valor de 
+\emph on
+k
+\emph default
+ (tamanho dos subgrupos) se aproxima da metade do valor de 
+\emph on
+n
+\emph default
+ (quantidade de valores).
+ Isso pode representar uma degradação de desempenho por desbalanceamento
+ de carga já que algumas threads trabalharão mais que outras.
 \end_layout
 
 \begin_layout Standard
@@ -329,7 +349,7 @@ e de sub-grupos, com exceção da última thread, caso a quantidade de valores
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -357,6 +377,12 @@ Representação da divisão de trabalho entre as threads
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+O tipo de paralelismo implementado se caracteriza como paralelismo de dados,
+ já que todas as threads trabalham com a mesma entrada fazendo a mesma tarefa
+ que é gerar as combinações e verificar se a soma foi ou não encontrada.
 \end_layout
 
 \begin_layout Section
