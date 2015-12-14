@@ -1,8 +1,10 @@
 #include "funcoes.h"
 
 int main(int argc, char const *argv[]){
+	// clock_t tempo;
+	// tempo = clock();
 	if(strcmp(argv[1], "-t") == 0){
-		int i, j, k,
+		int i, j,
 			numThreads,	  //Número de threads usadas (argumento do programa)
 			t, 			  //Número de instâncias do problema a serem simuladas
 			total; 		  //Variável que guarda a soma de todos os elementos
@@ -63,7 +65,6 @@ int main(int argc, char const *argv[]){
 			// 	printf("Imain: %d Fmain:%d\n", vetIn[i].tamConjInicial, vetIn[i].tamConjFinal);
 
 			for(i=0; i<numThreads; i++){
-			// printf("Thread %d: %d-%d\n", i,vetIn[i].tamConjInicial ,vetIn[i].tamConjFinal);
 				pthread_create(&threads[i], NULL, foo, &vetIn[i]);
 			}
 			for(i=0; i<numThreads; i++){
@@ -76,6 +77,9 @@ int main(int argc, char const *argv[]){
 				printf("sim\n");
 		}
 	}
+	// tempo = clock() - tempo;
+	// printf("%f\n", (float)tempo/CLOCKS_PER_SEC);
+	
 	pthread_exit(NULL);
 	return 0;
 }

@@ -102,11 +102,38 @@ O problema apresentado neste trabalho se refere ao
 \emph on
 Problema da Soma dos Subconjuntos
 \emph default
- (SubSet Sum Problem) que trata de achar se em um dado conjunto de números
- inteiros, existe um sub-conjunto não vazio cujo a soma de seus elementos
- é 0.
- No caso deste trabalho prático é dado um valor inteiro e é necessárioas
  
+\emph on
+(SubSet Sum Problem)
+\emph default
+ que trata de achar se em um dado conjunto de números inteiros, existe um
+ sub-conjunto não vazio cujo a soma de seus elementos é 0.
+ No caso deste trabalho prático é dado um valor inteiro que representa uma
+ soma, um conjunto de inteiros e é pedido que se responda se é possível
+ encontrar este número ao se somar os elementos de algum dos sub-conjuntos
+ que podem ser gerados.
+ Em caso positivo a palavra 
+\begin_inset Quotes eld
+\end_inset
+
+sim
+\begin_inset Quotes erd
+\end_inset
+
+ é exibida na tela, caso contrário é exibido 
+\begin_inset Quotes eld
+\end_inset
+
+nao
+\begin_inset Quotes erd
+\end_inset
+
+.
+ O problema em questão tem várias solução rápidas que rodam em tempo pseudo-poli
+nomial, mas o objetivo deste trabalho é na verdade implementar uma solução
+ que utiliza programação paralela.
+ Por isso uma solução não tão eficiente deveria ser implementada para que
+ os benefícios da paralelização pudessem ser notados.
 \end_layout
 
 \begin_layout Section

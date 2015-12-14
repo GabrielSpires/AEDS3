@@ -4,7 +4,7 @@ tp3: main.c funcoes.c
 run: main.c funcoes.c
 	clear
 	gcc -o tp3 -pthread main.c funcoes.c
-	./tp3 -t 18
+	./tp3 -t 20
 
 val: main.c funcoes.c
 	reset

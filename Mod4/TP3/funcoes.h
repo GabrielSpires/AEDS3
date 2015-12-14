@@ -14,7 +14,6 @@ typedef struct{
 }Arg;
 
 int somaAchada; //Variável global usada pra interromper os testes
-pthread_mutex_t mut;
 
 int cmpInt(const void*, const void*);
 
