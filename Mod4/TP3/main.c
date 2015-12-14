@@ -74,11 +74,6 @@ int main(int argc, char const *argv[]){
 				printf("nao\n");
 			else
 				printf("sim\n");
-
-			// if(achaSomaPD(in.valores, in.qtdV, soma)) //O(( qtdV+1)*(soma+1) )
-			// 	printf("sim\n");
-			// else
-			// 	printf("nao\n");
 		}
 	}
 	pthread_exit(NULL);
