@@ -9,7 +9,7 @@ run: main.c funcoes.c
 val: main.c funcoes.c
 	reset
 	gcc -g -Wall -o tp3 -pthread main.c funcoes.c
-	valgrind --leak-check=full --track-origins=yes ./tp3 -t 4
+	valgrind --leak-check=full --track-origins=yes ./tp3 -t 10
 
 clean:
 	rm tp3

@@ -129,15 +129,55 @@ nao
 \end_inset
 
 .
- O problema em questão tem várias solução rápidas que rodam em tempo pseudo-poli
-nomial, mas o objetivo deste trabalho é na verdade implementar uma solução
- que utiliza programação paralela.
+ No exemplo abaixo a resposta seria sim, uma vez que ao se somar os elementos
+ do sub-conjunto 
+\begin_inset Formula $\left[4,6,12,18\right]$
+\end_inset
+
+ acharemos a soma 
+\begin_inset Formula $40$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename intro_conjuntos.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+O problema em questão tem várias solução que rodam em tempo pseudo-polinomial,
+ mas o objetivo deste trabalho na verdade é implementar uma solução que
+ possa utilizar programação paralela.
  Por isso uma solução não tão eficiente deveria ser implementada para que
- os benefícios da paralelização pudessem ser notados.
+ os benefícios da paralelização pudessem ser notados, então foi escolhida
+ uma solução que utiliza força bruta para achar a resposta.
 \end_layout
 
 \begin_layout Section
 Solução do Problema
+\end_layout
+
+\begin_layout Standard
+Dado um número 
+\emph on
+S 
+\emph default
+que representa uma soma e um conjunto de números inteiros, a tarefa é dizer
+ se existe um sub-conjunto do conjunto dado em que a soma de seus elementos
+ sejá igual a 
+\emph on
+S
+\emph default
+.
+ Uma forma de resolver esse problema é usar o conjunto original para criar
+ todas as combinações
 \end_layout
 
 \begin_layout Section
