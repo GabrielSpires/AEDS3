@@ -23,25 +23,14 @@ void foo(int* src, int size, int k){
 }
 
 int main(){
-	int t;//numero de casos teste
-	int i, j;
-	scanf("%d", &t);
-	for( i = 0; i < t; i++){
-		int n , k;// numero de rotas e numero de planetas a serem reconquistados
-		int *p;
-		scanf("%d %d", &n, &k);
-		p = (int*)malloc(sizeof(int)*n);
-		int tamMax = 0;
-		int *distPlanetas;
-		distPlanetas = (int*)calloc((n+1), sizeof(int));
-		int planetas;
-		for( j = 0; j < n+1; j++){
-			scanf("%d", &planetas);
-			tamMax += planetas;
-			p[j] = j+1;
-			distPlanetas[j] = planetas;
-		}
-		foo(p, n, k);
+	int p[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int n = 10;
+	int i;
+	for(i=0; i<n; i++){
+		// p é o vetor
+		// n é o tamanho do vetor
+		// k é o tamanho do sub-conjunto da combinação (quantos elementos escolher)
+		foo(p, n, i);
 	}
 	return 0;
 }

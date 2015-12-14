@@ -64,6 +64,7 @@ void gerarCombinacoes(int *distVetor, int* indices, int* combinacao, int indPlan
 			gerarCombinacoes(distVetor, indices, combinacao, i+1, indVetor+1, numPlanetas, aConquistar, solucao);
 		}
 	}
+	free(visitar);
 }
 
 void fb(int numPlanetas, int aConquistar, int *distVetor){
@@ -80,4 +81,6 @@ void fb(int numPlanetas, int aConquistar, int *distVetor){
 	gerarCombinacoes(distVetor, indices, combinacao, 1, 0, numPlanetas-1, aConquistar, &solucao);
 
 	printf("%d\n", solucao);
+	free(combinacao);
+	free(indices);
 }

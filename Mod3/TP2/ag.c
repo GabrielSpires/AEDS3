@@ -33,7 +33,7 @@ void ag(int numPlanetas, int aConquistar, int *distVetor){
 		distVetor[k] = menorSubDist;
 
 		//Desloca o vetor uma posiçao para a esquerda a partir do indice k
-		for(i=k+1; i<numPlanetas; i++){
+		for(i=k+1; i<numPlanetas-1; i++){
 			distVetor[i] = distVetor[i+1];
 		}
 
