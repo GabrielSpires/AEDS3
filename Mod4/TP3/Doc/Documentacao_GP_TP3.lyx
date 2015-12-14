@@ -385,6 +385,49 @@ O tipo de paralelismo implementado se caracteriza como paralelismo de dados,
  que é gerar as combinações e verificar se a soma foi ou não encontrada.
 \end_layout
 
+\begin_layout Standard
+Depois de calcular o intervalo de combinações que cada thread irá gerar,
+ a função 
+\emph on
+pthread_create()
+\emph default
+ é chamada em um loop que vai de 0 até o número de threads.
+ Em cada chamada dessa função são enviados uma das threads criadas no vetor
+ no início do programa, o nome da função a ser paralelizada, e uma das structs
+ criadas com a entrada e o intervalo a ser calculado pela thread.
+ Assim como mostrado abaixo:
+\begin_inset listings
+lstparams "language=C,basicstyle={\small},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+pthread_create(&threads[i], NULL, foo, &vetIn[i]);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Após chamar 
+\emph on
+pthread_create()
+\emph default
+ uma vez para cada thread, também é necessário chamar a função 
+\emph on
+pthread_join()
+\emph default
+ para as mesmas threads, para fazer com que o programa espere que todas
+ as threads acabem de rodar antes de prosseguir com a execução.
+ Caso isso não fosse feito, o programa poderia chegar ao fim e parar de
+ executar antes que as threads finalizassem seu trabalho, fazendo com que
+ a verificação das combinações fosse interrompida e a resposta errada fosse
+ exibida.
+\end_layout
+
 \begin_layout Section
 Análise Teórica do Custo Assintótico
 \end_layout

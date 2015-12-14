@@ -36,7 +36,7 @@ int main(int argc, char const *argv[]){
 			// qsort(&in.valores, in.qtdV, sizeof(int), cmpInt);
 
 			//Cria uma copia da entrada 
-			Arg vetIn[numThreads];
+			Arg vetIn[numThreads]; //Vetor que guarda os inputs e os intervalos
 			int intervalo = in.qtdV/numThreads;
 
 			if(numThreads > in.qtdV) intervalo = 1;
