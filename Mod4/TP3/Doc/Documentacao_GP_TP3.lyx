@@ -2511,7 +2511,7 @@ geraCombinacao()
 \begin_inset Formula $n-i$
 \end_inset
 
- vezes, sendo 
+ vezes a cada nível de recursão, sendo 
 \begin_inset Formula $n$
 \end_inset
 
@@ -2523,12 +2523,90 @@ geraCombinacao()
  seja igual ao seu tamanho.
 \end_layout
 
-\begin_layout Itemize
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
 
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename arvore_recursao.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Representação da árvore de recursão
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como cada combinação depende do número de elementos no vetor e do tamanho
+ do subconjunto de números a serem escolhidos então a complexidade de tempo
+ cresce com base nessas duas variáveis.
+ Podemos verificar que para cada entrada, o algoritmo gera exatamente 
+\begin_inset Formula $2^{n}-1$
+\end_inset
+
+ subconjuntos, ou seja, 
+\begin_inset Formula $2^{n}-1$
+\end_inset
+
+ combinações diferentes, então sua complexidade assintótica de tempo deve
+ ser da ordem de combinações produzidas, ou seja, 
+\begin_inset Formula $O(2^{n})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Podemos concluir então que a complexidade de tempo do algoritmo é de 
+\begin_inset Formula $O(\frac{n}{t})*O(2^{n})=O(\frac{n}{t}*2^{n})$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
 Análise Teórica do Custo Assintótico de Espaço
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+calculaIntervalos()
+\series default
+: essa função 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+geraCombinacao()
+\series default
+: essa função 
 \end_layout
 
 \begin_layout Section
