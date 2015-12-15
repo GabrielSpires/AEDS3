@@ -2605,14 +2605,10 @@ Como cada combinação depende do número de elementos no vetor e do tamanho
 \end_deeper
 \begin_layout Standard
 Podemos concluir então que a complexidade de tempo do algoritmo é de 
-\begin_inset Formula $O(t)*(O(\frac{n}{t})*O(2^{n}))=O(\frac{n}{t}*2^{n})$
+\begin_inset Formula $O(t)*(O(\frac{n}{t})*O(2^{n}))=O(n*2^{n})$
 \end_inset
 
- ou 
-\begin_inset Formula $O(n*2^{n})$
-\end_inset
-
- caso apenas 1 thread seja usada.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -2751,7 +2747,28 @@ Conclusão
 \begin_layout Standard
 Neste trabalho foi proposta a resolução do problema da Soma nos Subconjuntos,
  que foi resolvido ao se utilizar um algoritmo que gera todas as combinações
- do vetor de entrada e verifica um a um se a soma de seus elementos
+ do vetor de entrada e verifica um a um se a soma de seus elementos é igual
+ à soma desejada.
+ O programa foi paralelizado ao se utilizar a biblioteca 
+\emph on
+<pthread.h>
+\emph default
+, o que se mostrou muito eficiente para melhorar o tempo de execução desse
+ algoritmo, uma vez que ao invés de calcular combinação por combinação de
+ forma serial, várias combinações podiam ser verificadas ao mesmo tempo.
+ Mas mesmo melhorando o tempo de execução, as threads só são eficientes
+ até certo ponto, já que como o problema é 
+\begin_inset Formula $NP-Completo$
+\end_inset
+
+, como foi provado na seção 4 desta documentação, sua complexidade é muito
+ grande.
+ Portanto não importa a quantidade de threads usadas para entradas muito
+ grandes, o tempo de execução ainda será muito alto.
+ Foi possível notar também degradação de desempenho por meio de desbalanceamento
+ de carga uma vez que nem sempre foi possível dividir igualmente o trabalho
+ entre as threads.
+ Por fim, tudo isso pôde ser comprovado por meio da análise experimental.
 \end_layout
 
 \end_body
