@@ -65,7 +65,7 @@ int main(int argc, char const *argv[]){
 			// 	printf("Imain: %d Fmain:%d\n", vetIn[i].tamConjInicial, vetIn[i].tamConjFinal);
 
 			for(i=0; i<numThreads; i++){
-				pthread_create(&threads[i], NULL, foo, &vetIn[i]);
+				pthread_create(&threads[i], NULL, calculaIntervalos, &vetIn[i]);
 			}
 			for(i=0; i<numThreads; i++){
 				pthread_join(threads[i], NULL);

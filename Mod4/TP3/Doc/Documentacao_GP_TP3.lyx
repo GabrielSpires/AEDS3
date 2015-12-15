@@ -395,7 +395,15 @@ pthread_create()
  Em cada chamada dessa função são enviados uma das threads criadas no vetor
  no início do programa, o nome da função a ser paralelizada, e uma das structs
  criadas com a entrada e o intervalo a ser calculado pela thread.
- Assim como mostrado abaixo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset listings
 lstparams "language=C,basicstyle={\small},tabsize=4"
 inline false
@@ -403,7 +411,103 @@ status open
 
 \begin_layout Plain Layout
 
-pthread_create(&threads[i], NULL, foo, &vetIn[i]);
+int main(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i=0 até numThreads){
+\end_layout
+
+\begin_layout Plain Layout
+
+		//Manda a thread executar a função calculaIntervalos
+\end_layout
+
+\begin_layout Plain Layout
+
+		criaThread(thread[i], NULL, calculaIntervalos, entrada[i]);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i=0 até numThreads){
+\end_layout
+
+\begin_layout Plain Layout
+
+		//Espera a thread acabar de executar
+\end_layout
+
+\begin_layout Plain Layout
+
+		esperaThread(thread[i], NULL);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+void *calculaIntervalos(void *minhaStruct){
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i=inicioIntervalo até fimIntervalo){
+\end_layout
+
+\begin_layout Plain Layout
+
+		//Gera a combinação e procura a soma em cada conjunto
+\end_layout
+
+\begin_layout Plain Layout
+
+		geraCombinação(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pseudocódigo da criação das threads e verificação da resposta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

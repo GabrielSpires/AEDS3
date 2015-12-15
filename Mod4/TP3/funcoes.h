@@ -17,9 +17,9 @@ int somaAchada; //Variável global usada pra interromper os testes
 
 int cmpInt(const void*, const void*);
 
-void bar(int*, int*, int, int, int, int, int);
+void geraCombinacao(int*, int*, int, int, int, int, int);
 
-void *foo(void *);
+void *calculaIntervalos(void *);
 
 int achaSomaPD(int valores[], int, int);
 

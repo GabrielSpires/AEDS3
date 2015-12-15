@@ -4,7 +4,7 @@ int cmpInt(const void* a, const void* b){
   return *(int*)a - *(int*)b;
 }
 
-void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam, int soma){
+void geraCombinacao(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam, int soma){
 	if(somaAchada) return;
 	
 	int i, somaSubGrupo = 0;
@@ -24,12 +24,12 @@ void bar(int* cal, int* subGrp, int calIndx, int subIndx, int calTam, int subTam
 		if(somaAchada) return;
 		for(i=calIndx; i<calTam; i++){
 			subGrp[subIndx] = cal[i];
-			bar(cal, subGrp, i+1, subIndx+1, calTam, subTam, soma);
+			geraCombinacao(cal, subGrp, i+1, subIndx+1, calTam, subTam, soma);
 		}
 	}
 }
 
-void *foo(void *argumento){
+void *calculaIntervalos(void *argumento){
 	Arg *in = (Arg*)argumento;
 
 	// printf("in.tamConj:::%d-%d\n", in->tamConjInicial, in->tamConjFinal);
@@ -42,7 +42,7 @@ void *foo(void *argumento){
 		if(somaAchada) break;
 		subGrp = (int*)calloc(i, sizeof(int));
 		// printf("Comb(%d,%d)\n", in->qtdV, i);
-		bar(in->valores, subGrp, 0, 0, in->qtdV, i, in->soma);
+		geraCombinacao(in->valores, subGrp, 0, 0, in->qtdV, i, in->soma);
 
 		free(subGrp);
 	}
