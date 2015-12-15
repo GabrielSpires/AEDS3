@@ -12,6 +12,7 @@ int main(int argc, char const *argv[]){
 		char proxChar; 	  //Char que recebe o caractere após cada número
 
 		numThreads = atoi(argv[2]);
+		if(numThreads == 0) numThreads = 1;
 		pthread_t threads[numThreads];
 
 		scanf("%d", &t);

@@ -2503,6 +2503,28 @@ in->tamConjFinal
 
 \begin_layout Itemize
 
+\series bold
+geraCombinacao()
+\series default
+: essa função contém chamadas recursivas dentro de um laço.
+ Esse laço roda 
+\begin_inset Formula $n-i$
+\end_inset
+
+ vezes, sendo 
+\begin_inset Formula $n$
+\end_inset
+
+ o tamanho do vetor de entrada e 
+\begin_inset Formula $i$
+\end_inset
+
+ o nível na árvore de recursão e é chamado até que o índice do subgrupo
+ seja igual ao seu tamanho.
+\end_layout
+
+\begin_layout Itemize
+
 \end_layout
 
 \begin_layout Subsection
