@@ -2458,6 +2458,19 @@ A complexidade assintótica do programa será discutida na subseção abaixo.
 Análise Teórica do Custo Assintótico de Tempo
 \end_layout
 
+\begin_layout Standard
+A análise de custo assintótico de tempo pode ser feita ao se analisar as
+ 2 principais funções usadas:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+calculaIntervalos()
+\series default
+: aasdasdasd
+\end_layout
+
 \begin_layout Subsection
 Análise Teórica do Custo Assintótico de Espaço
 \end_layout
