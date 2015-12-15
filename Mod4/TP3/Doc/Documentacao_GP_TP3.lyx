@@ -759,6 +759,86 @@ O problema escolhido para ser reduzido à
 \emph default
 trata de achar uma atribuição de valores de verdade para as variáveis de
  uma expressão booleana de tal forma que torne a expressão avaliada verdadeira.
+ Se isso for possível essa expressão é considerada satisfazível, em contrapartid
+a se nenhuma atribuição levou a uma avaliação da expressão como verdadeira,
+ ela é considerada insatisfazível.
+ Por exemplo:
+\end_layout
+
+\begin_layout Standard
+Se temos a expressão booleana 
+\begin_inset Formula $(x_{1}\lor x_{2}\lor\lnot x_{3})\land(x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(\lnot x\lor\lnot x_{2}\lor\lnot x)$
+\end_inset
+
+, devemos escolher um valor de verdade para as variáveis 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+,
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ e 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ que torne a expressão verdadeira.
+ Uma escolha válida de valores é 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}=0$
+\end_inset
+
+ e 
+\begin_inset Formula $x_{3}=0$
+\end_inset
+
+, desta forma a expressão se transforma em 
+\begin_inset Formula $(1\lor0\lor1)\land(1\lor1\lor1)\land(0\lor1\lor1)=1$
+\end_inset
+
+, ou seja, a expressão é satisfazível.
+\end_layout
+
+\begin_layout Subsection
+Algoritmo de redução do 3-SAT para o SubSet Sum
+\end_layout
+
+\begin_layout Standard
+A seguir será explicado o algoritmo de redução do problema 3-SAT para nosso
+ problema.
+ Lembrando que vamos assumir que a nossa expressão não possui variáveis
+ repetidas em suas cláusulas, então 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $\lnot x_{i}$
+\end_inset
+
+ não podem pertencer simultaneamente a uma cláusula.
+\end_layout
+
+\begin_layout Itemize
+Para cada variável 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ vamos criar dois números, 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $v_{i}^{\prime}$
+\end_inset
+
+ de 
+\begin_inset Formula $n+k$
+\end_inset
+
+ dígitos cada, sendo que cada dígito indicará uma variável ou uma cláusula.
 \end_layout
 
 \begin_layout Standard
@@ -959,7 +1039,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $v'_{1}$
+\begin_inset Formula $v{}_{1}^{\prime}$
 \end_inset
 
 
@@ -1113,7 +1193,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $v'_{2}$
+\begin_inset Formula $v{}_{2}^{\prime}$
 \end_inset
 
 
@@ -1267,7 +1347,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $v'_{3}$
+\begin_inset Formula $v{}_{3}^{\prime}$
 \end_inset
 
 
@@ -1421,7 +1501,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $s'_{1}$
+\begin_inset Formula $s{}_{1}^{\prime}$
 \end_inset
 
 
@@ -1575,7 +1655,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $s'_{2}$
+\begin_inset Formula $s{}_{2}^{\prime}$
 \end_inset
 
 
@@ -1729,7 +1809,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $s'_{3}$
+\begin_inset Formula $s{}_{3}^{\prime}$
 \end_inset
 
 
@@ -1883,7 +1963,7 @@ trata de achar uma atribuição de valores de verdade para as variáveis de
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $s'_{4}$
+\begin_inset Formula $s{}_{4}^{\prime}$
 \end_inset
 
 
