@@ -2598,7 +2598,22 @@ Análise Teórica do Custo Assintótico de Espaço
 \series bold
 calculaIntervalos()
 \series default
-: essa função 
+: essa função tem complexidade de espaço igual a 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ sendo 
+\begin_inset Formula $n$
+\end_inset
+
+ o tamanho do conjunto de inteiros da entrada, já que a cada iteração do
+ seu laço, um vetor é alocado com a quantidade de posições suficiente para
+ comportar o tamanho da combinação a ser gerada, e a maior combinação a
+ ser gerada terá exatamente 
+\begin_inset Formula $n$
+\end_inset
+
+ elementos.
 \end_layout
 
 \begin_layout Itemize
@@ -2606,7 +2621,12 @@ calculaIntervalos()
 \series bold
 geraCombinacao()
 \series default
-: essa função 
+: essa função tem complexidade de espaço igual à complexidade de tempo,
+ já que é proporcional à quantidade de conjuntos gerados, então 
+\begin_inset Formula $O(2^{n}).$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2620,24 +2640,13 @@ Para fazer a análise experimental do programa, foi criado um outro programa
  medido.
  Para não levar em consideração o tempo que se leva para digitar a entrada
  no tempo de execução do programa, a entrada foi lida diretamente dos arquivos.
- Para medir o tempo de execução do programa foi usada a biblioteca 
+ Para medir o tempo de execução do programa foi usado o comando 
 \emph on
-time.h
+time
 \emph default
-.
- Ao se criar uma variável do tipo 
+ e o tempo levando em consideração com o mostrado como 
 \emph on
-clock_t
-\emph default
- e atribuindo à ela o valor que a função 
-\emph on
-clock()
-\emph default
- retorna, o número de clocks necessários para executar o código pode ser
- obtido e exibido ao se transformar esse valor em um float e dividi-lo pela
- constante 
-\emph on
-CLOCKS_PER_SEC
+real
 \emph default
 .
 \end_layout
@@ -2645,8 +2654,8 @@ CLOCKS_PER_SEC
 \begin_layout Standard
 Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.10.
  O computador utilizado tem um processador AMD Phenom II X4 965 3.40GHz e
- 8GB de memória, porém, a máquina virtual utiliza apenas um núcleo do processado
-r e 2GB de RAM.
+ 8GB de memória, porém, a máquina virtual utiliza apenas dois núcleos do
+ processador e 2GB de RAM.
 \end_layout
 
 \begin_layout Standard
