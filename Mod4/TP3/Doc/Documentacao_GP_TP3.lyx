@@ -841,6 +841,183 @@ Para cada variável
  dígitos cada, sendo que cada dígito indicará uma variável ou uma cláusula.
 \end_layout
 
+\begin_layout Itemize
+Para cada cláusula 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ vamos criar dois números, 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ e 
+\begin_inset Formula $s_{j}^{\prime}$
+\end_inset
+
+ que também possuirão 
+\begin_inset Formula $n+k$
+\end_inset
+
+ dígitos representando ou uma variável ou uma cláusula.
+\end_layout
+
+\begin_layout Itemize
+Para cada número 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $v_{i}^{\prime}$
+\end_inset
+
+ faremos o seguinte:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Colocaremos 1 na posição referente ao dígito da variável que deu origem
+ ao número e também colocaremos 1 na posição referente à cláusula em que
+ a variável referente aparece.
+ Por exemplo, na linha de 
+\begin_inset Formula $v_{1}^{\prime}$
+\end_inset
+
+colocamos 1 na coluna de 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+e nas colunas das cláusulas 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ e 
+\begin_inset Formula $C_{4}$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula $v_{1}^{\prime}$
+\end_inset
+
+ representa 
+\begin_inset Formula $\lnot x_{1}$
+\end_inset
+
+ então colocaremos 1 nas colunas das cláusulas que possuem
+\begin_inset Formula $\lnot x_{1}$
+\end_inset
+
+, assim como na coluna de 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Nas outras posições colocaremos 0.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Para cada número 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ e 
+\begin_inset Formula $s_{j}^{\prime}$
+\end_inset
+
+ faremos o seguinte:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Para todo 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ colocaremos 1 no digito referente à cláusula que deu origem ao número e
+ 0 nas outras colunas.
+\end_layout
+
+\begin_layout Itemize
+Para todo 
+\begin_inset Formula $s_{j}^{\prime}$
+\end_inset
+
+ colocaremos 2 no digito referente à cláusula que deu origem ao número e
+ 0 nas outras colunas.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Os números citados acima pertencem ao conjunto 
+\begin_inset Formula $S$
+\end_inset
+
+ que pode ser interpretado como o conjunto de números inteiros da entrada
+ do TP.
+ Também temos que gerar um número k, onde seus dígitos serão 1 nas colunas
+ referentes às variáveis e 4 nas colunas referentes às cláusulas.
+\end_layout
+
+\begin_layout Standard
+A lógica por trás deste método é escolher valores que satisfaçam a expressão
+ booleana, e a partir desses valores de 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+,
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ e 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ escolher os números 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ ou 
+\begin_inset Formula $v_{i}^{\prime}$
+\end_inset
+
+ que correspondam ao valor de sua respectiva variável e somar esses números.
+ Ao final da soma deve ser fazer mais uma soma levando em consideração os
+ valores das variáveis escolhidos.
+ Após somar os números, verificar quantos literais assumem valor verdadeiro
+ em cada cláusula.
+ Caso a cláusula tenha até 1 valor falso, deve se somar o valor de 
+\begin_inset Formula $s_{j}^{\prime}$
+\end_inset
+
+, mas se a cláusula tem 2 ou mais valores falsos soma-se os valores de ambos
+ 
+\begin_inset Formula $s_{j}$
+\end_inset
+
+ e 
+\begin_inset Formula $s_{j}^{\prime}$
+\end_inset
+
+.
+ No final, a soma deve se igualar a 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+O que temos aqui é a redução do problema 3-SAT pra o problema da Soma nos
+ Subconjuntos.
+ A transformação de um problema no outro pôde ser feita em tempo polinomial,
+ o que prova que o problema da Soma nos Subconjuntos é NP-Completo.
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Formula $(x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(\lnot x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(\lnot x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(x_{1}\lor x_{2}\lor x_{3})$
@@ -2040,7 +2217,7 @@ Para cada variável
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $soma$
+\begin_inset Formula $k$
 \end_inset
 
 
