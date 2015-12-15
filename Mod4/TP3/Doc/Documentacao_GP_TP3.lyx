@@ -994,6 +994,10 @@ A lógica por trás deste método é escolher valores que satisfaçam a express�
 \begin_inset Formula $s_{j}^{\prime}$
 \end_inset
 
+, se a cláusula não tiver valores falsos se soma o valor de 
+\begin_inset Formula $s_{j}$
+\end_inset
+
 , mas se a cláusula tem 2 ou mais valores falsos soma-se os valores de ambos
  
 \begin_inset Formula $s_{j}$
@@ -1012,13 +1016,118 @@ A lógica por trás deste método é escolher valores que satisfaçam a express�
 \end_layout
 
 \begin_layout Standard
-O que temos aqui é a redução do problema 3-SAT pra o problema da Soma nos
- Subconjuntos.
- A transformação de um problema no outro pôde ser feita em tempo polinomial,
- o que prova que o problema da Soma nos Subconjuntos é NP-Completo.
+Na próxima página será mostrado o pseudocódigo e um exemplo da transformação.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\small},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+reduz(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	//Cria os números referentes às variávels x1, x2, ...
+ , xn
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i=0 até numVariáveis){
+\end_layout
+
+\begin_layout Plain Layout
+
+		S.push(criaNúmerosDaVariavel(x[i]))
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	//Cria os números referentes às cláusulas C1, C2, ...
+ , Cj
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(j=0 até numCláusulas){
+\end_layout
+
+\begin_layout Plain Layout
+
+		S.push(criaNúmerosDaCláusula(C[j]))
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	criaNumero_k(numVariáveis, numCláusulas);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return S;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pseudocódigo da redução do problema 3-SAT para SubsetSum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Formula $(x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(\lnot x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(\lnot x_{1}\lor\lnot x_{2}\lor\lnot x_{3})\land(x_{1}\lor x_{2}\lor x_{3})$
 \end_inset
@@ -1026,7 +1135,7 @@ O que temos aqui é a redução do problema 3-SAT pra o problema da Soma nos
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="16" columns="8">
@@ -2296,6 +2405,47 @@ O que temos aqui é a redução do problema 3-SAT pra o problema da Soma nos
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Neste exemplo se fossem escolhidos os valores das variáveis como 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}=0$
+\end_inset
+
+ e 
+\begin_inset Formula $x_{3}=0$
+\end_inset
+
+ então a seguinte operação seria feita:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename soma_NP.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Essa lista de números pode ser claramente criada em tempo polinomial.
+ Nós podemos afirmar então que um subconjunto desses números soma exatamente
+ k somente se a expressão booleana é satisfazível.
+ O que temos aqui é a redução do problema 3-SAT pra o problema da Soma nos
+ Subconjuntos e como a transformação de um problema no outro pôde ser feita
+ em tempo polinomial, isso prova que o problema da Soma nos Subconjuntos
+ é NP-Completo.
+\end_layout
+
 \begin_layout Section
 Análise Teórica do Custo Assintótico
 \end_layout
@@ -2350,6 +2500,44 @@ Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.10.
  O computador utilizado tem um processador AMD Phenom II X4 965 3.40GHz e
  8GB de memória, porém, a máquina virtual utiliza apenas um núcleo do processado
 r e 2GB de RAM.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename grafico_teste_3.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gráfico do tempo de execução do algoritmo variando o número de threads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
