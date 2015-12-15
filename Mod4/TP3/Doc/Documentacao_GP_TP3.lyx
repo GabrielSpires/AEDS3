@@ -2468,7 +2468,41 @@ A análise de custo assintótico de tempo pode ser feita ao se analisar as
 \series bold
 calculaIntervalos()
 \series default
-: aasdasdasd
+: essa função tem apenas operações elementares e um laço que roda de 
+\emph on
+in->tamConjInicial 
+\emph default
+até 
+\emph on
+in->tamConjFinal
+\emph default
+.
+ O intervalo pode crescer em duas situações, no caso em que o número de
+ threads diminui com a mesma entrada, já que um número menor de threads
+ significa mais trabalho para cada thread, ou seja, um intervalo maior a
+ ser calculado, e no caso em que a entrada cresce, já que existirão mais
+ combinações a serem feitas.
+ Podemos dizer então que esse laço roda em 
+\begin_inset Formula $O($
+\end_inset
+
+
+\begin_inset Formula $\frac{n}{t})$
+\end_inset
+
+ onde 
+\begin_inset Formula $n$
+\end_inset
+
+ é o número de inteiros no conjunto da entrada e 
+\begin_inset Formula $t$
+\end_inset
+
+ é o número de threads escolhido.
+\end_layout
+
+\begin_layout Itemize
+
 \end_layout
 
 \begin_layout Subsection
