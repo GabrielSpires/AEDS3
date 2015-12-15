@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: grafico_teste_3.pdf
 %%Creator: gnuplot 4.6 patchlevel 6
-%%CreationDate: Tue Dec 15 20:48:09 2015
+%%CreationDate: Tue Dec 15 20:20:02 2015
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 410 302
 %%EndComments
@@ -461,7 +461,7 @@ SDict begin [
   /Author (kastor)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Tue Dec 15 20:48:09 2015)
+  /CreationDate (Tue Dec 15 20:20:02 2015)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -489,35 +489,49 @@ LT0
 63 0 V
 stroke
 602 448 M
-[ [(Helvetica) 140.0 0.0 true true 0 ( 0.9)]
-] -46.7 MRshow
-1.000 UL
-LT0
-0.50 0.50 0.50 C 1.000 UL
-LTa
-0.50 0.50 0.50 C 686 1143 M
-6261 0 V
-stroke
-LT0
-0.50 0.50 0.50 C 686 1143 M
-63 0 V
-stroke
-602 1143 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 1)]
 ] -46.7 MRshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 686 1838 M
+0.50 0.50 0.50 C 686 969 M
 6261 0 V
 stroke
 LT0
-0.50 0.50 0.50 C 686 1838 M
+0.50 0.50 0.50 C 686 969 M
 63 0 V
 stroke
-602 1838 M
+602 969 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 1.1)]
+] -46.7 MRshow
+1.000 UL
+LT0
+0.50 0.50 0.50 C 1.000 UL
+LTa
+0.50 0.50 0.50 C 686 1491 M
+6261 0 V
+stroke
+LT0
+0.50 0.50 0.50 C 686 1491 M
+63 0 V
+stroke
+602 1491 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1.2)]
+] -46.7 MRshow
+1.000 UL
+LT0
+0.50 0.50 0.50 C 1.000 UL
+LTa
+0.50 0.50 0.50 C 686 2012 M
+6261 0 V
+stroke
+LT0
+0.50 0.50 0.50 C 686 2012 M
+63 0 V
+stroke
+602 2012 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1.3)]
 ] -46.7 MRshow
 1.000 UL
 LT0
@@ -531,35 +545,49 @@ LT0
 63 0 V
 stroke
 602 2534 M
-[ [(Helvetica) 140.0 0.0 true true 0 ( 1.2)]
-] -46.7 MRshow
-1.000 UL
-LT0
-0.50 0.50 0.50 C 1.000 UL
-LTa
-0.50 0.50 0.50 C 686 3229 M
-6261 0 V
-stroke
-LT0
-0.50 0.50 0.50 C 686 3229 M
-63 0 V
-stroke
-602 3229 M
-[ [(Helvetica) 140.0 0.0 true true 0 ( 1.3)]
-] -46.7 MRshow
-1.000 UL
-LT0
-0.50 0.50 0.50 C 1.000 UL
-LTa
-0.50 0.50 0.50 C 686 3924 M
-6261 0 V
-stroke
-LT0
-0.50 0.50 0.50 C 686 3924 M
-63 0 V
-stroke
-602 3924 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 1.4)]
+] -46.7 MRshow
+1.000 UL
+LT0
+0.50 0.50 0.50 C 1.000 UL
+LTa
+0.50 0.50 0.50 C 686 3055 M
+6261 0 V
+stroke
+LT0
+0.50 0.50 0.50 C 686 3055 M
+63 0 V
+stroke
+602 3055 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1.5)]
+] -46.7 MRshow
+1.000 UL
+LT0
+0.50 0.50 0.50 C 1.000 UL
+LTa
+0.50 0.50 0.50 C 686 3576 M
+6261 0 V
+stroke
+LT0
+0.50 0.50 0.50 C 686 3576 M
+63 0 V
+stroke
+602 3576 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1.6)]
+] -46.7 MRshow
+1.000 UL
+LT0
+0.50 0.50 0.50 C 1.000 UL
+LTa
+0.50 0.50 0.50 C 686 4098 M
+6261 0 V
+stroke
+LT0
+0.50 0.50 0.50 C 686 4098 M
+63 0 V
+stroke
+602 4098 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1.7)]
 ] -46.7 MRshow
 1.000 UL
 LT0
@@ -573,7 +601,7 @@ LT0
 63 0 V
 stroke
 602 4619 M
-[ [(Helvetica) 140.0 0.0 true true 0 ( 1.5)]
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1.8)]
 ] -46.7 MRshow
 1.000 UL
 LT0
@@ -593,119 +621,133 @@ stroke
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 1382 448 M
+0.50 0.50 0.50 C 1312 448 M
 0 4171 V
 stroke
 LT0
-0.50 0.50 0.50 C 1382 448 M
+0.50 0.50 0.50 C 1312 448 M
 0 63 V
 stroke
-1382 308 M
+1312 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 4)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 2077 448 M
+0.50 0.50 0.50 C 1938 448 M
 0 4171 V
 stroke
 LT0
-0.50 0.50 0.50 C 2077 448 M
+0.50 0.50 0.50 C 1938 448 M
 0 63 V
 stroke
-2077 308 M
+1938 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 6)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 2773 448 M
+0.50 0.50 0.50 C 2564 448 M
 0 4171 V
 stroke
 LT0
-0.50 0.50 0.50 C 2773 448 M
+0.50 0.50 0.50 C 2564 448 M
 0 63 V
 stroke
-2773 308 M
+2564 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 8)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 3469 448 M
+0.50 0.50 0.50 C 3190 448 M
 0 4171 V
 stroke
 LT0
-0.50 0.50 0.50 C 3469 448 M
+0.50 0.50 0.50 C 3190 448 M
 0 63 V
 stroke
-3469 308 M
+3190 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 10)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 4164 448 M
+0.50 0.50 0.50 C 3817 448 M
 0 4171 V
 stroke
 LT0
-0.50 0.50 0.50 C 4164 448 M
+0.50 0.50 0.50 C 3817 448 M
 0 63 V
 stroke
-4164 308 M
+3817 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 12)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 4860 448 M
-0 63 V
-0 140 R
-0 3968 V
+0.50 0.50 0.50 C 4443 448 M
+0 4171 V
 stroke
 LT0
-0.50 0.50 0.50 C 4860 448 M
+0.50 0.50 0.50 C 4443 448 M
 0 63 V
 stroke
-4860 308 M
+4443 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 14)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 5556 448 M
+0.50 0.50 0.50 C 5069 448 M
 0 63 V
 0 140 R
 0 3968 V
 stroke
 LT0
-0.50 0.50 0.50 C 5556 448 M
+0.50 0.50 0.50 C 5069 448 M
 0 63 V
 stroke
-5556 308 M
+5069 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 16)]
 ] -46.7 MCshow
 1.000 UL
 LT0
 0.50 0.50 0.50 C 1.000 UL
 LTa
-0.50 0.50 0.50 C 6251 448 M
+0.50 0.50 0.50 C 5695 448 M
 0 63 V
 0 140 R
 0 3968 V
 stroke
 LT0
-0.50 0.50 0.50 C 6251 448 M
+0.50 0.50 0.50 C 5695 448 M
 0 63 V
 stroke
-6251 308 M
+5695 308 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 18)]
+] -46.7 MCshow
+1.000 UL
+LT0
+0.50 0.50 0.50 C 1.000 UL
+LTa
+0.50 0.50 0.50 C 6321 448 M
+0 63 V
+0 140 R
+0 3968 V
+stroke
+LT0
+0.50 0.50 0.50 C 6321 448 M
+0 63 V
+stroke
+6321 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 20)]
 ] -46.7 MCshow
 1.000 UL
 LT0
@@ -719,7 +761,7 @@ LT0
 0 63 V
 stroke
 6947 308 M
-[ [(Helvetica) 140.0 0.0 true true 0 ( 20)]
+[ [(Helvetica) 140.0 0.0 true true 0 ( 22)]
 ] -46.7 MCshow
 1.000 UL
 LT0
@@ -755,31 +797,51 @@ LT0
 LT0
 0.55 0.10 0.05 C LCb setrgbcolor
 6296 581 M
-[ [(Helvetica) 140.0 0.0 true true 0 (10 testes com 20 numeros)]
+[ [(Helvetica) 140.0 0.0 true true 0 (Algoritmo paralelizado)]
 ] -46.7 MRshow
 LT0
 0.55 0.10 0.05 C 6380 581 M
 399 0 V
-686 3847 M
-1382 1282 L
-695 -42 V
-696 362 V
-3469 990 L
-695 3393 V
-4860 3138 L
-5556 1929 L
-695 -723 V
-6947 789 L
-686 3847 CircleF
-1382 1282 CircleF
-2077 1240 CircleF
-2773 1602 CircleF
-3469 990 CircleF
-4164 4383 CircleF
-4860 3138 CircleF
-5556 1929 CircleF
-6251 1206 CircleF
-6947 789 CircleF
+686 2549 M
+999 1616 L
+313 42 V
+1625 641 L
+1938 484 L
+313 1116 V
+2564 969 L
+2877 719 L
+313 -57 V
+313 2492 V
+314 -308 V
+313 -724 V
+313 537 V
+313 -777 V
+313 -673 V
+313 2951 V
+5695 855 L
+6008 552 L
+313 136 V
+313 -21 V
+686 2549 CircleF
+999 1616 CircleF
+1312 1658 CircleF
+1625 641 CircleF
+1938 484 CircleF
+2251 1600 CircleF
+2564 969 CircleF
+2877 719 CircleF
+3190 662 CircleF
+3503 3154 CircleF
+3817 2846 CircleF
+4130 2122 CircleF
+4443 2659 CircleF
+4756 1882 CircleF
+5069 1209 CircleF
+5382 4160 CircleF
+5695 855 CircleF
+6008 552 CircleF
+6321 688 CircleF
+6634 667 CircleF
 6579 581 CircleF
 % End plot #1
 1.000 UP

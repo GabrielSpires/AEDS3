@@ -2556,7 +2556,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename arvore_recursao.pdf
-	scale 90
+	scale 80
 
 \end_inset
 
@@ -2685,16 +2685,41 @@ Os testes foram realizados em uma máquina virtual rodando Xubuntu 15.10.
 \end_layout
 
 \begin_layout Standard
+O primeiro gráfico mostra o comportamento do programa ao se variar o número
+ de threads.
+ Com uma entrada constante de 10 testes de 20 valores cada o gráfico demonstra
+ claramente a degradação de desempenho quando o trabalho entre as threads
+ fica mal dividido ao se utilizar 12 threads, já que não é possível dividir
+ igualmente o número de combinações neste caso.
+ A medida que o número de threads aumenta este problema não aparece mais
+ uma vez que o número de combinações passa a ficar igualmente dividido com
+ cada thread calculando apenas um tamanho de combinação.
+\end_layout
+
+\begin_layout Standard
+No segundo gráfico, é possível se notar o comportamento exponencial do algoritmo
+ de combinação, uma vez que não se varia o número de threads.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename grafico_teste_3.pdf
+	scale 68
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename grafico_muda_n.pdf
+	scale 68
 
 \end_inset
 
@@ -2705,15 +2730,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Gráfico do tempo de execução do algoritmo variando o número de threads
+Gráficos do tempo de execução do algoritmo variando o número de threads
+ e o tamanho da entrada respectivamente
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2724,6 +2746,12 @@ Gráfico do tempo de execução do algoritmo variando o número de threads
 
 \begin_layout Section
 Conclusão
+\end_layout
+
+\begin_layout Standard
+Neste trabalho foi proposta a resolução do problema da Soma nos Subconjuntos,
+ que foi resolvido ao se utilizar um algoritmo que gera todas as combinações
+ do vetor de entrada e verifica um a um se a soma de seus elementos
 \end_layout
 
 \end_body

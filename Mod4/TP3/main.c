@@ -29,10 +29,10 @@ int main(int argc, char const *argv[]){
 			/*se a soma total é menor que a soma procurada,
 			então não precisamos buscar nos subgrupos já que
 			a soma nunca será encontrada*/
-			// if(total < in.soma){
-			// 	printf("nao\n");
-			// 	continue;
-			// }
+			if(total < in.soma){
+				printf("nao\n");
+				continue;
+			}
 
 			// qsort(&in.valores, in.qtdV, sizeof(int), cmpInt);
 
