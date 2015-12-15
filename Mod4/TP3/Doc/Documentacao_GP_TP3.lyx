@@ -2466,9 +2466,29 @@ A análise de custo assintótico de tempo pode ser feita ao se analisar as
 \begin_layout Itemize
 
 \series bold
+main()
+\series default
+: Na função main, a função 
+\emph on
+pthread_create 
+\emph default
+é chamada dentro de um laço que roda uma vez para cada thread, então 
+\begin_inset Formula $O(t)$
+\end_inset
+
+ onde 
+\begin_inset Formula $t$
+\end_inset
+
+ é o número de threads, no pior caso o programa irá rodar apenas com 1 thread.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 calculaIntervalos()
 \series default
-: essa função tem apenas operações elementares e um laço que roda de 
+: Essa função tem apenas operações elementares e um laço que roda de 
 \emph on
 in->tamConjInicial 
 \emph default
@@ -2506,7 +2526,7 @@ in->tamConjFinal
 \series bold
 geraCombinacao()
 \series default
-: essa função contém chamadas recursivas dentro de um laço.
+: Essa função contém chamadas recursivas dentro de um laço.
  Esse laço roda 
 \begin_inset Formula $n-i$
 \end_inset
@@ -2564,7 +2584,8 @@ Representação da árvore de recursão
 Como cada combinação depende do número de elementos no vetor e do tamanho
  do subconjunto de números a serem escolhidos então a complexidade de tempo
  cresce com base nessas duas variáveis.
- Podemos verificar que para cada entrada, o algoritmo gera exatamente 
+ Porém, podemos verificar que para cada entrada, o algoritmo gera exatamente
+ 
 \begin_inset Formula $2^{n}-1$
 \end_inset
 
@@ -2572,8 +2593,9 @@ Como cada combinação depende do número de elementos no vetor e do tamanho
 \begin_inset Formula $2^{n}-1$
 \end_inset
 
- combinações diferentes, então sua complexidade assintótica de tempo deve
- ser da ordem de combinações produzidas, ou seja, 
+ combinações diferentes, então sua complexidade assintótica total de tempo
+ contando a execução deve ser da ordem de combinações produzidas, ou seja,
+ 
 \begin_inset Formula $O(2^{n})$
 \end_inset
 
@@ -2583,10 +2605,14 @@ Como cada combinação depende do número de elementos no vetor e do tamanho
 \end_deeper
 \begin_layout Standard
 Podemos concluir então que a complexidade de tempo do algoritmo é de 
-\begin_inset Formula $O(\frac{n}{t})*O(2^{n})=O(\frac{n}{t}*2^{n})$
+\begin_inset Formula $O(t)*(O(\frac{n}{t})*O(2^{n}))=O(\frac{n}{t}*2^{n})$
 \end_inset
 
-.
+ ou 
+\begin_inset Formula $O(n*2^{n})$
+\end_inset
+
+ caso apenas 1 thread seja usada.
 \end_layout
 
 \begin_layout Subsection
@@ -2621,9 +2647,9 @@ calculaIntervalos()
 \series bold
 geraCombinacao()
 \series default
-: essa função tem complexidade de espaço igual à complexidade de tempo,
- já que é proporcional à quantidade de conjuntos gerados, então 
-\begin_inset Formula $O(2^{n}).$
+: essa função tem complexidade de tempo proporcional ao tamanho do conjunto,
+ que é a maior combinação gerada, então 
+\begin_inset Formula $O(n).$
 \end_inset
 
 
